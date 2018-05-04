@@ -1,0 +1,99 @@
+.main {
+    width: 100vw;
+    background: #dcdcdc;
+    height: 100vh;
+}
+
+.main-div {
+    width: 1000px;
+    height: 100vh;
+    background: #fff;
+    left: 50vw;
+    position: relative;
+    margin-left: -500px;
+    overflow-y: scroll;
+}
+
+.title {
+    height: 60px;
+    line-height: 60px;
+    padding-left: 40px;
+    border: solid 1px #ccc;
+    font-size: 24px;
+    width: 900px;
+    border-radius: 10px;
+    margin-left: 50px;
+    margin-top: 10px;
+    box-shadow: 0px 0px 3px 0px #c1c1c1;
+    margin-bottom: 20px;
+}
+
+.title1 {
+    height: 60px;
+    line-height: 60px;
+    padding-left: 40px;
+    border: solid 1px #ccc;
+    font-size: 24px;
+    width: 900px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    margin-left: 50px;
+    margin-top: 40px;
+    box-shadow: 0px 0px 3px 0px #c1c1c1;
+    margin-bottom: 0px;
+    background: #8dd5ff;
+}
+
+.content {
+    display: flex;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    border-bottom: solid 1px #ccc;
+    font-size: 14px;
+}
+
+.content-name {
+    flex: 2;
+    border-right: solid 1px #ccc;
+    font-weight: bold;
+    font-family: '微软雅黑'
+}
+
+.content-name:nth-child(3) {
+    border-left: solid 1px #ccc;
+}
+
+.content-input {
+    flex: 3;
+    /* text-align: left !important; */
+}
+
+.flex-2 {
+    flex: 2 !important;
+}
+
+.flex-3 {
+    flex: 3 !important;
+}
+
+.flex-4 {
+    flex: 4 !important;
+}
+
+.content-input input, .content-input select {
+    border: none;
+    padding: 0;
+    height: 48px;
+    outline: none;
+    width: 90%;
+}
+
+.title1-content {
+    width: 900px;
+    margin-left: 50px;
+    border: solid 1px #ccc;
+    padding-bottom: 30px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}

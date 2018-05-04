@@ -15,7 +15,7 @@ import { FormsModule } from '@angular/forms';
 const router: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'main', component: MainComponent },
-  { path: '', component: LoginComponent }
+  { path: '', component: MainComponent }
 ];
 
 @NgModule({

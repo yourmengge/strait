@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
+import { RouterModule, Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -13,9 +14,8 @@ export class LoginComponent implements OnInit {
   loginCode: string;
   codeError: boolean;
 
-  constructor(public data: DataService) {
-    this.loginCode = '';
-    this.phone = '';
+  constructor(public data: DataService, public router: Router) {
+
   }
 
   ngOnInit() {
@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
       this.phoneError = this.data.verifyPhone(this.phone) ? this.data.hide : this.data.show;
     } else if (type === 'code') {
       console.log(this.loginCode);
-      this.codeError = this.loginCode !== '' ? this.data.hide : this.data.show;
+      this.codeError = (this.loginCode !== '' && this.loginCode !== undefined) ? this.data.hide : this.data.show;
     }
   }
 
@@ -35,8 +35,9 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    // this.verify('phone');
+    this.verify('phone');
     this.verify('code');
+    this.router.navigate(['main']);
   }
 
 }

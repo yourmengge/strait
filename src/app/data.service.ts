@@ -1,17 +1,22 @@
 import { Injectable } from '@angular/core';
+import { StaticService } from './static.service';
 
 @Injectable()
 export class DataService {
-  show: boolean;
-  hide: boolean;
-  isPhone = /^0?1[3|4|5|6|7|8|9][0-9]\d{8}$/;
-  constructor() {
-    this.show = true;
-    this.hide = false;
+
+  constructor(public staticData: StaticService) {
+
+  }
+
+  public getSession(name): any {
+    return sessionStorage.getItem(name);
+  }
+  setSession(name, data) {
+    return sessionStorage.setItem(name, data);
   }
 
   verifyPhone(phone) {
-    return this.isPhone.test(phone);
+    return this.staticData.isPhone.test(phone);
   }
 
 

@@ -150,3 +150,9 @@
     margin: auto;
     padding: 20px 0;
 }
+
+.button-div p{
+    font-size: 13px;
+    margin-top: 5px;
+    color: #333;
+}

@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -11,6 +12,7 @@ import { HttpService } from './http.service';
 import { PopoverModule } from 'ngx-bootstrap';
 import { TooltipModule } from 'ngx-bootstrap';
 import { FormsModule } from '@angular/forms';
+import { StaticService } from './static.service';
 
 const router: Routes = [
   { path: 'login', component: LoginComponent },
@@ -29,9 +31,10 @@ const router: Routes = [
     PopoverModule.forRoot(),
     BrowserModule,
     RouterModule.forRoot(router, { enableTracing: true }),
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [DataService, HttpService],
+  providers: [DataService, HttpService, StaticService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

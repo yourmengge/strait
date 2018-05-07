@@ -24,7 +24,7 @@
     border-radius: 10px;
     margin-left: 50px;
     margin-top: 10px;
-    box-shadow: 0px 0px 3px 0px #c1c1c1;
+    box-shadow: 0px 3px 13px 0px rgba(20, 74, 104, 0.14);
     margin-bottom: 20px;
 }
 
@@ -33,15 +33,15 @@
     line-height: 60px;
     padding-left: 40px;
     border: solid 1px #ccc;
+    border-bottom: none;
     font-size: 24px;
     width: 900px;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     margin-left: 50px;
     margin-top: 40px;
-    box-shadow: 0px 0px 3px 0px #c1c1c1;
     margin-bottom: 0px;
-    background: #8dd5ff;
+    background: #d7eaf5;
 }
 
 .content {
@@ -66,7 +66,6 @@
 
 .content-input {
     flex: 3;
-    /* text-align: left !important; */
 }
 
 .flex-2 {
@@ -93,7 +92,61 @@
     width: 900px;
     margin-left: 50px;
     border: solid 1px #ccc;
-    padding-bottom: 30px;
+    padding-bottom: 7px;
+    margin-bottom: 40px;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
+    box-shadow: 0px 3px 13px 0px rgba(20, 74, 104, 0.14);
+}
+
+.edit-p {
+    line-height: 30px;
+    padding: 10px;
+    text-align: left;
+}
+
+.no-height {
+    height: auto !important;
+}
+
+.title2 {
+    height: 40px;
+    line-height: 40px;
+    padding-left: 40px;
+    font-size: 20px;
+    width: 898px;
+    margin-bottom: 0px;
+    background: #ffd6c3;
+}
+
+.title3 {
+    height: 100px;
+    line-height: 100px;
+    text-align: center;
+}
+
+.title3 .content-div div {
+    display: flex;
+    height: 50px;
+    line-height: 50px;
+    border-bottom: solid 1px #ccc;
+}
+
+.title3 .content-div div:last-child {
+    border-bottom: none;
+}
+
+.title3 p {
+    width: 100%;
+}
+
+.height-4 {
+    height: 200px !important;
+    line-height: 200px;
+}
+
+.button-div{
+    width: 40%;
+    margin: auto;
+    padding: 20px 0;
 }

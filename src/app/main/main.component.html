@@ -1,8 +1,13 @@
 <div class="main">
   <div class="main-div">
+    <alert *ngIf='alertDiv' type="danger" class="alert-div">
+      <strong>提示!</strong>请输入正确的数据格式
+    </alert>
     <div class="title">
       项目名：
-      <select name="" id=""></select>
+      <select [(ngModel)]='projectName' (change)='change()' style="border: none;">
+        <option *ngFor="let i of tableList" [value]="i.value">{{i.text}}</option>
+      </select>
     </div>
     <div class="title1">
       项目基本情况
@@ -11,62 +16,61 @@
       <div class="content">
         <div class="content-name">合同额（万元）</div>
         <div class="content-input">
-          <input type="text" name="" id="" placeholder="保留小数后4位">
+          <input (keydown)='keyup()' (blur)='verifyNum(tableData.contractFee,"contractFee")' type="text" name="" id="" placeholder="保留小数后4位"
+            [(ngModel)]='tableData.contractFee' maxlength="13">
         </div>
         <div class="content-name">业主名称</div>
         <div class="content-input">
-          <input type="text" name="" id="">
+          <input type="text" name="" id="" [(ngModel)]='tableData.owner' maxlength="100">
         </div>
       </div>
       <div class="content">
         <div class="content-name">工程地点</div>
         <div class="content-input">
-          <input type="text" name="" id="">
+          <input type="text" name="" id="" [(ngModel)]='tableData.projectAddress' maxlength="100">
         </div>
         <div class="content-name">经营类型</div>
         <div class="content-input">
-          <select name="" id="">
-            <option value="" selected>自营</option>
-            <option value="">合作</option>
+          <select name="" id="" [(ngModel)]='tableData.bizType'>
+            <option *ngFor='let i of bizType' [value]="i.id">{{i.name}}</option>
           </select>
         </div>
       </div>
       <div class="content">
         <div class="content-name">合同价格形式</div>
         <div class="content-input">
-          <select name="" id="">
-            <option value="" selected>定额计价</option>
-            <option value="">清单计价</option>
-            <option value="">总价</option>
-            <option value="">其他</option>
+          <select name="" id="" [(ngModel)]='tableData.contractPriceType'>
+            <option *ngFor='let i of contractPriceType' [value]="i.id">{{i.name}}</option>
           </select>
         </div>
         <div class="content-name">计量支付方式</div>
         <div class="content-input">
-          <select name="" id="">
-            <option value="" selected>月</option>
-            <option value="">节点</option>
+          <select name="" id="" [(ngModel)]='tableData.payType'>
+            <option *ngFor='let i of payType' [value]="i.id">{{i.name}}</option>
           </select>
         </div>
       </div>
       <div class="content">
         <div class="content-name">支付比例（%）</div>
         <div class="content-input">
-          <input type="text" name="" id="">
+          <input type="text" name="" id="" [(ngModel)]='tableData.payRatio' maxlength="50">
         </div>
         <div class="content-name">合同开工时间</div>
         <div class="content-input">
-          <input type="text" name="" id="" placeholder="8位数字，如20140525" maxlength="8">
+          <input type="text" (blur)='isDate(tableData.contractStartDate)' [(ngModel)]='tableData.contractStartDate' name="" id="" placeholder="8位数字，如20140525"
+            maxlength="8">
         </div>
       </div>
       <div class="content">
         <div class="content-name">实际开工时间</div>
         <div class="content-input">
-          <input type="text" name="" id="" placeholder="8位数字，如20140525" maxlength="8">
+          <input type="text" (blur)='isDate(tableData.actualStartDate)' [(ngModel)]='tableData.actualStartDate' name="" id="" placeholder="8位数字，如20140525"
+            maxlength="8">
         </div>
         <div class="content-name">计划竣工时间</div>
         <div class="content-input">
-          <input type="text" name="" id="" placeholder="8位数字，如20140525" maxlength="8">
+          <input type="text" (blur)='isDate(tableData.planEndDate)' [(ngModel)]='tableData.planEndDate' name="" id="" placeholder="8位数字，如20140525"
+            maxlength="8">
         </div>
       </div>
     </div>
@@ -77,35 +81,32 @@
       <div class="content">
         <div class="content-name">收到施工图日期</div>
         <div class="content-input">
-          <input type="text" name="" id="" placeholder="8位数字，如20140525" maxlength="8">
+          <input type="text" (blur)='isDate(tableData.receivePicDate)' [(ngModel)]='tableData.receivePicDate' name="" id="" placeholder="8位数字，如20140525"
+            maxlength="8">
         </div>
       </div>
       <div class="content">
         <div class="content-name">施工图预算编制状态</div>
         <div class="content-input flex-2">
-          <select name="" id="">
-            <option value="" selected>已编制</option>
-            <option value="">正在编制</option>
-            <option value="">未编制</option>
+          <select name="" id="" [(ngModel)]='tableData.picBudgetStatus' (change)='picBudgetStatusChange()'>
+            <option *ngFor='let i of picBudgetStatus' [value]="i.id">{{i.name}}</option>
           </select>
         </div>
         <div class="content-name">未编制原因</div>
         <div class="content-input flex-4">
-          <input type="text" name="" id="">
+          <input [disabled]='picBudgetStatusDis' type="text" name="" id="" [(ngModel)]='tableData.picBudgetMemo' maxlength="255">
         </div>
       </div>
       <div class="content">
         <div class="content-name">施工图预算核对情况</div>
         <div class="content-input flex-2">
-          <select name="" id="">
-            <option value="" selected>核对完毕</option>
-            <option value="">正在核对</option>
-            <option value="">未核对</option>
+          <select name="" id="" [(ngModel)]='tableData.picVerifyStatus' (change)='picVerifyStatusChange()'>
+            <option *ngFor='let i of picVerifyStatus' [value]="i.id">{{i.name}}</option>
           </select>
         </div>
         <div class="content-name">施工图预算未核对原因</div>
         <div class="content-input flex-4">
-          <input type="text" name="" id="">
+          <input [disabled]='picVerifyStatusDis' type="text" name="" id="" [(ngModel)]='tableData.picVerifyMemo' maxlength="255">
         </div>
       </div>
     </div>
@@ -113,10 +114,10 @@
       营业收入情况
     </div>
     <div class="title1-content">
-      <div class="content no-height">
+      <div class="content textarea">
         <div class="content-name flex-2">形象进度</div>
         <div class="content-input flex-4">
-          <p contenteditable="true" class="edit-p"></p>
+          <textarea [(ngModel)]='tableData.biProgressDesc' maxlength="1000"></textarea>
         </div>
       </div>
       <div class="title2">
@@ -125,7 +126,8 @@
       <div class="content">
         <div class="content-name flex-2">实际完成产值</div>
         <div class="content-input flex-4">
-          <input type="text" placeholder="指按照合同约定的计价方式计算的当月实际完成产值">
+          <input type="text" (blur)='verifyNum(tableData.biActualValue,"biActualValue")' [(ngModel)]='tableData.biActualValue' maxlength="13"
+            placeholder="指按照合同约定的计价方式计算的当月实际完成产值">
         </div>
       </div>
       <div class="title2">
@@ -142,7 +144,8 @@
             </div>
             <div class="flex-4 content-input">
               <p>
-                <input type="text" name="" id="">
+                <input [(ngModel)]='tableData.biActualValueExclTax' (blur)='verifyNum(tableData.biActualValueExclTax,"biActualValueExclTax")'
+                  type="text" name="" id="" maxlength="13">
               </p>
             </div>
           </div>
@@ -152,7 +155,8 @@
             </div>
             <div class="flex-4 content-input">
               <p>
-                <input type="text" name="" id="" placeholder="老项目税金不单列，并入实际完成产值中；新项目要填">
+                <input maxlength="13" [(ngModel)]='tableData.biActualValueTax' (blur)='verifyNum(tableData.biActualValueTax,"biActualValueTax")'
+                  type="text" name="" id="" placeholder="老项目税金不单列，并入实际完成产值中；新项目要填">
               </p>
             </div>
           </div>
@@ -172,7 +176,7 @@
             </div>
             <div class="flex-4 content-input">
               <p>
-                <input type="text" name="" id="">
+                <input maxlength="13" disabled type="text" name="" id="" [(ngModel)]='tableData.biMainBizIncome' (blur)='verifyNum(tableData.biMainBizIncome,"biMainBizIncome")'>
               </p>
             </div>
           </div>
@@ -182,7 +186,7 @@
             </div>
             <div class="flex-4 content-input">
               <p>
-                <input type="text" name="" id="">
+                <input maxlength="13" disabled type="text" name="" id="" [(ngModel)]='tableData.biMainBizIncomeTax' (blur)='verifyNum(tableData.biMainBizIncomeTax,"biMainBizIncomeTax")'>
               </p>
             </div>
           </div>
@@ -191,7 +195,7 @@
       <div class="content">
         <div class="content-name flex-2">工程结算科目</div>
         <div class="content-input flex-4">
-          <input type="text">
+          <input type="text" disabled maxlength="50" [(ngModel)]='tableData.biProjectSettleSubject' placeholder="">
         </div>
       </div>
       <div class="title3 content">
@@ -205,7 +209,8 @@
             </div>
             <div class="flex-4 content-input">
               <p>
-                <input type="text" name="" id="">
+                <input type="text" maxlength="13" (blur)='verifyNum(tableData.biActualValueExclTaxStart,"biActualValueExclTaxStart")' [(ngModel)]='tableData.biActualValueExclTaxStart'
+                  name="" id="">
               </p>
             </div>
           </div>
@@ -215,7 +220,8 @@
             </div>
             <div class="flex-4 content-input">
               <p>
-                <input type="text" name="" id="" placeholder="老项目税金不单列，并入实际完成产值中；新项目要填">
+                <input type="text" maxlength="13" (blur)='verifyNum(tableData.biActualValueTaxStart,"biActualValueTaxStart")' [(ngModel)]='tableData.biActualValueTaxStart'
+                  name="" id="" placeholder="老项目税金不单列，并入实际完成产值中；新项目要填">
               </p>
             </div>
           </div>
@@ -232,7 +238,8 @@
       <div class="content">
         <div class="content-name flex-2">业主批复金额</div>
         <div class="content-input flex-4">
-          <input type="text" placeholder="业主签批手续完整，能够达到财务记账的业主确认的计量。应与项目期中结算台账对应">
+          <input type="text" maxlength="13" (blur)='verifyNum(tableData.ownerReplyAmount,"ownerReplyAmount")' [(ngModel)]='tableData.ownerReplyAmount'
+            placeholder="业主签批手续完整，能够达到财务记账的业主确认的计量。应与项目期中结算台账对应">
         </div>
       </div>
       <div class="title2">
@@ -249,7 +256,8 @@
             </div>
             <div class="flex-4 content-input">
               <p>
-                <input type="text" name="" id="">
+                <input maxlength="13" (blur)='verifyNum(tableData.ownerReplyAmountExclTax,"ownerReplyAmountExclTax")' [(ngModel)]='tableData.ownerReplyAmountExclTax'
+                  type="text" name="" id="">
               </p>
             </div>
           </div>
@@ -259,7 +267,8 @@
             </div>
             <div class="flex-4 content-input">
               <p>
-                <input type="text" name="" id="" placeholder="老项目税金不单列，并入业主批复产值中；新项目要填">
+                <input maxlength="13" (blur)='verifyNum(tableData.ownerReplyAmountTax,"ownerReplyAmountTax")' [(ngModel)]='tableData.ownerReplyAmountTax'
+                  type="text" name="" id="" placeholder="老项目税金不单列，并入业主批复产值中；新项目要填">
               </p>
             </div>
           </div>
@@ -279,7 +288,8 @@
             </div>
             <div class="flex-4 content-input">
               <p>
-                <input type="text" name="" id="">
+                <input maxlength="13" (blur)='verifyNum(tableData.ownerReplyAmountExclTax2,"ownerReplyAmountExclTax2")' type="text" [(ngModel)]='tableData.ownerReplyAmountExclTax2'
+                  name="" id="">
               </p>
             </div>
           </div>
@@ -289,7 +299,8 @@
             </div>
             <div class="flex-4 content-input">
               <p>
-                <input type="text" name="" id="" placeholder="老项目税金不单列，并入业主批复产值中；新项目要填">
+                <input maxlength="13" type="text" (blur)='verifyNum(tableData.ownerReplyAmountTax2,"ownerReplyAmountTax2")' [(ngModel)]='tableData.ownerReplyAmountTax2'
+                  name="" id="" placeholder="老项目税金不单列，并入业主批复产值中；新项目要填">
               </p>
             </div>
           </div>
@@ -306,7 +317,8 @@
             </div>
             <div class="flex-4 content-input">
               <p>
-                <input type="text" name="" id="">
+                <input maxlength="13" type="text" (blur)='verifyNum(tableData.contractReceivable,"contractReceivable")' [(ngModel)]='tableData.contractReceivable'
+                  name="" id="">
               </p>
             </div>
           </div>
@@ -316,7 +328,8 @@
             </div>
             <div class="flex-4 content-input">
               <p>
-                <input type="text" name="" id="" placeholder="">
+                <input maxlength="13" type="text" (blur)='verifyNum(tableData.receivedAmount,"receivedAmount")' [(ngModel)]='tableData.receivedAmount'
+                  name="" id="" placeholder="">
               </p>
             </div>
           </div>
@@ -326,7 +339,8 @@
             </div>
             <div class="flex-4 content-input">
               <p>
-                <input type="text" name="" id="" placeholder="">
+                <input maxlength="13" type="text" (blur)='verifyNum(tableData.projectPayed,"projectPayed")' [(ngModel)]='tableData.projectPayed'
+                  name="" id="" placeholder="">
               </p>
             </div>
           </div>
@@ -336,7 +350,8 @@
             </div>
             <div class="flex-4 content-input">
               <p>
-                <input type="text" name="" id="" placeholder="">
+                <input maxlength="13" type="text" (blur)='verifyNum(tableData.capitalOccupyFee,"capitalOccupyFee")' [(ngModel)]='tableData.capitalOccupyFee'
+                  name="" id="" placeholder="">
               </p>
             </div>
           </div>
@@ -358,7 +373,7 @@
             </div>
             <div class="flex-4 content-input">
               <p>
-                <input type="text" name="" id="">
+                <input maxlength="13" (blur)='verifyNum(tableData.applyAimValueYear,"applyAimValueYear")' type="text" name="" id="" [(ngModel)]='tableData.applyAimValueYear'>
               </p>
             </div>
           </div>
@@ -368,7 +383,8 @@
             </div>
             <div class="flex-4 content-input">
               <p>
-                <input type="text" name="" id="" placeholder="">
+                <input maxlength="13" (blur)='verifyNum(tableData.applyAimValueStart,"applyAimValueStart")' type="text" name="" id="" placeholder=""
+                  [(ngModel)]='tableData.applyAimValueStart'>
               </p>
             </div>
           </div>
@@ -377,7 +393,7 @@
       <div class="content">
         <div class="content-name flex-2">开工累计未达到计量条件的产值</div>
         <div class="content-input flex-4">
-          <input type="text" placeholder="">
+          <input maxlength="13" type="text" placeholder="如果小于等于，这个数据填0" [(ngModel)]='tableData.unreaachValue' (blur)='verifyNum(tableData.unreaachValue,"unreaachValue")'>
         </div>
       </div>
     </div>
@@ -396,7 +412,7 @@
             </div>
             <div class="flex-4 content-input">
               <p>
-                <input type="text" name="" id="">
+                <input maxlength="4" type="text" name="" id="" [(ngModel)]='tableData.sendYear'>
               </p>
             </div>
           </div>
@@ -406,7 +422,7 @@
             </div>
             <div class="flex-4 content-input">
               <p>
-                <input type="text" name="" id="" placeholder="">
+                <input maxlength="4" type="text" name="" id="" placeholder="" [(ngModel)]='tableData.replyYear'>
               </p>
             </div>
           </div>
@@ -423,7 +439,7 @@
             </div>
             <div class="flex-4 content-input">
               <p>
-                <input type="text" name="" id="">
+                <input maxlength="4" type="text" name="" id="" [(ngModel)]='tableData.sendStart'>
               </p>
             </div>
           </div>
@@ -433,7 +449,7 @@
             </div>
             <div class="flex-4 content-input">
               <p>
-                <input type="text" name="" id="" placeholder="">
+                <input maxlength="4" type="text" name="" id="" placeholder="" [(ngModel)]='tableData.replayStart'>
               </p>
             </div>
           </div>
@@ -451,7 +467,7 @@
       <div class="content">
         <div class="content-name flex-2">项目实际成本及税金</div>
         <div class="content-input flex-4">
-          <input type="text" placeholder="">
+          <input maxlength="13" type="text" placeholder="" [(ngModel)]='tableData.costMonth' (blur)='verifyNum(tableData.costMonth,"costMonth")'>
         </div>
       </div>
       <div class="title2">
@@ -460,7 +476,7 @@
       <div class="content">
         <div class="content-name flex-2">项目实际成本及税金</div>
         <div class="content-input flex-4">
-          <input type="text" placeholder="">
+          <input maxlength="13" type="text" placeholder="" [(ngModel)]='tableData.costStart' (blur)='verifyNum(tableData.costStart,"costStart")'>
         </div>
       </div>
     </div>
@@ -469,15 +485,15 @@
       <div class="content">
         <div class="content-name flex-2">项目商务经理</div>
         <div class="content-input flex-4">
-          <input type="text" placeholder="">
+          <input maxlength="20" type="text" placeholder="" [(ngModel)]='tableData.bizMgr'>
         </div>
         <div class="content-name flex-2">电话</div>
         <div class="content-input flex-4">
-          <input type="text" placeholder="" maxlength="11">
+          <input maxlength="20" type="text" placeholder="" maxlength="11" [(ngModel)]='tableData.bizMgrTel'>
         </div>
       </div>
       <div class="button-div">
-        <button class="btn btn-primary btn-block">提交</button>
+        <button class="btn btn-primary btn-block" (click)='submit()'>提交</button>
         <p>21号前，可以重复编辑提交</p>
       </div>
     </div>

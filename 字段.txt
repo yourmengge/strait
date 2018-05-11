@@ -67,3 +67,100 @@
         项目实际成本及税金
 项目商务经理及点话
 
+
+	private Long tableId;
+	private String projectName; // 项目名称
+	private Double contractFee; // 合同费用
+	private String owner; // 业主名称
+	private String projectAddress; // 工程地点
+	private Integer bizType; // 经营类型：1自营；2合作
+	private Integer contractPriceType; // 合同价格形式：1定额计价；2清单计价；3总价；9其他
+	private Integer payType; // 计量支付方式：1月；2节点
+	private String payRatio; // 支付比例(%)
+	private Integer contractStartDate; // 合同开工时间
+	private Integer actualStartDate; // 实际开工时间
+	private Integer planEndDate; // 计划竣工时间
+	private Integer receivePicDate; // 收到施工图日期
+	private Integer picBudgetStatus; // 施工图预算编制状态：0未编制；1正在编制；2已编制
+	private String picBudgetMemo; // 施工图未编制原因
+	private Integer picVerifyStatus; // 施工图预算核对情况：0未核对；1正在核对；2核对完毕
+	private String picVerifyMemo; // 施工图预算未核对原因
+	private String biProgressDesc; // 形象进度
+	private Double biActualValue; // 实际完成产值
+	private Double biActualValueExclTax; // 不含税实际完成产值
+	private Double biActualValueTax; // 税金
+	private Double biMainBizIncome; // 主营业务收入
+	private Double biMainBizIncomeTax; // 主营业务收入税金
+	private String biProjectSettleSubject; // 工程结算科目
+	private Double biActualValueExclTaxStart; // 不含税实际完成产值(自开工累计)
+	private Double biActualValueTaxStart; // 税金(自开工累计)
+	private Double ownerReplyAmount; // 业主批复金额
+	private Double ownerReplyAmountExclTax; // 不含税金业主批复金额
+	private Double ownerReplyAmountTax; // 税金
+	private Double ownerReplyAmountExclTax2; // 不含税金业主批复金额
+	private Double ownerReplyAmountTax2; // 税金
+	private Double contractReceivable; // 按合同应收工程款
+	private Double receivedAmount; // 已收工程款
+	private Double projectPayed; // 项目部已支付工程款
+	private Double capitalOccupyFee; // 资金占用费
+	private Double applyAimValueYear; // 已上报正在审批中的目标值(自年初累计)
+	private Double applyAimValueStart; // 已上报正在审批中的目标值(自开工累计)
+	private Double unreaachValue; // 开工累计未达到计量条件的产值
+	private Integer sendYear; // 报送期数(自年初累计)
+	private Integer replyYear; // 批复期数(自年初累计)
+	private Integer sendStart; // 报送期数(自开工累计)
+	private Integer replayStart; // 批复期数(自开工累计)
+	private Double costMonth; // 成本及税金(当月)
+	private Double costStart; // 成本及税金(自开工累计)
+	private String bizMgr; // 商务经理
+	private String bizMgrTel; // 商务经理电话
+
+
+
+
+
+project_name VARCHAR(100) NOT NULL COMMENT '项目名称',
+	contract_fee DECIMAL(12,4) COMMENT '合同费用',
+	owner VARCHAR(100) COMMENT '业主名称',
+	project_address VARCHAR(100) COMMENT '工程地点',
+	biz_type TINYINT COMMENT '经营类型：1自营；2合作',
+	contract_price_type TINYINT COMMENT '合同价格形式：1定额计价；2清单计价；3总价；9其他',
+	pay_type TINYINT COMMENT '计量支付方式：1月；2节点',
+	pay_ratio VARCHAR(50) COMMENT '支付比例(%)',
+	contract_start_date INTEGER COMMENT '合同开工时间 ',
+	actual_start_date INTEGER COMMENT '实际开工时间',
+	plan_end_date INTEGER COMMENT '计划竣工时间 ',
+	receive_pic_date INTEGER COMMENT '收到施工图日期',
+	pic_budget_status TINYINT COMMENT '施工图预算编制状态：0未编制；1正在编制；2已编制',
+	pic_budget_memo VARCHAR(255) COMMENT '施工图未编制原因',
+	pic_verify_status TINYINT COMMENT '施工图预算核对情况：0未核对；1正在核对；2核对完毕',
+	pic_verify_memo VARCHAR(255) COMMENT '施工图预算未核对原因',
+	bi_progress_desc TEXT COMMENT '形象进度',
+	bi_actual_value DECIMAL(12,4) COMMENT '实际完成产值',
+	bi_actual_value_excl_tax DECIMAL(12,4) COMMENT '不含税实际完成产值',
+	bi_actual_value_tax DECIMAL(12,4) COMMENT '税金',
+	bi_main_biz_income DECIMAL(12,4) COMMENT '主营业务收入',
+	bi_main_biz_income_tax DECIMAL(12,4) COMMENT '主营业务收入税金',
+	bi_project_settle_subject VARCHAR(50) COMMENT '工程结算科目',
+	bi_actual_value_excl_tax_start DECIMAL(12,4) COMMENT '不含税实际完成产值(自开工累计)',
+	bi_actual_value_tax_start DECIMAL(12,4) COMMENT '税金(自开工累计)',
+	owner_reply_amount DECIMAL(12,4) COMMENT '业主批复金额',
+	owner_reply_amount_excl_tax DECIMAL(12,4) COMMENT '不含税金业主批复金额',
+	owner_reply_amount_tax DECIMAL(12,4) COMMENT '税金',
+	owner_reply_amount_excl_tax2 DECIMAL(12,4) COMMENT '不含税金业主批复金额',
+	owner_reply_amount_tax2 DECIMAL(12,4) COMMENT '税金',
+	contract_receivable DECIMAL(12,4) COMMENT '按合同应收工程款',
+	received_amount DECIMAL(12,4) COMMENT '已收工程款',
+	project_payed DECIMAL(12,4) COMMENT '项目部已支付工程款',
+	capital_occupy_fee DECIMAL(12,4) COMMENT '资金占用费',
+	apply_aim_value_year DECIMAL(12,4) COMMENT '已上报正在审批中的目标值(自年初累计)',
+	apply_aim_value_start DECIMAL(12,4) COMMENT '已上报正在审批中的目标值(自开工累计)',
+	unreaach_value DECIMAL(12,4) COMMENT '开工累计未达到计量条件的产值',
+	send_year INTEGER COMMENT '报送期数(自年初累计)',
+	reply_year INTEGER COMMENT '批复期数(自年初累计)',
+	send_start INTEGER COMMENT '报送期数(自开工累计)',
+	replay_start INTEGER COMMENT '批复期数(自开工累计)',
+	cost_month DECIMAL(12,4) COMMENT '成本及税金(当月)',
+	cost_start DECIMAL(12,4) COMMENT '成本及税金(自开工累计)',
+	biz_mgr VARCHAR(20) COMMENT '商务经理',
+	biz_mgr_tel VARCHAR(20) COMMENT '商务经理电话',

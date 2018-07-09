@@ -1,0 +1,70 @@
+<div class="title1">
+  钢筋精细化管理
+</div>
+<div class="title1-content">
+  <div class="content">
+    <div class="content-name">钢筋翻样小组</div>
+    <div class="content-input">
+      <select name="" id="" [(ngModel)]='tableData.an'>
+        <option [value]="1">是</option>
+        <option [value]="0">否</option>
+      </select>
+    </div>
+    <div class="content-name">《钢筋翻样小组目标责任书》</div>
+    <div class="content-input">
+      <select name="" id="" [(ngModel)]='tableData.ao'>
+        <option [value]="1">是</option>
+        <option [value]="0">否</option>
+      </select>
+    </div>
+  </div>
+  <div class="content">
+    <div class="content-name">当月实际消耗量</div>
+    <div class="content-input">
+      <input type="number" name="" id="" [(ngModel)]='tableData.ap'>
+    </div>
+    <div class="content-name">当月钢筋翻样量</div>
+    <div class="content-input">
+      <input type="number" name="" id="" [(ngModel)]='tableData.aq'>
+    </div>
+  </div>
+  <div class="content">
+    <div class="content-name">累计实际消耗量</div>
+    <div class="content-input">
+      <input type="number" name="" id="" [(ngModel)]='tableData.ar'>
+    </div>
+    <div class="content-name">累计钢筋翻样量</div>
+    <div class="content-input">
+      <input type="number" name="" id="" [(ngModel)]='tableData.as1'>
+    </div>
+  </div>
+  <div class="content">
+    <div class="content-name">钢筋损耗率（%）</div>
+    <div class="content-input">
+      <span>{{tableAT(tableData.ar,tableData.as1)}}</span>
+    </div>
+    <div class="content-name">总包结算量</div>
+    <div class="content-input">
+      <input type="number" name="" id="" [(ngModel)]='tableData.au'>
+    </div>
+  </div>
+  <div class="content">
+    <div class="content-name">完工实际消耗量</div>
+    <div class="content-input">
+      <input type="number" name="" id="" [(ngModel)]='tableData.av'>
+    </div>
+    <div class="content-name">钢筋综合效益率</div>
+    <div class="content-input">
+      <span>{{tableAW(tableData.au,tableData.av)}}</span>
+    </div>
+  </div>
+  <div class="content">
+    <div class="content-name">备注</div>
+    <div class="content-input">
+      <input type="text" name="" id="" [(ngModel)]='tableData.ax'>
+    </div>
+  </div>
+</div>
+<div class="button-div">
+  <button class="btn btn-primary btn-block" (click)='submit()'>提交</button>
+</div>

@@ -4,59 +4,14 @@ import { Injectable } from '@angular/core';
 export class StaticService {
   show: boolean;
   hide: boolean;
+  alertDiv: boolean;
   isPhone = /^0?1[3|4|5|6|7|8|9][0-9]\d{8}$/;
-  isFreeNum = /^\d{1,8}(\.\d{1,4})?$/;
+  isFreeNum = /^\-?\d{1,8}(\.\d{1,4})?$/;
   isFormatDate = /^\d{8}/;
   host = 'http://218.85.23.217:8082/zjhx/';
   // host = 'http://192.168.88.148:8080/zjhx/';
   tableData = {
-    id: '',
-    tableId: '',
-    projectName: '',
-    contractFee: '',
-    owner: '',
-    projectAddress: '',
-    bizType: 1,
-    contractPriceType: 1,
-    payType: 1,
-    payRatio: '',
-    contractStartDate: '',
-    actualStartDate: '',
-    planEndDate: '',
-    receivePicDate: '',
-    picBudgetStatus: 1,
-    picBudgetMemo: '',
-    picVerifyStatus: 1,
-    picVerifyMemo: '',
-    biProgressDesc: '',
-    biActualValue: '',
-    biActualValueExclTax: '',
-    biActualValueTax: '',
-    biMainBizIncome: '',
-    biMainBizIncomeTax: '',
-    biProjectSettleSubject: '',
-    biActualValueExclTaxStart: '',
-    biActualValueTaxStart: '',
-    ownerReplyAmount: '',
-    ownerReplyAmountExclTax: '',
-    ownerReplyAmountTax: '',
-    ownerReplyAmountExclTax2: '',
-    ownerReplyAmountTax2: '',
-    contractReceivable: '',
-    receivedAmount: '',
-    projectPayed: '',
-    capitalOccupyFee: '',
-    applyAimValueYear: '',
-    applyAimValueStart: '',
-    unreaachValue: '',
-    sendYear: '',
-    replyYear: '',
-    sendStart: '',
-    replayStart: '',
-    costMonth: '',
-    costStart: '',
-    bizMgr: '',
-    bizMgrTel: ''
+
   };
   constructor() {
     this.show = true;
@@ -115,4 +70,9 @@ export class StaticService {
     name: '已核对'
   }];
 
+}
+export interface Yswspb {
+  i: string;
+  j: string;
+  k: string;
 }

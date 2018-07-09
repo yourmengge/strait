@@ -1,8 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, DoCheck } from '@angular/core';
 import { DataService } from '../data.service';
-import { RouterModule, Router } from '@angular/router';
 import { StaticService } from '../static.service';
-import { Response, RequestOptions, Headers } from '@angular/http';
 import { ApiService } from '../api.service';
 
 @Component({
@@ -10,156 +8,91 @@ import { ApiService } from '../api.service';
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.css']
 })
-export class MainComponent implements OnInit {
+export class MainComponent implements DoCheck, OnInit {
+  projectList: any;
+  projectValue: any;
+  dateType: number;
+  tableList: any;
+  tableValue: any;
+  showTableList: any;
+  url: any;
+  hasProject = this.staticData.hide;
+  constructor(public staticData: StaticService, public data: DataService, public http: ApiService) {
+    this.dateType = this.data.dateType;
+    this.data.setSession('dateType', this.dateType);
+  }
 
-  tableData: StaticService['tableData']; // 简单粗暴的写法
-  tableList = '';
-  contractPriceType: any;
-  projectName: any;
-  bizType: any;
-  payType: any;
-  picBudgetStatus: any;
-  picVerifyStatus: any;
-  picBudgetStatusDis = true;
-  picVerifyStatusDis = true;
-  alertDiv: boolean;
-  constructor(public staticData: StaticService, public router: Router, public data: DataService, public http: ApiService) {
-    this.contractPriceType = this.staticData.contractPriceType;
-    this.bizType = this.staticData.bizType;
-    this.payType = this.staticData.payType;
-    this.picBudgetStatus = this.staticData.picBudgetStatus;
-    this.picVerifyStatus = this.staticData.picVerifyStatus;
-    this.alertDiv = this.staticData.hide;
-    this.tableData = this.staticData.tableData;
+  ngDoCheck() {
+
   }
 
   ngOnInit() {
     this.getList();
+    this.url = this.data.getUrl(2);
   }
 
   getList() {
-    this.http.GetList({}).subscribe((res: Response) => {
-      this.tableList = res.json();
-      this.projectName = this.tableList[0]['value'];
-      this.getTableData(this.tableList[0]['value']);
-    }, (error) => {
-      alert(error.json()['resultInfo']);
-      window.history.go(-1);
+    this.http.Projects().subscribe((res) => {
+      this.projectList = res;
+      if (!this.data.isNull(this.data.getSession('projectId'))) {
+        this.projectValue = this.data.getSession('projectId');
+      } else {
+        this.projectValue = this.projectList[0].value;
+      }
+
+      this.data.projectId = this.projectValue;
+      this.data.setSession('projectId', this.projectValue);
+      this.getTableList(this.projectValue);
+      if (this.projectList.length !== 0) {
+        this.hasProject = true;
+      } else {
+        this.hasProject = false;
+      }
+    }, (err) => {
+      this.data.error = err.error;
+      this.data.isError();
     });
   }
 
-  getTableData(id) {
-    this.http.GetTableData(id).subscribe((res: Response) => {
-      if (res['_body'] !== '') {
-        this.tableData = res.json();
-        this.picBudgetStatusChange();
-        this.picVerifyStatusChange();
-      } else {
-        this.tableData = this.staticData.tableData;
-        this.picBudgetStatusDis = true;
-        this.picVerifyStatusDis = true;
-
-      }
-    }, (error) => {
-      alert(error.json()['resultInfo']);
-      window.history.go(-1);
+  getTableList(id) {
+    this.http.TableList(id).subscribe((res) => {
+      this.tableList = res;
+      this.showTableList = this.typeOfTableList(this.dateType);
+      // this.tableValue = this.showTableList[0].alias;
+      this.tableValue = this.url;
+      this.change();
+    }, (err) => {
+      this.data.error = err.error;
+      this.data.isError();
     });
+  }
+
+  typeOfTableList(type) {
+    const array = [];
+    this.tableList.forEach(element => {
+      // tslint:disable-next-line:triple-equals
+      if (type == element.submitType) {
+        array.push(element);
+      }
+    });
+    this.tableValue = array[0].alias;
+    return array;
+  }
+
+
+  changeProject() {
+    this.getTableList(this.projectValue);
+    this.data.setSession('projectId', this.projectValue);
   }
 
   change() {
-    this.getTableData(this.projectName);
+    this.data.projectId = this.projectValue;
+    this.data.goto('main/' + this.tableValue);
   }
 
-  picBudgetStatusChange() {
-    if (this.tableData['picBudgetStatus'] + '' !== '0') {
-      this.picBudgetStatusDis = true;
-      this.tableData['picBudgetMemo'] = '';
-    } else {
-      this.picBudgetStatusDis = false;
-
-    }
-  }
-
-  picVerifyStatusChange() {
-    if (this.tableData['picVerifyStatus'] + '' !== '0') {
-      this.picVerifyStatusDis = true;
-      this.tableData['picVerifyMemo'] = '';
-    } else {
-      this.picVerifyStatusDis = false;
-
-    }
-  }
-
-  submit() {
-    this.tableData['tableId'] = this.projectName;
-    this.http.SubmitTableData(this.tableData).subscribe((res: Response) => {
-      console.log(res);
-      this.getTableData(this.projectName);
-      alert('提交成功');
-      window.location.href = 'javascript: scroll(0, 0)';
-    }, (error) => {
-      alert(error.json()['resultInfo']);
-    });
-  }
-
-  verifyNum(num: string, name: string) {
-    num = num.toString();
-    if (this.staticData.isFreeNum.test(num)) {
-      if (num.indexOf('.') > 0) {
-        let second = num.split('.')[1];
-        const first = num.split('.')[0];
-        if (second.length === 1) {
-          second = second + '000';
-        }
-        if (second.length === 2) {
-          second = second + '00';
-        }
-        if (second.length === 3) {
-          second = second + '0';
-        }
-
-        if (second.length === 0) {
-          second = second + '0000';
-        }
-        num = first + '.' + second;
-      } else {
-        num = num + '.0000';
-      }
-      this.tableData[name] = num;
-    } else {
-      this.alertDiv = this.staticData.show;
-      this.hideAlert();
-    }
-  }
-
-  hideAlert() {
-    setTimeout(() => {
-      this.alertDiv = this.staticData.hide;
-    }, 2000);
-  }
-
-  keyup() {
-    const k = event['keyCode'];
-    if (((k >= 48) && (k <= 57)) || k === 8 || ((k >= 96) && (k <= 105))) {// 限制输入数字
-
-    } else {
-      this.preventDefault();
-    }
-  }
-
-  preventDefault() {
-    if (window.event) {
-      window.event.returnValue = false;
-    } else {
-      event.preventDefault(); // for firefox
-    }
-  }
-
-  isDate(date) {
-    if (this.data.isNotNull(date) && !this.staticData.isFormatDate.test(date)) {
-      this.alertDiv = this.staticData.show;
-      this.hideAlert();
-    }
-
+  changeType() {
+    this.showTableList = this.typeOfTableList(this.dateType);
+    this.data.setSession('dateType', this.dateType);
+    this.change();
   }
 }

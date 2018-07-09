@@ -1,0 +1,99 @@
+<div class="title1">
+  存量项目
+</div>
+<div class="title1-content">
+  <div class="content">
+    <div class="content-name">存量合同外垫资小计</div>
+    <div class="content-input">
+      <span>{{tableQ(tableData.r,tableData.s)}}</span>
+    </div>
+    <div class="content-name">其中：应收未收</div>
+    <div class="content-input">
+      <input type="number" name="" id="" placeholder="" [(ngModel)]='tableData.r' >
+    </div>
+  </div>
+  <div class="content">
+    <div class="content-name">其中：应计未计部分对应应收款</div>
+    <div class="content-input">
+      <input type="number" name="" id="" placeholder="" [(ngModel)]='tableData.s' >
+    </div>
+  </div>
+</div>
+<div class="title1">
+  基础数据
+</div>
+<div class="title1-content">
+  <div class="content">
+    <div class="content-name">累计已完成产值</div>
+    <div class="content-input">
+      <input type="number" name="" id="" placeholder="" [(ngModel)]='tableData.t' >
+    </div>
+    <div class="content-name">累计应计量产值</div>
+    <div class="content-input">
+      <input type="number" name="" id="" placeholder="" [(ngModel)]='tableData.u' >
+    </div>
+  </div>
+  <div class="content">
+    <div class="content-name">累计已计量产值</div>
+    <div class="content-input">
+      <input type="number" name="" id="" placeholder="" [(ngModel)]='tableData.v' >
+    </div>
+    <div class="content-name">按合同约定应收款</div>
+    <div class="content-input">
+      <input type="number" name="" id="" placeholder="" [(ngModel)]='tableData.w' >
+    </div>
+  </div>
+  <div class="content">
+    <div class="content-name">累计已付款</div>
+    <div class="content-input">
+      <input type="number" name="" id="" placeholder="" [(ngModel)]='tableData.x' >
+    </div>
+  </div>
+</div>
+<div class="title1">
+  统计日存量项目合同外垫资余额
+</div>
+<div class="title1-content">
+  <div class="content">
+    <div class="content-name">其中：应收未收</div>
+    <div class="content-input">
+      <input type="number" name="" id="" placeholder=""  >
+    </div>
+    <div class="content-name">其中：应计未计部分对应的应收款</div>
+    <div class="content-input">
+      <input type="number" name="" id="" placeholder="" [(ngModel)]='tableData.z' >
+    </div>
+  </div>
+  <div class="content">
+    <div class="content-name">统计日存量项目合同外垫资合计</div>
+    <div class="content-input">
+      <input type="number" name="" id="" placeholder="">
+    </div>
+  </div>
+  <div class="content">
+    <div class="content-name">合同外垫资原因</div>
+    <div class="content-input">
+      <select name="" id="" [(ngModel)]='tableData.ab'>
+        <option [value]="1">业主资金紧张被迫拖延</option>
+        <option [value]="2">业主内部审批流程长暂时性存在（预计1个月消除）</option>
+        <option [value]="3">业主故意拖延</option>
+        <option [value]="4">工程履约--项目工期延后</option>
+        <option [value]="5">工程履约--项目质量</option>
+        <option [value]="6">与业主就部分完工量有分歧</option>
+        <option [value]="7">项目已竣工人员组织不到位</option>
+        <option [value]="8">项目已停工</option>
+        <option [value]="9">项目已进入诉讼状态</option>
+        <option [value]="10">其他(备注说明)</option>
+      </select>
+    </div>
+  </div>
+  <div class="content textarea">
+    <div class="content-name flex-2">备注</div>
+    <div class="content-input flex-4">
+      <textarea [(ngModel)]='tableData.ac' maxlength="1000"></textarea>
+    </div>
+  </div>
+</div>
+<div class="button-div">
+  <button class="btn btn-primary btn-block" (click)='submit()'>提交</button>
+</div>

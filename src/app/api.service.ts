@@ -1,37 +1,41 @@
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 import { StaticService } from './static.service';
 import { DataService } from './data.service';
 
 @Injectable()
 export class ApiService {
-  public opts: any = '';
-  constructor(public http: Http, public staticData: StaticService, public data: DataService) {
-    this.opts = this.data.hadHeader();
+  host = this.staticData.host;
+  pageSize = 20;
+  constructor(public http: HttpClient, public staticData: StaticService, public data: DataService) {
   }
 
-  /**
-  * @param {phone:""}
-  * 传入手机号码，获取验证码
-  */
-  GetLoginCode(data) {
-    return this.http.post(this.staticData.host, data);
+  POST(url, data) {
+    this.data.getHeader();
+    return this.http.post(this.host + url, data, this.data.getHeader());
   }
 
   Login(data) {
     return this.http.post(this.staticData.host + '/third/login', data);
   }
 
-  GetList(data) {
-    return this.http.post(this.staticData.host + '/third/tableList', data, this.opts);
+  Projects() {
+    return this.POST('third/projects', {});
   }
 
-  GetTableData(id) {
-    return this.http.post(this.staticData.host + '/third/tableDetail/' + id, { '': '' }, this.opts);
+  TableList(id) {
+    return this.POST('third/projects/' + id + '/table', {});
   }
 
-  SubmitTableData(data) {
-    return this.http.post(this.staticData.host + '/third/tableDetail', data, this.opts);
+  tableDetail(data) {
+    return this.POST('third/project/' + data.projectId + '/' + data.alias + '?pageNo=' + data.pageNo + '&pageSize=' + this.pageSize, {});
   }
 
+  postTableDetail(data, tableId) {
+    return this.POST('third/' + tableId, data);
+  }
+
+  getTableDetail(projectId, tableId) {
+    return this.POST('third/project/' + projectId + '/' + tableId + '/month', {});
+  }
 }

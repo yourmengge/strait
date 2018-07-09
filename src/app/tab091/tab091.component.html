@@ -1,0 +1,332 @@
+<div class="title1">
+  项目基本情况
+</div>
+<div class="title1-content">
+  <div class="content">
+    <!-- <div class="content-name">合同额（万元）</div>
+    <div class="content-input">
+      <input (keydown)='keyup()' (blur)='verifyNum(tableData.d,"d")' type="text" name="" id="" placeholder="保留小数后4位"
+        [(ngModel)]='tableData.d' >
+    </div> -->
+    <div class="content-name">项目状态</div>
+    <div class="content-input">
+      <select name="" id="" [(ngModel)]='tableData.d'>
+        <option [value]="1">在施项目</option>
+        <option [value]="2">完工未竣工</option>
+        <option [value]="3">竣工未结算</option>
+        <option [value]="4">停工项目</option>
+      </select>
+    </div>
+  </div>
+  <div class="content textarea">
+    <div class="content-name flex-2">形象进度</div>
+    <div class="content-input flex-4">
+      <textarea [(ngModel)]='tableData.e'></textarea>
+    </div>
+  </div>
+  <div class="content textarea">
+    <div class="content-name flex-2">主要履约风险</div>
+    <div class="content-input flex-4">
+      <textarea [(ngModel)]='tableData.f'></textarea>
+    </div>
+  </div>
+</div>
+<div class="title1">
+  工期
+</div>
+<div class="title1-content">
+  <div class="title4 content">
+    <div class="content-name flex-2">
+      工期延误
+    </div>
+    <div class="content-div flex-4">
+      <div>
+        <div class="content-name flex-2">
+          <p>累计</p>
+        </div>
+        <div class="flex-4 content-input">
+          <p>
+            <input type="number" name="" id="" [(ngModel)]='tableData.g'>
+          </p>
+        </div>
+      </div>
+      <div>
+        <div class="content-name flex-2">
+          <p>当期</p>
+        </div>
+        <div class="flex-4 content-input">
+          <p>
+            <input type="number" name="" id="" placeholder="" [(ngModel)]='tableData.h'>
+          </p>
+        </div>
+      </div>
+      <div>
+        <div class="content-name flex-2">
+          <p>原因</p>
+        </div>
+        <div class="flex-4 content-input">
+          <p>
+            <input type="text" name="" id="" placeholder="" [(ngModel)]='tableData.i'>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="title4 content">
+    <div class="content-name flex-2">
+      工期索赔
+    </div>
+    <div class="content-div flex-4">
+      <div>
+        <div class="content-name flex-2">
+          <p>累计</p>
+        </div>
+        <div class="flex-4 content-input">
+          <p>
+            <input type="number" name="" id="" [(ngModel)]='tableData.j'>
+          </p>
+        </div>
+      </div>
+      <div>
+        <div class="content-name flex-2">
+          <p>当期</p>
+        </div>
+        <div class="flex-4 content-input">
+          <p>
+            <input type="number" name="" id="" placeholder="" [(ngModel)]='tableData.k'>
+          </p>
+        </div>
+      </div>
+      <div>
+        <div class="content-name flex-2">
+          <p>原因</p>
+        </div>
+        <div class="flex-4 content-input">
+          <p>
+            <input type="text" name="" id="" placeholder="" [(ngModel)]='tableData.l'>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="title3 content">
+    <div class="content-name flex-2">
+      延误损失
+    </div>
+    <div class="content-div flex-4">
+      <div>
+        <div class="content-name flex-2">
+          <p>累计</p>
+        </div>
+        <div class="flex-4 content-input">
+          <p>
+            <input type="number" name="" id="" [(ngModel)]='tableData.m'>
+          </p>
+        </div>
+      </div>
+      <div>
+        <div class="content-name flex-2">
+          <p>当期</p>
+        </div>
+        <div class="flex-4 content-input">
+          <p>
+            <input type="number" name="" id="" placeholder="" [(ngModel)]='tableData.n'>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="title1">
+  质量
+</div>
+<div class="title1-content">
+  <div class="content">
+    <div class="content-name">质量合格率</div>
+    <div class="content-input">
+      <input type="text" name="" id="" [(ngModel)]='tableData.o'>
+    </div>
+    <div class="content-name">发包人、监理检验不合格次数</div>
+    <div class="content-input">
+      <input type="number" name="" id="" [(ngModel)]='tableData.p'>
+    </div>
+  </div>
+  <div class="content textarea">
+    <div class="content-name flex-2">质量违约原因</div>
+    <div class="content-input flex-4">
+      <textarea [(ngModel)]='tableData.q'></textarea>
+    </div>
+  </div>
+  <div class="title3 content">
+    <div class="content-name flex-2">
+      质量损失
+    </div>
+    <div class="content-div flex-4">
+      <div>
+        <div class="content-name flex-2">
+          <p>累计</p>
+        </div>
+        <div class="flex-4 content-input">
+          <p>
+            <input type="number" name="" id="" [(ngModel)]='tableData.r'>
+          </p>
+        </div>
+      </div>
+      <div>
+        <div class="content-name flex-2">
+          <p>本期</p>
+        </div>
+        <div class="flex-4 content-input">
+          <p>
+            <input type="number" name="" id="" placeholder="" [(ngModel)]='tableData.s'>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="title1">
+  中间计量情况（万元）
+</div>
+<div class="title1-content">
+  <div class="content">
+    <div class="content-name">实际完成产值</div>
+    <div class="content-input">
+      <input type="text" name="" id="" [(ngModel)]='tableData.t' (keydown)='keyup()' (blur)='verifyNum(tableData.t,"t")'>
+    </div>
+    <div class="content-name">业主已确认的中间计量款项</div>
+    <div class="content-input">
+      <input type="text" name="" id="" [(ngModel)]='tableData.u' (keydown)='keyup()' (blur)='verifyNum(tableData.u,"u")'>
+    </div>
+  </div>
+</div>
+<div class="title1">
+  工程款支付情况（万元）
+</div>
+<div class="title1-content">
+  <div class="content">
+    <div class="content-name" style="font-size: 12px;">合同约定进度款或节点付款比例</div>
+    <div class="content-input">
+      <input type="text" name="" (keydown)='keyup()' id="" [(ngModel)]='tableData.v' (blur)='verifyNum(tableData.v,"v")'>
+    </div>
+    <div class="content-name" style="font-size: 12px;">按合同约定支付条件应支付金额</div>
+    <div class="content-input">
+      <span>{{tableW(tableData.u,tableData.v)}}</span>
+    </div>
+  </div>
+  <div class="content">
+    <div class="content-name">实际付款金额</div>
+    <div class="content-input">
+      <input type="text" name="" id="" [(ngModel)]='tableData.x'>
+    </div>
+    <div class="content-name">欠付工程款</div>
+    <div class="content-input">
+      <span>{{tableY(tableW(tableData.u,tableData.v),tableData.x)}}</span>
+    </div>
+  </div>
+  <div class="content">
+    <div class="content-name">欠付工程款</div>
+    <div class="content-input">
+      <span>{{tableZ(tableData.t,tableData.x)}}</span>
+    </div>
+  </div>
+</div>
+<div class="title1">
+  变更、签证、索赔
+</div>
+<div class="title1-content">
+  <div class="content">
+    <div class="content-name" style="font-size: 12px;">向业主报送金额</div>
+    <div class="content-input">
+      <input type="text" name="" id="" [(ngModel)]='tableData.aa'>
+    </div>
+    <div class="content-name" style="font-size: 12px;">业主已审批确认金额</div>
+    <div class="content-input">
+      <input type="text" name="" id="" [(ngModel)]='tableData.ab'>
+    </div>
+  </div>
+  <div class="content">
+    <div class="content-name" style="font-size: 12px;">业主未审批确认金额</div>
+    <div class="content-input">
+      <span>{{tableAC(tableData.aa,tableData.ab)}}</span>
+    </div>
+    <div class="content-name" style="font-size: 12px;">争议金额</div>
+    <div class="content-input">
+      <input type="text" name="" id="" [(ngModel)]='tableData.ad'>
+    </div>
+  </div>
+</div>
+<div class="title1">
+  项目合法性情况
+</div>
+<div class="title1-content">
+  <div class="content">
+    <div class="content-name" style="font-size: 12px;">建设用地规划许可证</div>
+    <div class="content-input">
+      <select name="" id="" [(ngModel)]='tableData.ae'>
+        <option [value]="1">有</option>
+        <option [value]="0">无</option>
+      </select>
+    </div>
+    <div class="content-name" style="font-size: 12px;">建设工程规划许可证</div>
+    <div class="content-input">
+      <select name="" id="" [(ngModel)]='tableData.af'>
+        <option [value]="1">有</option>
+        <option [value]="0">无</option>
+      </select>
+    </div>
+  </div>
+  <div class="content">
+    <div class="content-name" style="font-size: 12px;">建筑工程施工许可证</div>
+    <div class="content-input">
+      <select name="" id="" [(ngModel)]='tableData.ag'>
+        <option [value]="1">有</option>
+        <option [value]="0">无</option>
+      </select>
+    </div>
+    <div class="content-name" style="font-size: 12px;">国有土地使用证</div>
+    <div class="content-input">
+      <select name="" id="" [(ngModel)]='tableData.ah'>
+        <option [value]="1">有</option>
+        <option [value]="0">无</option>
+      </select>
+    </div>
+  </div>
+  <div class="content">
+    <div class="content-name">
+      质量监督备案情况
+    </div>
+    <div class="flex-4 content-input">
+      <p>
+        <select name="" id="" [(ngModel)]='tableData.ai'>
+          <option [value]="0">未备案</option>
+          <option [value]="1">备案</option>
+        </select>
+      </p>
+    </div>
+  </div>
+  <div class="content">
+    <div class="content-name">
+      安全监督备案情况
+    </div>
+    <div class="flex-4 content-input">
+      <p>
+        <select name="" id="" [(ngModel)]='tableData.ak'>
+          <option [value]="0">未备案</option>
+          <option [value]="1">备案</option>
+        </select>
+      </p>
+    </div>
+  </div>
+</div>
+<div class="title1-content">
+  <div class="content textarea">
+    <div class="content-name flex-2">备注</div>
+    <div class="content-input flex-4">
+      <textarea [(ngModel)]='tableData.am'></textarea>
+    </div>
+  </div>
+</div>
+<div class="button-div">
+  <button class="btn btn-primary btn-block" (click)='submit()'>提交</button>
+</div>

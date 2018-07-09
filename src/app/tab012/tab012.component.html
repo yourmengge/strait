@@ -1,0 +1,326 @@
+<!-- <div class="title1">
+  项目基本情况
+</div>
+<div class="title1-content">
+  <div class="content">
+    <div class="content-name">工程地点</div>
+    <div class="content-input">
+      <input type="text" name="" id="" [(ngModel)]='tableData.projectAddress' maxlength="10">
+    </div>
+    <div class="content-name">建筑面积（㎡）</div>
+    <div class="content-input">
+      <input type="text" name="" id="" [(ngModel)]='tableData.projectAddress' maxlength="10">
+    </div>
+  </div>
+  <div class="content">
+    <div class="content-name">结构及层数</div>
+    <div class="content-input">
+      <input type="text" name="" id="" [(ngModel)]='tableData.projectAddress' maxlength="10">
+    </div>
+    <div class="content-name">合同造价（万元）</div>
+    <div class="content-input">
+      <input (keydown)='keyup()' (blur)='verifyNum(tableData.contractFee,"contractFee")' type="text" name="" id="" placeholder="保留小数后4位"
+        [(ngModel)]='tableData.contractFee' maxlength="13">
+    </div>
+  </div>
+  <div class="content">
+    <div class="content-name">计划索赔金额（万元）</div>
+    <div class="content-input">
+      <input (keydown)='keyup()' (blur)='verifyNum(tableData.contractFee,"contractFee")' type="text" name="" id="" placeholder="保留小数后4位"
+        [(ngModel)]='tableData.contractFee' maxlength="13">
+    </div>
+    <div class="content-name">计划索赔工期（天）</div>
+    <div class="content-input">
+      <input type="text" (blur)='isDate(tableData.contractStartDate)' [(ngModel)]='tableData.contractStartDate' name="" id="" placeholder="8位数字，如20140525"
+        maxlength="8">
+    </div>
+  </div>
+</div> -->
+<div class="title1">
+  今年上报，今年批复
+</div>
+<div class="title1-content">
+  <div class="title2">
+    自年初累计1
+  </div>
+  <div class="content">
+    <div class="content-name">上报份数</div>
+    <div class="content-input">
+      <input type="number" name="" id="" [(ngModel)]='tableData.i' maxlength="10">
+    </div>
+    <div class="content-name">批复份数</div>
+    <div class="content-input">
+      <input type="number" name="" id="" [(ngModel)]='tableData.j' maxlength="10">
+    </div>
+  </div>
+  <div class="content">
+    <div class="content-name">商务索赔份数批复率（%）</div>
+    <div class="content-input">
+      <span>{{tableK(tableData.j,tableData.i)}}</span>
+    </div>
+    <div class="content-name">业主批复金额（万元）</div>
+    <div class="content-input">
+      <input type="text" name="" id="" (blur)='verifyNum(tableData.t,"t")' (keydown)='keyup()' [(ngModel)]='tableData.l' maxlength="10">
+    </div>
+  </div>
+  <div class="content">
+    <div class="content-name">实际成本（万元）</div>
+    <div class="content-input">
+      <input type="text" name="" id="" (blur)='verifyNum(tableData.t,"t")' (keydown)='keyup()' [(ngModel)]='tableData.m' maxlength="10">
+    </div>
+    <div class="content-name">利润率（%）</div>
+    <div class="content-input">
+      <span>{{tableN(tableData.l,tableData.m)}}</span>
+    </div>
+  </div>
+  <div class="content">
+    <div class="content-name">工期索赔天数</div>
+    <div class="content-input">
+      <input type="text" name="" id="" [(ngModel)]='tableData.o' maxlength="10">
+    </div>
+  </div>
+  <div class="title2">
+    业主主动提出变更签证
+  </div>
+  <div class="content">
+    <div class="content-name">业主主动提出变更份数</div>
+    <div class="content-input">
+      <input type="text" name="" id="" [(ngModel)]='tableData.p' maxlength="10">
+    </div>
+    <div class="content-name">业主批复金额（万元）</div>
+    <div class="content-input">
+      <input type="text" name="" id="" (blur)='verifyNum(tableData.t,"t")' (keydown)='keyup()' [(ngModel)]='tableData.q' maxlength="10">
+    </div>
+  </div>
+  <div class="content">
+    <div class="content-name">实际成本（万元）</div>
+    <div class="content-input">
+      <input type="text" name="" id="" (blur)='verifyNum(tableData.t,"t")' (keydown)='keyup()' [(ngModel)]='tableData.r' maxlength="10">
+    </div>
+    <div class="content-name">利润率（%）</div>
+    <div class="content-input">
+      <span>{{tableN(tableData.q,tableData.r)}}</span>
+    </div>
+  </div>
+</div>
+<div class="title1">
+  往年上报，今年批复
+</div>
+<div class="title1-content">
+  <div class="title2">
+    自年初累计2
+  </div>
+  <div class="content">
+    <div class="content-name">批复份数</div>
+    <div class="content-input">
+      <input type="text" name="" id="" [(ngModel)]='tableData.t' maxlength="10">
+    </div>
+    <div class="content-name">业主批复金额（万元）</div>
+    <div class="content-input">
+      <input type="text" name="" id="" [(ngModel)]='tableData.u' maxlength="10" (blur)='verifyNum(tableData.t,"t")' (keydown)='keyup()'>
+    </div>
+  </div>
+  <div class="content">
+    <div class="content-name">实际成本（万元）</div>
+    <div class="content-input">
+      <input type="text" name="" id="" [(ngModel)]='tableData.v' maxlength="10" (blur)='verifyNum(tableData.t,"t")' (keydown)='keyup()'>
+    </div>
+    <div class="content-name">利润率（%）</div>
+    <div class="content-input">
+      <span>{{tableN(tableData.u,tableData.v)}}</span>
+    </div>
+  </div>
+  <div class="content">
+    <div class="content-name">工期索赔天数</div>
+    <div class="content-input">
+      <input type="text" name="" id="" [(ngModel)]='tableData.x' maxlength="10">
+    </div>
+  </div>
+  <div class="title2">
+    业主主动提出变更签证
+  </div>
+  <div class="content">
+    <div class="content-name">业主主动提出变更份数</div>
+    <div class="content-input">
+      <input type="text" name="" id="" [(ngModel)]='tableData.y' maxlength="10">
+    </div>
+    <div class="content-name">业主批复金额（万元）</div>
+    <div class="content-input">
+      <input type="text" name="" id="" [(ngModel)]='tableData.z' maxlength="10" (blur)='verifyNum(tableData.t,"t")' (keydown)='keyup()'>
+    </div>
+  </div>
+  <div class="content">
+    <div class="content-name">实际成本（万元）</div>
+    <div class="content-input">
+      <input type="text" name="" id="" [(ngModel)]='tableData.aa' maxlength="10" (blur)='verifyNum(tableData.t,"t")' (keydown)='keyup()'>
+    </div>
+    <div class="content-name">利润率（%）</div>
+    <div class="content-input">
+      <span>{{tableN(tableData.z,tableData.aa)}}</span>
+    </div>
+  </div>
+</div>
+<div class="title1">
+  自开工累计
+</div>
+<div class="title1-content">
+  <div class="title2">
+    自开工累计合计
+  </div>
+  <div class="content">
+    <div class="content-name">上报份数</div>
+    <div class="content-input">
+      <input type="text" name="" id="" [(ngModel)]='tableData.ac' maxlength="10">
+    </div>
+    <div class="content-name">批复份数</div>
+    <div class="content-input">
+      <input type="text" name="" id="" [(ngModel)]='tableData.ad' maxlength="10">
+    </div>
+  </div>
+  <div class="content">
+    <div class="content-name">商务索赔份数批复率（%）</div>
+    <div class="content-input">
+      <input type="text" name="" id="" [(ngModel)]='tableData.ae' maxlength="10">
+    </div>
+    <div class="content-name">批复金额（万元）</div>
+    <div class="content-input">
+      <input type="text" name="" id="" [(ngModel)]='tableData.af' maxlength="10" (blur)='verifyNum(tableData.t,"t")' (keydown)='keyup()'>
+    </div>
+  </div>
+  <div class="content">
+    <div class="content-name">实际成本（万元）</div>
+    <div class="content-input">
+      <input type="text" name="" id="" [(ngModel)]='tableData.ag' maxlength="10" (blur)='verifyNum(tableData.t,"t")' (keydown)='keyup()'>
+    </div>
+    <div class="content-name">利润率（%）</div>
+    <div class="content-input">
+      <span>{{tableN(tableData.af,tableData.ag)}}</span>
+    </div>
+  </div>
+  <div class="content">
+    <div class="content-name">工期索赔天数</div>
+    <div class="content-input">
+      <input type="text" name="" id="" [(ngModel)]='tableData.ai' maxlength="10">
+    </div>
+  </div>
+  <div class="title2">
+    业主主动提出变更签证
+  </div>
+  <div class="content">
+    <div class="content-name">业主主动提出变更份数</div>
+    <div class="content-input">
+      <input type="text" name="" id="" [(ngModel)]='tableData.aj' maxlength="10">
+    </div>
+    <div class="content-name">业主批复金额（万元）</div>
+    <div class="content-input">
+      <input type="text" name="" id="" [(ngModel)]='tableData.ak' maxlength="10" (blur)='verifyNum(tableData.t,"t")' (keydown)='keyup()'>
+    </div>
+  </div>
+  <div class="content">
+    <div class="content-name">实际成本（万元）</div>
+    <div class="content-input">
+      <input type="text" name="" id="" [(ngModel)]='tableData.al' maxlength="10" (blur)='verifyNum(tableData.t,"t")' (keydown)='keyup()'>
+    </div>
+    <div class="content-name">利润率（%）</div>
+    <div class="content-input">
+      <span>{{tableN(tableData.ak,tableData.al)}}</span>
+    </div>
+  </div>
+</div>
+<div class="title1">
+  索赔奖励兑现情况
+</div>
+<div class="title1-content">
+  <div class="title3 content">
+    <div class="content-name flex-2">
+      本月兑现
+    </div>
+    <div class="content-div flex-4">
+      <div>
+        <div class="content-name flex-2">
+          <p>兑现日期</p>
+        </div>
+        <div class="flex-4 content-input">
+          <p>
+            <input [(ngModel)]='tableData.an' type="date" name="" id="" maxlength="13">
+          </p>
+        </div>
+      </div>
+      <div>
+        <div class="content-name flex-2">
+          <p>兑现金额（万元）</p>
+        </div>
+        <div class="flex-4 content-input">
+          <p>
+            <input maxlength="13" [(ngModel)]='tableData.ao' type="text" name="" id="" (blur)='verifyNum(tableData.t,"t")' (keydown)='keyup()'>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="title3 content">
+    <div class="content-name flex-2">
+      本年兑现
+    </div>
+    <div class="content-div flex-4">
+      <div>
+        <div class="content-name flex-2">
+          <p>兑现日期</p>
+        </div>
+        <div class="flex-4 content-input">
+          <p>
+            <input [(ngModel)]='tableData.ap' type="date" name="" id="" maxlength="13">
+          </p>
+        </div>
+      </div>
+      <div>
+        <div class="content-name flex-2">
+          <p>兑现金额（万元）</p>
+        </div>
+        <div class="flex-4 content-input">
+          <p>
+            <input maxlength="13" [(ngModel)]='tableData.aq' type="text" name="" id="" (blur)='verifyNum(tableData.t,"t")' (keydown)='keyup()'>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="title3 content">
+    <div class="content-name flex-2">
+      开累兑现
+    </div>
+    <div class="content-div flex-4">
+      <div>
+        <div class="content-name flex-2">
+          <p>兑现日期</p>
+        </div>
+        <div class="flex-4 content-input">
+          <p>
+            <input [(ngModel)]='tableData.ar' type="date" name="" id="" maxlength="13">
+          </p>
+        </div>
+      </div>
+      <div>
+        <div class="content-name flex-2">
+          <p>兑现金额（万元）</p>
+        </div>
+        <div class="flex-4 content-input">
+          <p>
+            <input maxlength="13" [(ngModel)]='tableData.as1' type="text" name="" id="" (blur)='verifyNum(tableData.t,"t")' (keydown)='keyup()'>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="title1-content">
+  <div class="content textarea">
+    <div class="content-name flex-2">备注</div>
+    <div class="content-input flex-4">
+      <textarea [(ngModel)]='tableData.at' maxlength="1000"></textarea>
+    </div>
+  </div>
+</div>
+<div class="button-div">
+  <button class="btn btn-primary btn-block" (click)='submit()'>提交</button>
+</div>

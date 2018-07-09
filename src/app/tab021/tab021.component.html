@@ -1,0 +1,163 @@
+<button (click)='add()' class="btn btn-primary">{{state === 'active'?'关闭':'新增'}}</button>
+<div class="add-table" [@heroState]="state">
+  <div class="title1">
+    分包签证台帐
+  </div>
+  <div class="title1-content">
+    <div class="content">
+      <div class="content-name">分包人方式</div>
+      <div class="content-input">
+        <input  type="text" name="" id="" [(ngModel)]='detail.c' placeholder="">
+      </div>
+      <div class="content-name">签证编号</div>
+      <div class="content-input">
+        <input type="text" name="" id=""  [(ngModel)]='detail.d'>
+      </div>
+    </div>
+    <div class="content">
+      <div class="content-name">签证主要内容</div>
+      <div class="content-input">
+        <input  type="text" name="" id="" placeholder="" [(ngModel)]='detail.e'>
+      </div>
+      <div class="content-name">指令签发日期</div>
+      <div class="content-input">
+        <input type="date" name="" id="" [(ngModel)]='detail.f'>
+      </div>
+    </div>
+    <div class="content">
+      <div class="content-name">指令完成日期</div>
+      <div class="content-input">
+        <input  type="date" name="" id="" placeholder="" [(ngModel)]='detail.g'>
+      </div>
+      <div class="content-name">分包人报送日期</div>
+      <div class="content-input">
+        <input type="date" name="" id=""  [(ngModel)]='detail.h'>
+      </div>
+    </div>
+    <div class="content">
+      <div class="content-name">报送值（元）</div>
+      <div class="content-input">
+        <input  type="text" name="" id="" placeholder="" [(ngModel)]='detail.i'>
+      </div>
+      <div class="content-name">签证经办人</div>
+      <div class="content-input">
+        <input type="text" name="" id=""  [(ngModel)]='detail.j'>
+      </div>
+    </div>
+    <div class="content">
+      <div class="content-name">签证提交日期</div>
+      <div class="content-input">
+        <input  type="date" name="" id="" placeholder="" [(ngModel)]='detail.k'>
+      </div>
+      <div class="content-name">项目部审批日期</div>
+      <div class="content-input">
+        <input type="date" name="" id="" [(ngModel)]='detail.l' >
+      </div>
+    </div>
+    <div class="content">
+      <div class="content-name">签证零工（元）</div>
+      <div class="content-input">
+        <input  type="text" name="" id="" placeholder="" [(ngModel)]='detail.m'>
+      </div>
+      <div class="content-name">签证金额（元）</div>
+      <div class="content-input">
+        <input type="text" name="" id="" [(ngModel)]='detail.n'>
+      </div>
+    </div>
+    <div class="content">
+      <div class="content-name">对发包人结算价（元）</div>
+      <div class="content-input">
+        <input  type="text" name="" id="" placeholder="" [(ngModel)]='detail.o'>
+      </div>
+      <div class="content-name">其他班组抵扣</div>
+      <div class="content-input">
+        <input type="text" name="" id=""  [(ngModel)]='detail.p'>
+      </div>
+    </div>
+    <div class="content">
+      <div class="content-name">抵扣金额</div>
+      <div class="content-input">
+        <input  type="text" name="" id="" placeholder="" [(ngModel)]='detail.q'>
+      </div>
+      <div class="content-name">备注</div>
+      <div class="content-input">
+        <input type="text" name="" id="" [(ngModel)]='detail.r'>
+      </div>
+    </div>
+  </div>
+  <div class="button-div">
+    <button class="btn btn-primary btn-block" (click)='submit()'>提交</button>
+  </div>
+</div>
+<div class="table-div">
+  <table border="1">
+    <tr>
+      <td >
+        分包人方式
+      </td>
+      <td >
+        签证编号
+      </td>
+      <td >
+        签证主要内容
+      </td>
+      <td >
+        指令签发日期
+      </td>
+      <td>
+        指令完成日期
+      </td>
+      <td >
+        分包人报送日期
+      </td>
+      <td >
+        报送值（元）
+      </td>
+      <td >
+        签证经办人
+      </td>
+      <td >
+        签证提交日期
+      </td>
+      <td >
+        项目部审批日期
+      </td>
+      <td >
+        签证零工（元）
+      </td>
+      <td >
+        签证金额（元）
+      </td>
+      <td >
+        对发包人结算价（元）
+      </td>
+      <td >
+        其他班组抵扣
+      </td>
+      <td >
+        抵扣金额
+      </td>
+      <td>
+        备注
+      </td>
+    </tr>
+    <tr *ngFor='let a of list'>
+      <td>{{a.c}}</td>
+      <td>{{a.d}}</td>
+      <td>{{a.e}}</td>
+      <td>{{a.f}}</td>
+      <td>{{a.g}}</td>
+      <td>{{a.h}}</td>
+      <td>{{a.i}}</td>
+      <td>{{a.j}}</td>
+      <td>{{a.k}}</td>
+      <td>{{a.l}}</td>
+      <td>{{a.m}}</td>
+      <td>{{a.n}}</td>
+      <td>{{a.o}}</td>
+      <td>{{a.p}}</td>
+      <td>{{a.q}}</td>
+      <td>{{a.r}}</td>
+    </tr>
+  </table>
+</div>

@@ -1,0 +1,119 @@
+<button (click)='add()' class="btn btn-primary">{{state === 'active'?'关闭':'新增'}}</button>
+<div class="add-table" [@heroState]="state">
+  <div class="title1">
+    项目分包分供合同履约监控表
+  </div>
+  <div class="title1-content">
+    <div class="content">
+      <div class="content-name">监控要素</div>
+      <div class="content-input">
+        <input  type="text" name="" id="" [(ngModel)]='detail.a'>
+      </div>
+      <div class="content-name">分包/分供合同名称</div>
+      <div class="content-input">
+        <input type="text" name="" id="" [(ngModel)]='detail.c'>
+      </div>
+    </div>
+    <div class="content">
+      <div class="content-name">分包/分供商名称</div>
+      <div class="content-input">
+        <input  type="text" name="" id="" [(ngModel)]='detail.d'>
+      </div>
+      <div class="content-name">风险事件</div>
+      <div class="content-input">
+        <input type="text" name="" id="" [(ngModel)]='detail.e'>
+      </div>
+    </div>
+    <div class="content">
+      <div class="content-name">造成该事件的原因</div>
+      <div class="content-input">
+        <input  type="text" name="" id="" [(ngModel)]='detail.f'>
+      </div>
+      <div class="content-name">风险等级</div>
+      <div class="content-input">
+        <input type="text" name="" id="" [(ngModel)]='detail.g'>
+      </div>
+    </div>
+    <div class="content">
+      <div class="content-name">风险事件持续时间</div>
+      <div class="content-input">
+        <input  type="text" name="" id="" [(ngModel)]='detail.h'>
+      </div>
+      <div class="content-name">拟采取措施</div>
+      <div class="content-input">
+        <input type="text" name="" id="" [(ngModel)]='detail.i'>
+      </div>
+    </div>
+    <div class="content">
+      <div class="content-name">责任部门</div>
+      <div class="content-input">
+        <input  type="text" name="" id="" [(ngModel)]='detail.j'>
+      </div>
+      <div class="content-name">责任人</div>
+      <div class="content-input">
+        <input type="text" name="" id="" [(ngModel)]='detail.k'>
+      </div>
+    </div>
+    <div class="content textarea">
+      <div class="content-name flex-2">目前风险事件处理的进展情况</div>
+      <div class="content-input flex-4">
+        <textarea maxlength="1000" [(ngModel)]='detail.l'></textarea>
+      </div>
+    </div>
+  </div>
+  <div class="button-div">
+    <button class="btn btn-primary btn-block" (click)='submit()'>提交</button>
+  </div>
+</div>
+<div class="table-div">
+  <table border="1">
+    <tr>
+      <td>
+        监控要素
+      </td>
+      <td>
+        分包/分供合同名称
+      </td>
+      <td>
+        分包/分供商名称
+      </td>
+      <td>
+        风险事件
+      </td>
+      <td>
+        造成该事件的原因
+      </td>
+      <td>
+        风险等级
+      </td>
+      <td>
+        风险事件持续时间
+      </td>
+      <td>
+        拟采取措施
+      </td>
+      <td>
+        责任部门
+      </td>
+      <td>
+        责任人
+      </td>
+      <td>
+        目前风险事件处理的进展情况
+      </td>
+    </tr>
+    <tr *ngFor='let a of list'>
+        <td>{{a.a}}</td>
+        <td>{{a.c}}</td>
+        <td>{{a.d}}</td>
+        <td>{{a.e}}</td>
+        <td>{{a.f}}</td>
+        <td>{{a.g}}</td>
+        <td>{{a.h}}</td>
+        <td>{{a.i}}</td>
+        <td>{{a.j}}</td>
+        <td>{{a.k}}</td>
+        <td>{{a.l}}</td>
+      </tr>
+  </table>
+</div>

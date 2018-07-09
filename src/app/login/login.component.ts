@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
-import { RouterModule, Router } from '@angular/router';
 import { StaticService } from '../static.service';
 import { Response, RequestOptions, Headers } from '@angular/http';
 import { ApiService } from '../api.service';
@@ -21,10 +20,9 @@ export class LoginComponent implements OnInit {
   public header = {
     'Authorization': ''
   };
-  constructor(public staticData: StaticService, public router: Router, public data: DataService, public http: ApiService) {
-    this.phone = '';
-    this.loginCode = '';
-    this.codeTip = '获取验证码';
+  constructor(public staticData: StaticService, public data: DataService, public http: ApiService) {
+    this.phone = '15990000001';
+    this.loginCode = '000001';
   }
 
   ngOnInit() {
@@ -39,27 +37,7 @@ export class LoginComponent implements OnInit {
       return this.codeError;
     }
   }
-  /**
-   * 获取验证码
-   */
-  getLoginCode() {
-    let second = 60;
-    if (!this.verify('phone')) {
-      const countDown = setInterval(() => {
-        if (second !== 0) {
-          this.codeTip = second + 'S';
-          second--;
-        } else {
-          this.codeTip = '获取验证码';
-          clearInterval(countDown);
-        }
-      }, 1000);
-      // this.http.GetLoginCode(data).subscribe((res: Response) => {
-      //   return res;
-      // });
-    }
 
-  }
 
   /**
    * 登录
@@ -71,16 +49,15 @@ export class LoginComponent implements OnInit {
         password: Md5.hashStr(this.loginCode)
       };
       this.http.Login(req).subscribe((res: Response) => {
-        const resData = res.json();
-        this.header = {
-          'Authorization': resData.resultInfo
-        };
-        const headers: Headers = new Headers(this.header);
-        this.http.opts = new RequestOptions({ headers: headers });
-        this.data.setSession('header', JSON.stringify(this.header));
-        this.router.navigate(['main']);
-      }, (error) => {
-        alert(error.json()['resultInfo']);
+        this.data.token = res['resultInfo'];
+        this.data.setSession('token', this.data.token);
+        this.data.ErrorMsg('登录成功');
+        this.data.setSession('dateType', 1);
+        this.data.dateType = 1;
+        this.data.goto('main');
+      }, (err) => {
+        this.data.error = err.error;
+        this.data.isError();
       });
     }
   }

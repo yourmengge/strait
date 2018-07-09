@@ -1,0 +1,142 @@
+<button (click)='add()' class="btn btn-primary">{{state === 'active'?'关闭':'新增'}}</button>
+<div class="add-table" [@heroState]="state">
+  <div class="title1">
+    项目分包分供合同未结算情况统计表
+  </div>
+  <div class="title1-content">
+    <div class="content">
+      <div class="content-name">分类</div>
+      <div class="content-input">
+        <select name="" id="" [(ngModel)]='detail.e'>
+          <option [value]="1">劳务分包</option>
+          <option [value]="2">专业分包</option>
+          <option [value]="3">租赁分包</option>
+          <option [value]="9">其它</option>
+        </select>
+      </div>
+      <div class="content-name">分包分供合同名称</div>
+      <div class="content-input">
+        <input type="text" name="" id="" [(ngModel)]='detail.f'>
+      </div>
+    </div>
+    <div class="content">
+      <div class="content-name">分包分供单位名称</div>
+      <div class="content-input">
+        <input type="text" name="" id="" placeholder="" [(ngModel)]='detail.g'>
+      </div>
+      <div class="content-name">合同额 </div>
+      <div class="content-input">
+        <input type="number" name="" id="" [(ngModel)]='detail.h'>
+      </div>
+    </div>
+    <div class="content">
+      <div class="content-name">已完成分包分供中间结算金额</div>
+      <div class="content-input">
+        <input type="number" name="" id="" placeholder="" [(ngModel)]='detail.i'>
+      </div>
+      <div class="content-name">已支付工程款</div>
+      <div class="content-input">
+        <input type="number" name="" id="" [(ngModel)]='detail.j'>
+      </div>
+    </div>
+    <div class="content">
+      <div class="content-name">预计最终结算金额</div>
+      <div class="content-input">
+        <input type="number" name="" id="" [(ngModel)]='detail.k'>
+      </div>
+      <div class="content-name">按合同约定结算时间</div>
+      <div class="content-input">
+        <input type="date" name="" id="" [(ngModel)]='detail.l'>
+      </div>
+    </div>
+    <div class="content">
+      <div class="content-name">截止目前结算已延迟时间</div>
+      <div class="content-input">
+        <input type="text" name="" id="" [(ngModel)]='detail.m'>
+      </div>
+      <div class="content-name">计划完成最终结算时间</div>
+      <div class="content-input">
+        <input type="date" name="" id="" [(ngModel)]='detail.n'>
+      </div>
+    </div>
+    <div class="content">
+      <div class="content-name">未结算原因</div>
+      <div class="content-input">
+        <input type="text" name="" id="" [(ngModel)]='detail.o'>
+      </div>
+      <div class="content-name">计划采取措施</div>
+      <div class="content-input">
+        <input type="text" name="" id="" [(ngModel)]='detail.p'>
+      </div>
+    </div>
+    <div class="content">
+      <div class="content-name">备注合同约定结算时间</div>
+      <div class="content-input">
+        <input type="text" name="" id="" [(ngModel)]='detail.q'>
+      </div>
+    </div>
+  </div>
+  <div class="button-div">
+    <button class="btn btn-primary btn-block" (click)='submit()'>提交</button>
+  </div>
+</div>
+<div class="table-div">
+  <table border="1">
+    <tr>
+      <td>
+        分类
+      </td>
+      <td>
+        分包分供合同名称
+      </td>
+      <td>
+        分包分供单位名称
+      </td>
+      <td>
+        合同额
+      </td>
+      <td>
+        已完成分包分供中间结算金额
+      </td>
+      <td>
+        已支付工程款
+      </td>
+      <td>
+        预计最终结算金额
+      </td>
+      <td>
+        按合同约定结算时间
+      </td>
+      <td>
+        截止目前结算已延迟时间
+      </td>
+      <td>
+        计划完成最终结算时间
+      </td>
+      <td>
+        未结算原因
+      </td>
+      <td>
+        计划采取措施
+      </td>
+      <td>
+        备注合同约定结算时间
+      </td>
+    </tr>
+    <tr *ngFor='let a of list'>
+      <td>{{a.edesc}}</td>
+      <td>{{a.f}}</td>
+      <td>{{a.g}}</td>
+      <td>{{a.h}}</td>
+      <td>{{a.i}}</td>
+      <td>{{a.j}}</td>
+      <td>{{a.k}}</td>
+      <td>{{a.l}}</td>
+      <td>{{a.m}}</td>
+      <td>{{a.n}}</td>
+      <td>{{a.o}}</td>
+      <td>{{a.p}}</td>
+      <td>{{a.q}}</td>
+    </tr>
+  </table>
+</div>

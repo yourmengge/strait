@@ -1,0 +1,80 @@
+<div class="title1">
+  存货月度盘点情况（本月结余）
+</div>
+<div class="title1-content">
+  <div class="title2">
+    已完工尚未结算款
+  </div>
+  <div class="content">
+    <div class="content-name">已完未结</div>
+    <div class="content-input">
+      <input  type="number" name="" id="" placeholder="单位：元" [(ngModel)]='tableData.c'
+        maxlength="13">
+    </div>
+  </div>
+  <div class="title2">
+    物资盘点
+  </div>
+  <div class="content">
+    <div class="content-name">原材料</div>
+    <div class="content-input">
+      <input  type="number" name="" id="" placeholder="单位：元" [(ngModel)]='tableData.d'
+        maxlength="13">
+    </div>
+    <div class="content-name">周转材料</div>
+    <div class="content-input">
+      <input  type="number" name="" id="" placeholder="单位：元" [(ngModel)]='tableData.e'
+        maxlength="13">
+    </div>
+  </div>
+  <div class="content">
+    <div class="content-name">低值易耗品及其他</div>
+    <div class="content-input">
+      <input  type="number" name="" id="" placeholder="单位：元" [(ngModel)]='tableData.f'
+        maxlength="13">
+    </div>
+    <div class="content-name">半成品</div>
+    <div class="content-input">
+      <input  type="number" name="" id="" placeholder="单位：元" [(ngModel)]='tableData.g'
+        maxlength="13">
+    </div>
+  </div>
+  <div class="content">
+    <div class="content-name">待摊周转材料</div>
+    <div class="content-input">
+      <input type="number" name="" id="" placeholder="单位：元" [(ngModel)]='tableData.h'
+        maxlength="13">
+    </div>
+    <div class="content-name">小计</div>
+    <div class="content-input">
+      <span>{{tableI(tableData.c,tableData.d,tableData.e,tableData.f,tableData.g,tableData.h)}}</span>
+    </div>
+  </div>
+</div>
+<div class="title1">
+  存货月度盘点情况（本月结余）
+</div>
+<div class="title1-content">
+  <div class="content">
+    <div class="content-name">物资盘点退库部分</div>
+    <div class="content-input">
+      <input type="number" name="" id="" placeholder="单位：元" [(ngModel)]='tableData.j'
+        maxlength="13">
+    </div>
+    <div class="content-name">应收账款其他调整部分</div>
+    <div class="content-input">
+      <input type="number" name="" id="" placeholder="单位：元" [(ngModel)]='tableData.k'
+        maxlength="13">
+    </div>
+  </div>
+  <div class="content">
+    <div class="content-name">小计</div>
+    <div class="content-input">
+      <span>{{tableL(tableData.j,tableData.k)}}</span>
+    </div>
+  </div>
+</div>
+<div class="button-div">
+  <button class="btn btn-primary btn-block" (click)='submit()'>提交</button>
+  <p>此表20号完成现场盘点，20日晚报商务部相关人员</p>
+</div>

@@ -1,0 +1,229 @@
+<button (click)='add()' class="btn btn-primary">{{state === 'active'?'关闭':'新增'}}</button>
+<div class="add-table" [@heroState]="state">
+  <div class="title1">
+    商务索赔台账
+  </div>
+  <div class="title1-content">
+    <div class="content">
+      <div class="content-name">期号</div>
+      <div class="content-input">
+        <input  type="text" name="" id="" [(ngModel)]='detail.b'>
+      </div>
+      <div class="content-name">完成工程款月份</div>
+      <div class="content-input">
+        <input type="text" name="" id="" [(ngModel)]='detail.c'>
+      </div>
+    </div>
+    <div class="content">
+      <div class="content-name">申请及批准时间</div>
+      <div class="content-input">
+        <input  type="date" name="" id="" [(ngModel)]='detail.e'>
+      </div>
+      <div class="content-name">申请单编号</div>
+      <div class="content-input">
+        <input type="text" name="" id="" [(ngModel)]='detail.f'>
+      </div>
+    </div>
+    <div class="content">
+      <div class="content-name">施工单位申请金额</div>
+      <div class="content-input">
+        <input  type="number" name="" id="" [(ngModel)]='detail.g'>
+      </div>
+    </div>
+    <div class="title3 content">
+      <div class="content-name flex-2">
+        审核金额
+      </div>
+      <div class="content-div flex-4">
+        <div>
+          <div class="content-name flex-2">
+            <p>本期</p>
+          </div>
+          <div class="flex-4 content-input">
+            <p>
+              <input type="number" name="" id="" [(ngModel)]='detail.h'>
+            </p>
+          </div>
+        </div>
+        <div>
+          <div class="content-name flex-2">
+            <p>累计</p>
+          </div>
+          <div class="flex-4 content-input">
+            <p>
+              <input [(ngModel)]='detail.i' type="number" name="" id="" >
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="title3 content">
+      <div class="content-name flex-2">
+        按照合同约定付款比例应支付金额
+      </div>
+      <div class="content-div flex-4">
+        <div>
+          <div class="content-name flex-2">
+            <p>本期</p>
+          </div>
+          <div class="flex-4 content-input">
+            <p>
+              <input type="number" name="" id="" [(ngModel)]='detail.j'>
+            </p>
+          </div>
+        </div>
+        <div>
+          <div class="content-name flex-2">
+            <p>累计</p>
+          </div>
+          <div class="flex-4 content-input">
+            <p>
+              <input [(ngModel)]='detail.k' type="number" name="" id="" >
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="title3 content">
+      <div class="content-name flex-2">
+        实际支付金额
+      </div>
+      <div class="content-div flex-4">
+        <div>
+          <div class="content-name flex-2">
+            <p>本期</p>
+          </div>
+          <div class="flex-4 content-input">
+            <p>
+              <input type="number" name="" id="" [(ngModel)]='detail.l'>
+            </p>
+          </div>
+        </div>
+        <div>
+          <div class="content-name flex-2">
+            <p>累计</p>
+          </div>
+          <div class="flex-4 content-input">
+            <p>
+              <input [(ngModel)]='detail.m' type="number" name="" id="" >
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="title3 content">
+      <div class="content-name flex-2">
+        未支付金额
+      </div>
+      <div class="content-div flex-4">
+        <div>
+          <div class="content-name flex-2">
+            <p>本期</p>
+          </div>
+          <div class="flex-4 content-input">
+            <p>
+              <input type="number" name="" id="" [(ngModel)]='detail.n'>
+            </p>
+          </div>
+        </div>
+        <div>
+          <div class="content-name flex-2">
+            <p>累计</p>
+          </div>
+          <div class="flex-4 content-input">
+            <p>
+              <input [(ngModel)]='detail.p' type="number" name="" id="" >
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="content">
+      <div class="content-name">备注</div>
+      <div class="content-input">
+        <input type="text" name="" id="" [(ngModel)]='detail.q'>
+      </div>
+    </div>
+  </div>
+  <div class="button-div">
+    <button class="btn btn-primary btn-block" (click)='submit()'>提交</button>
+  </div>
+</div>
+<div class="table-div">
+  <table border="1">
+    <tr>
+      <td rowspan="2">
+        期号
+      </td>
+      <td rowspan="2">
+        完成工程款月份
+      </td>
+      <td rowspan="2">
+        申请及批准时间
+      </td>
+      <td rowspan="2">
+        申请单编号
+      </td>
+      <td rowspan="2">
+        施工单位申请金额
+      </td>
+      <td colspan="2">
+        审核金额
+      </td>
+      <td colspan="2">
+        按照合同约定付款比例应支付金额
+      </td>
+      <td colspan="2">
+        实际支付金额
+      </td>
+      <td colspan="2">
+        未支付金额
+      </td>
+      <td rowspan="2">
+        备注
+      </td>
+    </tr>
+    <tr>
+      <td>
+        本期
+      </td>
+      <td>
+        累计
+      </td>
+      <td>
+        本期
+      </td>
+      <td>
+        累计
+      </td>
+      <td>
+        本期
+      </td>
+      <td>
+        累计
+      </td>
+      <td>
+        本期
+      </td>
+      <td>
+        累计
+      </td>
+    </tr>
+    <tr *ngFor='let a of list'>
+      <td>{{a.b}}</td>
+      <td>{{a.c}}</td>
+      <td>{{a.e}}</td>
+      <td>{{a.f}}</td>
+      <td>{{a.g}}</td>
+      <td>{{a.h}}</td>
+      <td>{{a.i}}</td>
+      <td>{{a.j}}</td>
+      <td>{{a.k}}</td>
+      <td>{{a.l}}</td>
+      <td>{{a.m}}</td>
+      <td>{{a.n}}</td>
+      <td>{{a.p}}</td>
+      <td>{{a.q}}</td>
+    </tr>
+  </table>
+</div>

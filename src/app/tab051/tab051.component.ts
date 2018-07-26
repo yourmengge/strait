@@ -28,6 +28,7 @@ export class TAB051Component implements OnInit {
     this.tableData = {
       projectId: this.data.projectId,
       month: this.data.month(),
+      id: '',
       n: '',
       o: '1',
       p: '',
@@ -123,6 +124,7 @@ export class TAB051Component implements OnInit {
     this.http.getTableDetail(this.data.projectId, 'TAB051').subscribe((res) => {
       console.log(res);
       if (!this.data.isNull(res)) {
+        this.tableData.id = res['id'] || '';
         this.tableData.n = res['n'];
         this.tableData.o = res['o'];
         this.tableData.p = res['p'];

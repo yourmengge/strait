@@ -1,0 +1,155 @@
+<button (click)='add()' class="btn btn-primary">{{state === 'active'?'关闭':'新增'}}</button>
+<div class="add-table" [@heroState]="state">
+  <div class="title1">
+    项目专项商务策划台账
+  </div>
+  <div class="title1-content">
+    <div class="content">
+      <div class="content-name">立项时间</div>
+      <div class="content-input">
+        <input type="date" name="" id="" [(ngModel)]='detail.d'>
+      </div>
+      <div class="content-name">策划内容及情况简介</div>
+      <div class="content-input">
+        <input type="text" name="" id="" [(ngModel)]='detail.e'>
+      </div>
+    </div>
+    <div class="content">
+      <div class="content-name">计划完成时间</div>
+      <div class="content-input">
+        <input type="date" name="" id="" [(ngModel)]='detail.f'>
+      </div>
+      <div class="content-name">涉及金额（万元）</div>
+      <div class="content-input">
+        <input type="number" name="" id="" [(ngModel)]='detail.g'>
+      </div>
+    </div>
+    <div class="content">
+      <div class="content-name">目标创效金额（万元）</div>
+      <div class="content-input">
+        <input type="number" name="" id="" [(ngModel)]='detail.h'>
+      </div>
+      <div class="content-name">本月实施情况</div>
+      <div class="content-input">
+        <input type="text" name="" id="" [(ngModel)]='detail.i'>
+      </div>
+    </div>
+    <div class="content">
+      <div class="content-name">责任人</div>
+      <div class="content-input">
+        <input type="text" name="" id="" [(ngModel)]='detail.j'>
+      </div>
+      <div class="content-name">最终创效金额（万元）</div>
+      <div class="content-input">
+        <input type="number" name="" id="" [(ngModel)]='detail.k'>
+      </div>
+    </div>
+    <div class="content">
+      <div class="content-name">奖励金额（万元）</div>
+      <div class="content-input">
+        <input type="number" name="" id="" [(ngModel)]='detail.l'>
+      </div>
+      <div class="content-name">兑现申请创效金额</div>
+      <div class="content-input">
+        <input type="number" name="" id="" [(ngModel)]='detail.m'>
+      </div>
+    </div>
+    <div class="content">
+      <div class="content-name">兑现创效金额申请时间</div>
+      <div class="content-input">
+        <input type="date" name="" id="" [(ngModel)]='detail.n'>
+      </div>
+      <div class="content-name">创效金额审批时间</div>
+      <div class="content-input">
+        <input type="date" name="" id="" [(ngModel)]='detail.o'>
+      </div>
+    </div>
+    <div class="content">
+      <div class="content-name">预计成本</div>
+      <div class="content-input">
+        <input type="text" name="" id="" [(ngModel)]='detail.q'>
+      </div>
+      <div class="content-name">原效益</div>
+      <div class="content-input">
+        <input type="text" name="" id="" [(ngModel)]='detail.r'>
+      </div>
+    </div>
+    <div class="content">
+      <div class="content-name">备注</div>
+      <div class="content-input">
+        <input type="text" name="" id="" [(ngModel)]='detail.p'>
+      </div>
+    </div>
+  </div>
+  <div class="button-div">
+    <button class="btn btn-primary btn-block" (click)='submit()'>提交</button>
+  </div>
+</div>
+<div class="table-div">
+  <table border="1">
+    <tr>
+      <td>
+        立项时间
+      </td>
+      <td>
+        策划内容及情况简介
+      </td>
+      <td>
+        计划完成时间
+      </td>
+      <td>
+        涉及金额（万元）
+      </td>
+      <td>
+        目标创效金额（万元）
+      </td>
+      <td>
+        本月实施情况
+      </td>
+      <td>
+        责任人
+      </td>
+      <td>
+        最终创效金额（万元）
+      </td>
+      <td>
+        奖励金额（万元）
+      </td>
+      <td>
+        兑现申请创效金额
+      </td>
+      <td>
+        兑现创效金额申请时间
+      </td>
+      <td>
+        创效金额审批时间
+      </td>
+      <td>
+        备注
+      </td>
+      <td>
+        预计成本
+      </td>
+      <td>
+        原效益
+      </td>
+    </tr>
+    <tr *ngFor='let a of list'>
+      <td>{{a.d}}</td>
+      <td>{{a.e}}</td>
+      <td>{{a.f}}</td>
+      <td>{{a.g}}</td>
+      <td>{{a.h}}</td>
+      <td>{{a.i}}</td>
+      <td>{{a.j}}</td>
+      <td>{{a.k}}</td>
+      <td>{{a.l}}</td>
+      <td>{{a.m}}</td>
+      <td>{{a.n}}</td>
+      <td>{{a.o}}</td>
+      <td>{{a.p}}</td>
+      <td>{{a.q}}</td>
+      <td>{{a.r}}</td>
+    </tr>
+  </table>
+</div>

@@ -1,0 +1,12 @@
+.table-div table {
+    width: 1600px;
+    font-size: 13px;
+    text-align: center;
+}
+
+.table-div {
+    width: 100%;
+    overflow-x: scroll;
+    position: relative;
+    z-index: 100;
+}

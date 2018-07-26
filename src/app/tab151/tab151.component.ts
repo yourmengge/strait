@@ -23,7 +23,8 @@ export class TAB151Component implements OnInit {
       x: '',
       z: '',
       ab: '1',
-      ac: ''
+      ac: '',
+      id: ''
     };
   }
 
@@ -35,6 +36,7 @@ export class TAB151Component implements OnInit {
     this.http.getTableDetail(this.data.projectId, 'TAB151').subscribe((res) => {
       console.log(res);
       if (!this.data.isNull(res)) {
+        this.tableData.id = res['id'] || '';
         this.tableData.r = res['r'];
         this.tableData.s = res['s'];
         this.tableData.t = res['t'];
@@ -43,7 +45,7 @@ export class TAB151Component implements OnInit {
         this.tableData.w = res['w'];
         this.tableData.x = res['x'];
         this.tableData.z = res['z'];
-        this.tableData.ab = res['ab'];
+        this.tableData.ab = res['ab'] || 1;
         this.tableData.ac = res['ac'];
       } else {
         this.tableData.ab = '1';

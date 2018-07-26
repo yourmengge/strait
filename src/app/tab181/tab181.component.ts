@@ -19,6 +19,7 @@ export class TAB181Component implements OnInit {
       ap: '',
       aq: '',
       ar: '',
+      id: '',
       as1: '',
       au: '',
       av: '',
@@ -34,6 +35,7 @@ export class TAB181Component implements OnInit {
     this.http.getTableDetail(this.data.projectId, 'TAB181').subscribe((res) => {
       console.log(res);
       if (!this.data.isNull(res)) {
+        this.tableData.id = res['id'] || '';
         this.tableData.an = res['an'];
         this.tableData.ao = res['ao'];
         this.tableData.ap = res['ap'];

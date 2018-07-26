@@ -1,166 +1,159 @@
-项目名称
-项目基本情况
-    合同额
-    业主名称
-    工程地点
-    经营类型
-    合同价格形式
-    计量支付方式
-    支付比例（%）
-    合同开工时间
-    实际开工时间
-    计划竣工时间
-施工图预算编制
-    收到施工图日期
-    施工图预算编制状态
-    未编制原因
-    施工图预算核对情况（投资项目施工图预算评审情况）
-    施工图预算未核对原因
-营业收入情况
-    形象进度
-    当月
-        实际完成产值
-    自年初累计
-        实际完成产值
-            不含税实际完成产值
-            税金（老项目税金不单列，并入实际完成产值中；新项目要填）
-    自开工累计
-        财务账面主营业务收入+税金
-            主营业务收入
-            税金
-        工程结算科目
-        实际完成产值
-            不含税实际完成产值
-            税金（老项目税金不单列，并入实际完成产值中；新项目要填）
-业主确认期中计算情况
-    当月
-        业主批复金额
-    自年初累计
-        业主批复金额
-            不含税金业主批复金额
-            税金（老项目税金不单列，并入实际完成产值中；新项目要填）
-    自开工累计
-        业主批复金额
-            不含税金业主批复金额
-            税金（老项目税金不单列，并入实际完成产值中；新项目要填）
-        其中
-            按合同应收工程款
-            已收工程款
-            项目部已支付工程款
-            资金占用费（资金利息）
-期中结算未确认部分
-    已上报正在审批中的目标值
-        自年初累计
-        自开工累计
-    开工累计未达到计量条件的产值
-期中结算报送、批复份数
-    自年初累计
-        报送期数
-        批复期数
-    自开工累计
-        报送期数
-        批复期数
-成本及税金
-    当月
-        项目实际成本及税金
-    自开工以来
-        项目实际成本及税金
-项目商务经理及点话
+{
+  "bizType": 1,
+  "buildArea": 2000.35,
+  "ctAmount": 500.223,
+  "ctCurrentRiskLevel": "",
+  "ctInitialRiskLevel": "",
+  "ctNo": "",
+  "ctPriceForm": null,
+  "ctQualityLevel": "",
+  "ctSignDate": null,
+  "ctStartDate": null,
+  "ctTotalDays": null,
+  "examineLevel": "",
+  "expectComplteDate": null,
+  "expectTotalDays": null,
+  "frame": "",
+  "isBigCustomer": null,
+  "layer": null,
+  "mainRisk": "",
+  "mainSettleDate": null,
+  "manageMode": null,
+  "ownerName": "",
+  "ownerNature": "",
+  "payMode": null,
+  "picBudgetCheckMemo": "",
+  "picBudgetCheckStatus": null,
+  "picProgramMemo": "",
+  "picProgramStatus": null,
+  "planClaimAmount": null,
+  "planClaimDays": null,
+  "planCompleteDate": null,
+  "prePay": 0.8,
+  "progressDesc": "",
+  "projectAddress": "",
+  "projectCode": "",
+  "projectName": "",
+  "projectStatus": null,
+  "projectType": "",
+  "realCompleteDate": null,
+  "realStartDate": null,
+  "receivePicDate": null,
+  "signLevel": "",
+  "undertakeMode": ""
+}
 
+@NotBlank(message="项目名称不能为空")
+    @Length(max=50, message="项目名称长度最大长度为50")
+    private String projectName; // 项目名称
 
-	private Long tableId;
-	private String projectName; // 项目名称
-	private Double contractFee; // 合同费用
-	private String owner; // 业主名称
-	private String projectAddress; // 工程地点
-	private Integer bizType; // 经营类型：1自营；2合作
-	private Integer contractPriceType; // 合同价格形式：1定额计价；2清单计价；3总价；9其他
-	private Integer payType; // 计量支付方式：1月；2节点
-	private String payRatio; // 支付比例(%)
-	private Integer contractStartDate; // 合同开工时间
-	private Integer actualStartDate; // 实际开工时间
-	private Integer planEndDate; // 计划竣工时间
-	private Integer receivePicDate; // 收到施工图日期
-	private Integer picBudgetStatus; // 施工图预算编制状态：0未编制；1正在编制；2已编制
-	private String picBudgetMemo; // 施工图未编制原因
-	private Integer picVerifyStatus; // 施工图预算核对情况：0未核对；1正在核对；2核对完毕
-	private String picVerifyMemo; // 施工图预算未核对原因
-	private String biProgressDesc; // 形象进度
-	private Double biActualValue; // 实际完成产值
-	private Double biActualValueExclTax; // 不含税实际完成产值
-	private Double biActualValueTax; // 税金
-	private Double biMainBizIncome; // 主营业务收入
-	private Double biMainBizIncomeTax; // 主营业务收入税金
-	private String biProjectSettleSubject; // 工程结算科目
-	private Double biActualValueExclTaxStart; // 不含税实际完成产值(自开工累计)
-	private Double biActualValueTaxStart; // 税金(自开工累计)
-	private Double ownerReplyAmount; // 业主批复金额
-	private Double ownerReplyAmountExclTax; // 不含税金业主批复金额
-	private Double ownerReplyAmountTax; // 税金
-	private Double ownerReplyAmountExclTax2; // 不含税金业主批复金额
-	private Double ownerReplyAmountTax2; // 税金
-	private Double contractReceivable; // 按合同应收工程款
-	private Double receivedAmount; // 已收工程款
-	private Double projectPayed; // 项目部已支付工程款
-	private Double capitalOccupyFee; // 资金占用费
-	private Double applyAimValueYear; // 已上报正在审批中的目标值(自年初累计)
-	private Double applyAimValueStart; // 已上报正在审批中的目标值(自开工累计)
-	private Double unreaachValue; // 开工累计未达到计量条件的产值
-	private Integer sendYear; // 报送期数(自年初累计)
-	private Integer replyYear; // 批复期数(自年初累计)
-	private Integer sendStart; // 报送期数(自开工累计)
-	private Integer replayStart; // 批复期数(自开工累计)
-	private Double costMonth; // 成本及税金(当月)
-	private Double costStart; // 成本及税金(自开工累计)
-	private String bizMgr; // 商务经理
-	private String bizMgrTel; // 商务经理电话
+    @NotNull(message="商务经理不能为空")
+    private Long bizMgr; // 商务经理
 
+    @Length(max=50, message="项目编码长度最大长度为50")
+    private String projectCode; // 项目编码
 
+    @Length(max=64, message="业主名称长度最大长度为64")
+    private String ownerName; // 业主名称
 
+    @Length(max=64, message="工程地点长度最大长度为64")
+    private String projectAddress; // 工程地点
 
+    private Integer bizType; // 1自营2合作  经营类型
 
-project_name VARCHAR(100) NOT NULL COMMENT '项目名称',
-	contract_fee DECIMAL(12,4) COMMENT '合同费用',
-	owner VARCHAR(100) COMMENT '业主名称',
-	project_address VARCHAR(100) COMMENT '工程地点',
-	biz_type TINYINT COMMENT '经营类型：1自营；2合作',
-	contract_price_type TINYINT COMMENT '合同价格形式：1定额计价；2清单计价；3总价；9其他',
-	pay_type TINYINT COMMENT '计量支付方式：1月；2节点',
-	pay_ratio VARCHAR(50) COMMENT '支付比例(%)',
-	contract_start_date INTEGER COMMENT '合同开工时间 ',
-	actual_start_date INTEGER COMMENT '实际开工时间',
-	plan_end_date INTEGER COMMENT '计划竣工时间 ',
-	receive_pic_date INTEGER COMMENT '收到施工图日期',
-	pic_budget_status TINYINT COMMENT '施工图预算编制状态：0未编制；1正在编制；2已编制',
-	pic_budget_memo VARCHAR(255) COMMENT '施工图未编制原因',
-	pic_verify_status TINYINT COMMENT '施工图预算核对情况：0未核对；1正在核对；2核对完毕',
-	pic_verify_memo VARCHAR(255) COMMENT '施工图预算未核对原因',
-	bi_progress_desc TEXT COMMENT '形象进度',
-	bi_actual_value DECIMAL(12,4) COMMENT '实际完成产值',
-	bi_actual_value_excl_tax DECIMAL(12,4) COMMENT '不含税实际完成产值',
-	bi_actual_value_tax DECIMAL(12,4) COMMENT '税金',
-	bi_main_biz_income DECIMAL(12,4) COMMENT '主营业务收入',
-	bi_main_biz_income_tax DECIMAL(12,4) COMMENT '主营业务收入税金',
-	bi_project_settle_subject VARCHAR(50) COMMENT '工程结算科目',
-	bi_actual_value_excl_tax_start DECIMAL(12,4) COMMENT '不含税实际完成产值(自开工累计)',
-	bi_actual_value_tax_start DECIMAL(12,4) COMMENT '税金(自开工累计)',
-	owner_reply_amount DECIMAL(12,4) COMMENT '业主批复金额',
-	owner_reply_amount_excl_tax DECIMAL(12,4) COMMENT '不含税金业主批复金额',
-	owner_reply_amount_tax DECIMAL(12,4) COMMENT '税金',
-	owner_reply_amount_excl_tax2 DECIMAL(12,4) COMMENT '不含税金业主批复金额',
-	owner_reply_amount_tax2 DECIMAL(12,4) COMMENT '税金',
-	contract_receivable DECIMAL(12,4) COMMENT '按合同应收工程款',
-	received_amount DECIMAL(12,4) COMMENT '已收工程款',
-	project_payed DECIMAL(12,4) COMMENT '项目部已支付工程款',
-	capital_occupy_fee DECIMAL(12,4) COMMENT '资金占用费',
-	apply_aim_value_year DECIMAL(12,4) COMMENT '已上报正在审批中的目标值(自年初累计)',
-	apply_aim_value_start DECIMAL(12,4) COMMENT '已上报正在审批中的目标值(自开工累计)',
-	unreaach_value DECIMAL(12,4) COMMENT '开工累计未达到计量条件的产值',
-	send_year INTEGER COMMENT '报送期数(自年初累计)',
-	reply_year INTEGER COMMENT '批复期数(自年初累计)',
-	send_start INTEGER COMMENT '报送期数(自开工累计)',
-	replay_start INTEGER COMMENT '批复期数(自开工累计)',
-	cost_month DECIMAL(12,4) COMMENT '成本及税金(当月)',
-	cost_start DECIMAL(12,4) COMMENT '成本及税金(自开工累计)',
-	biz_mgr VARCHAR(20) COMMENT '商务经理',
-	biz_mgr_tel VARCHAR(20) COMMENT '商务经理电话',
+    @Length(max=20, message="合同编号长度最大长度为20")
+    private String ctNo; // 合同编号
+
+    private Date ctSignDate; // 签订日期
+
+    private Double ctAmount; // 合同金额
+
+    private Integer ctPriceForm; // 1定额计价,2清单计价,3清单计价,9其他 合同价格形式
+
+    private Integer payMode; // 计量支付方式
+
+    private Double prePay; // 0.8，即80%，预付款比例(%)
+
+    private Date ctStartDate; // 合同开工日期
+
+    private Date realStartDate; // 实际开工日期
+
+    private Date planCompleteDate; // 计划竣工日期
+
+    private Date expectComplteDate; // 预计竣工日期
+
+    private Integer ctTotalDays; // 合同总工期
+
+    private Integer expectTotalDays; // 预计总工期
+
+    private Date realCompleteDate; // 实际竣工日期
+
+    @Length(max=20, message="合同初始风险等级长度最大长度为20")
+    private String ctInitialRiskLevel; // 合同初始风险等级
+
+    @Length(max=20, message="目前风险等级长度最大长度为20")
+    private String ctCurrentRiskLevel; // 目前风险等级
+
+    @Length(max=20, message="评审层级长度最大长度为20")
+    private String examineLevel; // 评审层级
+
+    @Length(max=20, message="签订层级长度最大长度为20")
+    private String signLevel; // 签订层级
+
+    private Date receivePicDate; // 收到施工图日期
+
+    private Integer picProgramStatus; // 施工图预算编制状态：0未编制；1正在编制；2已编制
+
+    @Length(max=64, message="未编制原因长度最大长度为64")
+    private String picProgramMemo; // 未编制原因
+
+    private Integer picBudgetCheckStatus; // 施工图预算核对情况：0未核对；1正在核对；2核对完毕
+
+    @Length(max=64, message="施工图预算未核对原因长度最大长度为64")
+    private String picBudgetCheckMemo; // 施工图预算未核对原因
+
+    private String progressDesc; // 形象进度
+
+    @Length(max=20, message="合同约定质量等级长度最大长度为20")
+    private String ctQualityLevel; // 合同约定质量等级
+
+    private Date mainSettleDate; // 总包结算时间
+
+    private Double buildArea; // 建筑面积(平方米)
+
+    @Length(max=20, message="结构长度最大长度为20")
+    private String frame; // 结构
+
+    private Integer layer; // 层数
+
+    private Double planClaimAmount; // 计划索赔金额（万元）
+
+    private Integer planClaimDays; // 计划索赔工期（天）
+
+    private Integer isDel;
+
+    private Date createTime;
+
+    private Long createBy;
+
+    private Date updateTime;
+
+    private Long updateBy;
+
+    @Length(max=50, message="项目类型：如，房建-公共、公建、房建-民用住宅等长度最大长度为50")
+    private String projectType; // 项目类型：如，房建-公共、公建、房建-民用住宅等
+
+    @Length(max=50, message="承接方式长度最大长度为50")
+    private String undertakeMode; // 承接方式
+
+    @Length(max=20, message="业主性质：政府、地产长度最大长度为20")
+    private String ownerNature; // 业主性质：政府、地产
+
+    private Integer isBigCustomer; // 是否为局战略客户(大客户)
+
+    private Integer manageMode; // 管理模式:1自营2联营
+
+    private Integer projectStatus; // 项目状态
+
+    @Length(max=64, message="主要履约风险(tab9)长度最大长度为64")
+    private String mainRisk; // 主要履约风险(tab9)

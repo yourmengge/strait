@@ -6,7 +6,7 @@ import { DataService } from './data.service';
 @Injectable()
 export class ApiService {
   host = this.staticData.host;
-  pageSize = 20;
+  pageSize = 200;
   constructor(public http: HttpClient, public staticData: StaticService, public data: DataService) {
   }
 
@@ -28,7 +28,8 @@ export class ApiService {
   }
 
   tableDetail(data) {
-    return this.POST('third/project/' + data.projectId + '/' + data.alias + '?pageNo=' + data.pageNo + '&pageSize=' + this.pageSize, {});
+    return this.POST('third/project/' + data.projectId + '/' + data.alias + '?pageNo=' + data.pageNo + '&pageSize='
+      + this.pageSize + (data.type === undefined ? '' : ('&type=' + data.type)), {});
   }
 
   postTableDetail(data, tableId) {
@@ -37,5 +38,13 @@ export class ApiService {
 
   getTableDetail(projectId, tableId) {
     return this.POST('third/project/' + projectId + '/' + tableId + '/month', {});
+  }
+
+  getProjectDetail(projectId) {
+    return this.POST('third/project/' + projectId, {});
+  }
+
+  postProjectDetail(data) {
+    return this.POST('third/project', data);
   }
 }

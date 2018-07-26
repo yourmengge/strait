@@ -1,0 +1,540 @@
+<div class="navigation">
+  <button (click)='tab1(0)' class="button {{tableType===0?'button-active':''}}">
+    工程专业分包合同登记表
+  </button>
+  <button (click)='tab1(1)' class="button {{tableType===1?'button-active':''}}">
+    工程劳务分包合同登记表
+  </button>
+  <button (click)='tab1(2)' class="button {{tableType===2?'button-active':''}}">
+    工程材料采购合同登记表
+  </button>
+  <button (click)='tab1(3)' class="button {{tableType===3?'button-active':''}}">
+    工程设备租赁合同登记表
+  </button>
+  <button (click)='tab1(4)' class="button {{tableType===4?'button-active':''}}">
+    工程其他合同登记表
+  </button>
+</div>
+<button (click)='add()' class="btn btn-primary">{{state === 'active'?'关闭':'新增'}}</button>
+<div class="add-table" [@heroState]="state">
+  <div class="title1">
+    {{tableTitle}}
+  </div>
+  <div class="title1-content" *ngIf='tableType===0||tableType===1'>
+    <div class="content">
+      <div class="content-name">分包工程内容</div>
+      <div class="content-input">
+        <input type="text" name="" id="" [(ngModel)]='detail.d'>
+      </div>
+      <div class="content-name">签约对方</div>
+      <div class="content-input">
+        <input type="text" name="" id="" [(ngModel)]='detail.e'>
+      </div>
+    </div>
+    <div class="content">
+      <div class="content-name">承包范围</div>
+      <div class="content-input">
+        <input type="text" name="" id="" [(ngModel)]='detail.f'>
+      </div>
+      <div class="content-name">分包方式</div>
+      <div class="content-input">
+        <input type="text" name="" id="" [(ngModel)]='detail.g'>
+      </div>
+    </div>
+    <div class="content">
+      <div class="content-name">合同单价（元）</div>
+      <div class="content-input">
+        <input type="number" name="" id="" [(ngModel)]='detail.h'>
+      </div>
+      <div class="content-name">控制价</div>
+      <div class="content-input">
+        <input type="number" name="" id="" [(ngModel)]='detail.i'>
+      </div>
+    </div>
+    <div class="content">
+      <div class="content-name">是否超出控制价</div>
+      <div class="content-input">
+        <select name="" id="" [(ngModel)]='detail.j'>
+          <option value="1">是</option>
+          <option value="0">否</option>
+        </select>
+      </div>
+      <div class="content-name">合同总价（万元）</div>
+      <div class="content-input">
+        <input type="number" name="" id="" [(ngModel)]='detail.k'>
+      </div>
+    </div>
+    <div class="content">
+      <div class="content-name">付款方式及比例</div>
+      <div class="content-input">
+        <input type="number" name="" id="" [(ngModel)]='detail.l'>
+      </div>
+      <div class="content-name">履约保证金</div>
+      <div class="content-input">
+        <input type="number" name="" id="" [(ngModel)]='detail.m'>
+      </div>
+    </div>
+    <div class="content">
+      <div class="content-name">签约时间</div>
+      <div class="content-input">
+        <input type="date" name="" id="" [(ngModel)]='detail.n'>
+      </div>
+      <div class="content-name">分包现场管理人员（实际签约人员）</div>
+      <div class="content-input">
+        <input type="text" name="" id="" [(ngModel)]='detail.o'>
+      </div>
+    </div>
+    <div class="content">
+      <div class="content-name">联系方式</div>
+      <div class="content-input">
+        <input type="number" name="" id="" [(ngModel)]='detail.p'>
+      </div>
+      <div class="content-name">分包商/分供商是否在名录内</div>
+      <div class="content-input">
+        <select name="" id="" [(ngModel)]='detail.q'>
+          <option value="1">是</option>
+          <option value="0">否</option>
+        </select>
+      </div>
+    </div>
+    <div class="content">
+      <div class="content-name">名录内编码</div>
+      <div class="content-input">
+        <input type="number" name="" id="" [(ngModel)]='detail.r'>
+      </div>
+      <div class="content-name">备注</div>
+      <div class="content-input">
+        <input type="text" name="" id="" [(ngModel)]='detail.s'>
+      </div>
+    </div>
+  </div>
+  <div class="title1-content" *ngIf='tableType===2'>
+    <div class="content">
+      <div class="content-name">材料名称</div>
+      <div class="content-input">
+        <input type="text" name="" id="" [(ngModel)]='detail.d'>
+      </div>
+      <div class="content-name">签约对方</div>
+      <div class="content-input">
+        <input type="text" name="" id="" [(ngModel)]='detail.e'>
+      </div>
+    </div>
+    <div class="content">
+      <div class="content-name">数量</div>
+      <div class="content-input">
+        <input type="number" name="" id="" [(ngModel)]='detail.f'>
+      </div>
+      <div class="content-name">合同单价（元）</div>
+      <div class="content-input">
+        <input type="number" name="" id="" [(ngModel)]='detail.g'>
+      </div>
+    </div>
+    <div class="content">
+      <div class="content-name">控制价</div>
+      <div class="content-input">
+        <input type="number" name="" id="" [(ngModel)]='detail.h'>
+      </div>
+      <div class="content-name">是否超出控制价</div>
+      <div class="content-input">
+        <select name="" id="" [(ngModel)]='detail.i'>
+          <option value="1">是</option>
+          <option value="0">否</option>
+        </select>
+      </div>
+    </div>
+    <div class="content">
+      <div class="content-name">合同总价（万元）</div>
+      <div class="content-input">
+        <input type="number" name="" id="" [(ngModel)]='detail.j'>
+      </div>
+      <div class="content-name">付款方式及比例</div>
+      <div class="content-input">
+        <input type="number" name="" id="" [(ngModel)]='detail.k'>
+      </div>
+    </div>
+    <div class="content">
+      <div class="content-name">签约时间</div>
+      <div class="content-input">
+        <input type="date" name="" id="" [(ngModel)]='detail.l'>
+      </div>
+      <div class="content-name">分包现场管理人员（实际签约人员）</div>
+      <div class="content-input">
+        <input type="number" name="" id="" [(ngModel)]='detail.m'>
+      </div>
+    </div>
+    <div class="content">
+      <div class="content-name">联系方式</div>
+      <div class="content-input">
+        <input type="number" name="" id="" [(ngModel)]='detail.n'>
+      </div>
+      <div class="content-name">分包商/分供商是否在名录内</div>
+      <div class="content-input">
+        <select name="" id="" [(ngModel)]='detail.o'>
+          <option value="1">是</option>
+          <option value="0">否</option>
+        </select>
+      </div>
+    </div>
+    <div class="content">
+      <div class="content-name">名录内编码</div>
+      <div class="content-input">
+        <input type="number" name="" id="" [(ngModel)]='detail.p'>
+      </div>
+      <div class="content-name">备注</div>
+      <div class="content-input">
+        <input type="text" name="" id="" [(ngModel)]='detail.q'>
+      </div>
+    </div>
+  </div>
+  <div class="title1-content" *ngIf='tableType===3'>
+    <div class="content">
+      <div class="content-name">设备名称</div>
+      <div class="content-input">
+        <input type="text" name="" id="" [(ngModel)]='detail.d'>
+      </div>
+      <div class="content-name">签约对方</div>
+      <div class="content-input">
+        <input type="text" name="" id="" [(ngModel)]='detail.e'>
+      </div>
+    </div>
+    <div class="content">
+      <div class="content-name">安拆/租赁</div>
+      <div class="content-input">
+        <input type="text" name="" id="" [(ngModel)]='detail.f'>
+      </div>
+      <div class="content-name">期限</div>
+      <div class="content-input">
+        <input type="text" name="" id="" [(ngModel)]='detail.g'>
+      </div>
+    </div>
+    <div class="content">
+      <div class="content-name">数量</div>
+      <div class="content-input">
+        <input type="number" name="" id="" [(ngModel)]='detail.h'>
+      </div>
+      <div class="content-name">合同单价（元）</div>
+      <div class="content-input">
+        <input type="number" name="" id="" [(ngModel)]='detail.i'>
+      </div>
+    </div>
+    <div class="content">
+      <div class="content-name">控制价</div>
+      <div class="content-input">
+        <input type="number" name="" id="" [(ngModel)]='detail.j'>
+      </div>
+      <div class="content-name">是否超出控制价</div>
+      <div class="content-input">
+        <select name="" id="" [(ngModel)]='detail.k'>
+          <option value="1">是</option>
+          <option value="0">否</option>
+        </select>
+      </div>
+    </div>
+    <div class="content">
+      <div class="content-name">合同总价（万元）</div>
+      <div class="content-input">
+        <input type="number" name="" id="" [(ngModel)]='detail.l'>
+      </div>
+      <div class="content-name">付款方式及比例</div>
+      <div class="content-input">
+        <input type="number" name="" id="" [(ngModel)]='detail.m'>
+      </div>
+    </div>
+    <div class="content">
+      <div class="content-name">签约时间</div>
+      <div class="content-input">
+        <input type="date" name="" id="" [(ngModel)]='detail.n'>
+      </div>
+      <div class="content-name">分包现场管理人员（实际签约人员）</div>
+      <div class="content-input">
+        <input type="number" name="" id="" [(ngModel)]='detail.o'>
+      </div>
+    </div>
+    <div class="content">
+      <div class="content-name">联系方式</div>
+      <div class="content-input">
+        <input type="number" name="" id="" [(ngModel)]='detail.p'>
+      </div>
+      <div class="content-name">分包商/分供商是否在名录内</div>
+      <div class="content-input">
+        <select name="" id="" [(ngModel)]='detail.q'>
+          <option value="1">是</option>
+          <option value="0">否</option>
+        </select>
+      </div>
+    </div>
+    <div class="content">
+      <div class="content-name">名录内编码</div>
+      <div class="content-input">
+        <input type="number" name="" id="" [(ngModel)]='detail.r'>
+      </div>
+      <div class="content-name">备注</div>
+      <div class="content-input">
+        <input type="text" name="" id="" [(ngModel)]='detail.s'>
+      </div>
+    </div>
+  </div>
+  <div class="title1-content" *ngIf='tableType===4'>
+    <div class="content">
+      <div class="content-name">合同名称</div>
+      <div class="content-input">
+        <input type="text" name="" id="" [(ngModel)]='detail.d'>
+      </div>
+      <div class="content-name">签约对方</div>
+      <div class="content-input">
+        <input type="text" name="" id="" [(ngModel)]='detail.e'>
+      </div>
+    </div>
+    <div class="content">
+      <div class="content-name">合同总价（万元）</div>
+      <div class="content-input">
+        <input type="text" name="" id="" [(ngModel)]='detail.f'>
+      </div>
+      <div class="content-name">控制价</div>
+      <div class="content-input">
+        <input type="text" name="" id="" [(ngModel)]='detail.g'>
+      </div>
+    </div>
+    <div class="content">
+      <div class="content-name">是否超出控制价</div>
+      <div class="content-input">
+        <select name="" id="" [(ngModel)]='detail.h'>
+          <option value="1">是</option>
+          <option value="0">否</option>
+        </select>
+      </div>
+      <div class="content-name">付款方式及比例</div>
+      <div class="content-input">
+        <input type="number" name="" id="" [(ngModel)]='detail.i'>
+      </div>
+    </div>
+    <div class="content">
+      <div class="content-name">签约时间</div>
+      <div class="content-input">
+        <input type="date" name="" id="" [(ngModel)]='detail.j'>
+      </div>
+      <div class="content-name">分包现场管理人员（实际签约人员）</div>
+      <div class="content-input">
+        <input type="number" name="" id="" [(ngModel)]='detail.k'>
+      </div>
+    </div>
+    <div class="content">
+      <div class="content-name">联系方式</div>
+      <div class="content-input">
+        <input type="number" name="" id="" [(ngModel)]='detail.l'>
+      </div>
+      <div class="content-name">分包商/分供商是否在名录内</div>
+      <div class="content-input">
+        <select name="" id="" [(ngModel)]='detail.m'>
+          <option value="1">是</option>
+          <option value="0">否</option>
+        </select>
+      </div>
+    </div>
+    <div class="content">
+      <div class="content-name">名录内编码</div>
+      <div class="content-input">
+        <input type="number" name="" id="" [(ngModel)]='detail.n'>
+      </div>
+      <div class="content-name">备注</div>
+      <div class="content-input">
+        <input type="text" name="" id="" [(ngModel)]='detail.o'>
+      </div>
+    </div>
+  </div>
+  <div class="button-div">
+    <button class="btn btn-primary btn-block" (click)='submit()'>提交</button>
+  </div>
+</div>
+<div class="table-div" *ngIf='tableType===0||tableType===1||tableType===3'>
+  <table border="1">
+    <tr>
+      <td>
+        {{tableType!==3?'分包工程内容':'设备名称'}}
+      </td>
+      <td>
+        签约对方
+      </td>
+      <td>
+        {{tableType!==3?'承包范围':'安拆/租赁'}}
+      </td>
+      <td>
+        {{tableType!==3?'分包方式':'期限'}}
+      </td>
+      <td>
+        {{tableType!==3?'合同单价（元）':'数量'}}
+      </td>
+      <td>
+        {{tableType!==3?'控制价':'合同单价（元）'}}
+      </td>
+      <td>
+        {{tableType!==3?'是否超出控制价':'控制价'}}
+      </td>
+      <td>
+        {{tableType!==3?' 合同总价（万元）':'是否超出控制价'}}
+      </td>
+      <td>
+        {{tableType!==3?'付款方式及比例':'合同总价（万元）'}}
+      </td>
+      <td>
+        {{tableType!==3?'履约保证金':'付款方式及比例'}}
+      </td>
+      <td>
+        签约时间
+      </td>
+      <td>
+        分包现场管理人员 （实际签约人员）
+      </td>
+      <td>
+        联系方式
+      </td>
+      <td>
+        分包商/分供商是否在名录内
+      </td>
+      <td>
+        名录内编码
+      </td>
+      <td>
+        备注
+      </td>
+    </tr>
+    <tr *ngFor='let a of list'>
+      <td>{{a.d}}</td>
+      <td>{{a.e}}</td>
+      <td>{{a.f}}</td>
+      <td>{{a.g}}</td>
+      <td>{{a.h}}</td>
+      <td>{{a.i}}</td>
+      <td>{{a.j}}</td>
+      <td>{{a.k}}</td>
+      <td>{{a.l}}</td>
+      <td>{{a.m}}</td>
+      <td>{{a.n}}</td>
+      <td>{{a.o}}</td>
+      <td>{{a.p}}</td>
+      <td>{{a.q}}</td>
+      <td>{{a.r}}</td>
+      <td>{{a.s}}</td>
+    </tr>
+  </table>
+</div>
+<div class="table-div" *ngIf='tableType===2'>
+  <table border="1">
+    <tr>
+      <td>
+        材料名称
+      </td>
+      <td>
+        签约对方
+      </td>
+      <td>
+        数量
+      </td>
+      <td>
+        合同单价（元）
+      </td>
+      <td>
+        控制价
+      </td>
+      <td>
+        是否超出控制价
+      </td>
+      <td>
+        合同总价（万元）
+      </td>
+      <td>
+        付款方式及比例
+      </td>
+      <td>
+        签约时间
+      </td>
+      <td>
+        分包现场管理人员 （实际签约人员）
+      </td>
+      <td>
+        联系方式
+      </td>
+      <td>
+        分包商/分供商是否在名录内
+      </td>
+      <td>
+        名录内编码
+      </td>
+      <td>
+        备注
+      </td>
+    </tr>
+    <tr *ngFor='let a of list'>
+      <td>{{a.d}}</td>
+      <td>{{a.e}}</td>
+      <td>{{a.f}}</td>
+      <td>{{a.g}}</td>
+      <td>{{a.h}}</td>
+      <td>{{a.i}}</td>
+      <td>{{a.j}}</td>
+      <td>{{a.k}}</td>
+      <td>{{a.l}}</td>
+      <td>{{a.m}}</td>
+      <td>{{a.n}}</td>
+      <td>{{a.o}}</td>
+      <td>{{a.p}}</td>
+      <td>{{a.q}}</td>
+    </tr>
+  </table>
+</div>
+<div class="table-div" *ngIf='tableType===4'>
+  <table border="1">
+    <tr>
+      <td>
+        合同名称
+      </td>
+      <td>
+        签约对方
+      </td>
+      <td>
+        合同单价（元）
+      </td>
+      <td>
+        控制价
+      </td>
+      <td>
+        是否超出控制价
+      </td>
+      <td>
+        付款方式及比例
+      </td>
+      <td>
+        签约时间
+      </td>
+      <td>
+        分包现场管理人员 （实际签约人员）
+      </td>
+      <td>
+        联系方式
+      </td>
+      <td>
+        分包商/分供商是否在名录内
+      </td>
+      <td>
+        名录内编码
+      </td>
+      <td>
+        备注
+      </td>
+    </tr>
+    <tr *ngFor='let a of list'>
+      <td>{{a.d}}</td>
+      <td>{{a.e}}</td>
+      <td>{{a.f}}</td>
+      <td>{{a.g}}</td>
+      <td>{{a.h}}</td>
+      <td>{{a.i}}</td>
+      <td>{{a.j}}</td>
+      <td>{{a.k}}</td>
+      <td>{{a.l}}</td>
+      <td>{{a.m}}</td>
+      <td>{{a.n}}</td>
+      <td>{{a.o}}</td>
+    </tr>
+  </table>
+</div>

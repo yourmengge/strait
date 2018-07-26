@@ -1,5 +1,7 @@
 .main {
     width: 100vw;
+    height: 100vh;
+    overflow-y: hidden;
 }
 
 .main-div {
@@ -56,4 +58,8 @@
 .main-content{
     margin: auto;
     width: 1200px;
+    padding: 20px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: calc(100vh - 100px);
 }

@@ -10,10 +10,10 @@
       </select>
       时间：
       <select [(ngModel)]='dateType' (change)='changeType()'>
-        <option [value]="1">季度</option>
+        <option [value]="a.id" *ngFor='let a of dateList'>{{a.name}}</option>
+        <!-- <option [value]="1">季度</option>
         <option [value]="2">月份</option>
-        <!-- <option [value]="3">周</option> -->
-        <option [value]="4">台账</option>
+        <option [value]="4">台账</option> -->
       </select>
       表格：
       <select [(ngModel)]='tableValue' (change)='change()'>
@@ -21,12 +21,283 @@
       </select>
     </div>
   </div>
-  <div class="main-content">
-    <router-outlet></router-outlet>
+  <div class="main-content my-scroll">
+    <button class="btn btn-primary" style="margin-bottom:20px;" (click)='add()'>项目基础信息</button>
+    <div [@heroState]="state">
+      <div class="title1">
+        项目基础信息
+      </div>
+      <div class="title1-content">
+        <div class="content">
+          <div class="content-name">项目类型</div>
+          <div class="content-input">
+            <input type="text" name="" id="" [(ngModel)]='tableData.projectType'>
+          </div>
+          <div class="content-name">项目状态</div>
+          <div class="content-input">
+            <select name="" id="" [(ngModel)]='tableData.projectStatus'>
+              <option [value]="1">在施</option>
+              <option [value]="2">退场诉讼</option>
+              <option [value]="3">停工</option>
+              <option [value]="4">竣工未结算</option>
+              <option [value]="5">竣工已结算</option>
+            </select>
+          </div>
+        </div>
+        <div class="content">
+          <div class="content-name">工程地点</div>
+          <div class="content-input">
+            <input type="text" name="" id="" [(ngModel)]='tableData.projectAddress'>
+          </div>
+          <div class="content-name">项目编码</div>
+          <div class="content-input">
+            <input type="text" name="" id="" [(ngModel)]='tableData.projectCode'>
+          </div>
+        </div>
+        <div class="content">
+          <div class="content-name">经营类型</div>
+          <div class="content-input">
+            <select name="" id="" [(ngModel)]='tableData.bizType'>
+              <option [value]="1">自营</option>
+              <option [value]="2">合作</option>
+            </select>
+          </div>
+          <div class="content-name">管理模式</div>
+          <div class="content-input">
+            <select name="" id="" [(ngModel)]='tableData.manageMode'>
+              <option [value]="1">自营</option>
+              <option [value]="2">联营</option>
+            </select>
+          </div>
+
+        </div>
+        <div class="content">
+          <div class="content-name">合同金额</div>
+          <div class="content-input">
+            <input type="number" name="" id="" [(ngModel)]='tableData.ctAmount'>
+          </div>
+          <div class="content-name">合同初始风险等级</div>
+          <div class="content-input">
+            <input type="text" name="" id="" [(ngModel)]='tableData.ctInitialRiskLevel'>
+          </div>
+
+        </div>
+        <div class="content">
+          <div class="content-name">目前风险等级</div>
+          <div class="content-input">
+            <input type="text" name="" id="" [(ngModel)]='tableData.ctCurrentRiskLevel'>
+          </div>
+          <div class="content-name">合同编号</div>
+          <div class="content-input">
+            <input type="text" name="" id="" [(ngModel)]='tableData.ctNo'>
+          </div>
+        </div>
+        <div class="content">
+          <div class="content-name">合同价格形式</div>
+          <div class="content-input">
+            <select name="" id="" [(ngModel)]='tableData.ctPriceForm'>
+              <option [value]="1">定额计价</option>
+              <option [value]="2">清单计价</option>
+              <option [value]="3">总价</option>
+              <option [value]="9">其他</option>
+            </select>
+          </div>
+          <div class="content-name">合同约定质量等级</div>
+          <div class="content-input">
+            <input type="text" name="" id="" [(ngModel)]='tableData.ctQualityLevel'>
+          </div>
+        </div>
+        <div class="content">
+          <div class="content-name">签订日期</div>
+          <div class="content-input">
+            <input type="date" name="" id="" [(ngModel)]='tableData.ctSignDate'>
+          </div>
+          <div class="content-name">合同开工日期</div>
+          <div class="content-input">
+            <input type="date" name="" id="" [(ngModel)]='tableData.ctStartDate'>
+          </div>
+        </div>
+        <div class="content">
+          <div class="content-name">合同总工期</div>
+          <div class="content-input">
+            <input type="number" name="" id="" [(ngModel)]='tableData.ctTotalDays'>
+          </div>
+          <div class="content-name">评审层级</div>
+          <div class="content-input">
+            <select name="" id="" [(ngModel)]='tableData.examineLevel'>
+              <option [value]="1">股份公司</option>
+              <option [value]="2">局</option>
+              <option [value]="3">公司</option>
+            </select>
+          </div>
+        </div>
+        <div class="content">
+          <div class="content-name">签订层级</div>
+          <div class="content-input">
+            <select name="" id="" [(ngModel)]='tableData.signLevel'>
+              <option [value]="1">股份公司</option>
+              <option [value]="2">局</option>
+              <option [value]="3">公司</option>
+            </select>
+          </div>
+          <div class="content-name">承接方式</div>
+          <div class="content-input">
+            <select name="" id="" [(ngModel)]='tableData.undertakeMode'>
+              <option value="市场承接">市场承接</option>
+              <option value="融投资">融投资</option>
+            </select>
+          </div>
+        </div>
+        <div class="content">
+          <div class="content-name">预计竣工日期</div>
+          <div class="content-input">
+            <input type="date" name="" id="" [(ngModel)]='tableData.expectComplteDate'>
+          </div>
+          <div class="content-name">预计总工期</div>
+          <div class="content-input">
+            <input type="number" name="" id="" [(ngModel)]='tableData.expectTotalDays'>
+          </div>
+        </div>
+        <div class="content">
+          <div class="content-name">结构</div>
+          <div class="content-input">
+            <input type="text" name="" id="" [(ngModel)]='tableData.frame'>
+          </div>
+          <div class="content-name">是否为局战略客户(大客户)</div>
+          <div class="content-input">
+            <select name="" id="" [(ngModel)]='tableData.isBigCustomer'>
+              <option [value]="1">是</option>
+              <option [value]="0">否</option>
+            </select>
+          </div>
+        </div>
+        <div class="content">
+          <div class="content-name">层数</div>
+          <div class="content-input">
+            <input type="text" name="" id="" [(ngModel)]='tableData.layer'>
+          </div>
+          <div class="content-name">主要履约风险</div>
+          <div class="content-input">
+            <input type="text" name="" id="" [(ngModel)]='tableData.mainRisk'>
+          </div>
+        </div>
+        <div class="content">
+          <div class="content-name">总包结算日期</div>
+          <div class="content-input">
+            <input type="date" name="" id="" [(ngModel)]='tableData.mainSettleDate'>
+          </div>
+          <div class="content-name">建筑面积(平方米)</div>
+          <div class="content-input">
+            <input type="number" name="" id="" [(ngModel)]='tableData.buildArea'>
+          </div>
+        </div>
+        <div class="content">
+          <div class="content-name">业主名称</div>
+          <div class="content-input">
+            <input type="text" name="" id="" [(ngModel)]='tableData.ownerName'>
+          </div>
+          <div class="content-name">业主性质</div>
+          <div class="content-input">
+            <select name="" id="" [(ngModel)]='tableData.ownerNature'>
+              <option value="政府">政府</option>
+              <option value="地产">地产</option>
+            </select>
+          </div>
+        </div>
+        <div class="content">
+          <div class="content-name">计量支付方式</div>
+          <div class="content-input">
+            <select name="" id="" [(ngModel)]='tableData.payMode'>
+              <option [value]="1">按月</option>
+              <option [value]="2">按节点</option>
+            </select>
+          </div>
+          <div class="content-name">计划索赔金额（万元）</div>
+          <div class="content-input">
+            <input type="number" name="" id="" [(ngModel)]='tableData.planClaimAmount'>
+          </div>
+
+        </div>
+        <div class="content">
+          <div class="content-name">施工图预算核对情况</div>
+          <div class="content-input">
+            <select name="" id="" [(ngModel)]='tableData.picBudgetCheckStatus'>
+              <option [value]="0">未核对</option>
+              <option [value]="1">正在核对</option>
+              <option [value]="2">核对完毕</option>
+            </select>
+          </div>
+          <div class="content-name">施工图预算未核对原因</div>
+          <div class="content-input">
+            <input [disabled]='tableData.picBudgetCheckStatus!=0' type="text" name="" id="" [(ngModel)]='tableData.picBudgetCheckMemo'>
+          </div>
+
+        </div>
+        <div class="content">
+          <div class="content-name">施工图预算编制状态</div>
+          <div class="content-input">
+            <select name="" id="" [(ngModel)]='tableData.picProgramStatus'>
+              <option [value]="0">未编制</option>
+              <option [value]="1">正在编制</option>
+              <option [value]="2">已编制</option>
+            </select>
+          </div>
+          <div class="content-name">未编制原因</div>
+          <div class="content-input">
+            <input [disabled]='tableData.picProgramStatus!=0' type="text" name="" id="" [(ngModel)]='tableData.picProgramMemo'>
+          </div>
+        </div>
+        <div class="content">
+          <div class="content-name">计划索赔工期（天）</div>
+          <div class="content-input">
+            <input type="number" name="" id="" [(ngModel)]='tableData.planClaimDays'>
+          </div>
+          <div class="content-name">计划竣工日期</div>
+          <div class="content-input">
+            <input type="date" name="" id="" [(ngModel)]='tableData.planCompleteDate'>
+          </div>
+        </div>
+
+        <div class="content">
+          <div class="content-name">实际竣工日期</div>
+          <div class="content-input">
+            <input type="date" [(ngModel)]='tableData.realCompleteDate'>
+          </div>
+          <div class="content-name">预付款比例(%)</div>
+          <div class="content-input">
+            <input type="number" name="" id="" [(ngModel)]='tableData.prePay'>
+          </div>
+        </div>
+
+        <div class="content">
+          <div class="content-name">实际开工日期</div>
+          <div class="content-input">
+            <input type="date" name="" id="" [(ngModel)]='tableData.realStartDate'>
+          </div>
+          <div class="content-name">收到施工图日期</div>
+          <div class="content-input">
+            <input type="date" [(ngModel)]='tableData.receivePicDate'>
+          </div>
+        </div>
+        <div class="content textarea">
+          <div class="content-name flex-2">形象进度</div>
+          <div class="content-input flex-4">
+            <textarea [(ngModel)]='tableData.progressDesc' maxlength="1000"></textarea>
+          </div>
+        </div>
+        <div class="button-div">
+          <button class="btn btn-primary btn-block" (click)='postDetail()'>提交项目基础信息</button>
+        </div>
+      </div>
+    </div>
+    <div >
+      <router-outlet></router-outlet>
+    </div>
+
+    <div class="empty" *ngIf='!hasProject'>
+      <img src="../../assets/images/empty.png" alt="">
+      <p>当前没有项目，刷新试试</p>
+    </div>
   </div>
 
-  <div class="empty" *ngIf='!hasProject'>
-    <img src="../../assets/images/empty.png" alt="">
-    <p>当前没有项目，刷新试试</p>
-  </div>
 </div>

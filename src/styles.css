@@ -74,6 +74,8 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
     height: 48px;
     outline: none;
     width: 90%;
+    float: left;
+    padding-left: 10px;
 }
 
 .content-input input:disabled {
@@ -83,10 +85,11 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
     outline: none;
     width: 100%;
     cursor: not-allowed;
+    padding-left: 10px;
 }
 
 .title1-content {
-    width: 1200px;
+    width: 100%;
     border: solid 1px #ccc;
     padding-bottom: 7px;
     margin-bottom: 40px;
@@ -121,7 +124,7 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
     line-height: 40px;
     padding-left: 40px;
     font-size: 20px;
-    width: 1198px;
+    width: 100%;
     margin-bottom: 0px;
     background: #ffd6c3;
     margin: auto;
@@ -151,6 +154,11 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 .height-4 {
     height: 200px !important;
     line-height: 200px;
+}
+
+.height-3 {
+    height: 150px !important;
+    line-height: 150px;
 }
 
 .button-div {
@@ -227,4 +235,27 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
     background-color: #d9edf7;
     border-color: #bce8f1;
     padding: 0;
+}
+
+.my-scroll::-webkit-scrollbar-thumb {
+    background: #c5c5c5;
+    border-radius: 4px;
+}
+
+.my-scroll::-webkit-scrollbar {
+    width: 4px;
+    height: 8px;
+}
+
+.my-scroll::-webkit-scrollbar-corner {
+    border-radius: 4px;
+}
+
+.my-scroll::-webkit-scrollbar-track-piece {
+    background: rgba(214, 214, 214, 0.36);
+    border-radius: 4px;
+}
+
+.flex-1{
+    flex: 1;
 }

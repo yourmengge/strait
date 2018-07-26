@@ -1,0 +1,61 @@
+<div class="title1">
+  一季度项目成本晾晒清单及晾晒指标表
+</div>
+<div class="title1-content">
+  <div class="content">
+    <div class="content-name">开累实际产值（万元）</div>
+    <div class="content-input">
+      <input type="number" name="" id="" [(ngModel)]='tableData.j'>
+    </div>
+  </div>
+  <div class="title3 content height-3">
+    <div class="content-name flex-2 ">
+      保修费用（万元）
+    </div>
+    <div class="content-div flex-4">
+      <div>
+        <div class="content-name flex-2">
+          <p>已支出</p>
+        </div>
+        <div class="flex-4 content-input">
+          <p>
+            <input type="number" [(ngModel)]='tableData.k' name="">
+          </p>
+        </div>
+      </div>
+      <div>
+        <div class="content-name flex-2">
+          <p>尚需预提</p>
+        </div>
+        <div class="flex-4 content-input">
+          <p>
+            <input type="number" [(ngModel)]='tableData.l' name="">
+          </p>
+        </div>
+      </div>
+      <div>
+        <div class="content-name flex-2">
+          <p>合计</p>
+        </div>
+        <div class="flex-4 content-input">
+          <p>
+            {{tableL(tableData.l,tableData.k)}}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="content">
+    <div class="content-name">占比</div>
+    <div class="content-input">
+      {{tableN(tableData.l,tableData.k,tableData.j)}}
+    </div>
+    <div class="content-name">备注</div>
+    <div class="content-input">
+      <input type="text" name="" id="" [(ngModel)]='tableData.o'>
+    </div>
+  </div>
+</div>
+<div class="button-div">
+  <button class="btn btn-primary btn-block" (click)='submit()'>提交</button>
+</div>

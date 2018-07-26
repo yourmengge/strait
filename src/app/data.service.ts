@@ -62,7 +62,7 @@ export class DataService {
       return 3;
     }
     if (month === '10' || month === '11' || month === '12') {
-      return 1;
+      return 4;
     }
   }
 
@@ -165,17 +165,30 @@ export class DataService {
     let temp = false;
     if (this.isNull(x)) {
       temp = true;
-      return;
+      return temp;
     }
 
     y.forEach(element => {
       if (this.isNull(element)) {
         temp = true;
-        return;
+        return temp;
       }
     });
 
     return temp;
+  }
+
+  addNum(x, y, type) {
+    if (!this.isAllNull(x, y)) {
+      if (type === '+') {
+        return (x + y).toFixed(4);
+      } else if (type === '-') {
+        return (x - y).toFixed(4);
+      }
+
+    } else {
+      return '';
+    }
   }
 
 }

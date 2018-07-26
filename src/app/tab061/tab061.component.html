@@ -1,0 +1,409 @@
+<div class="title1">
+  四坚持一推进执行情况
+</div>
+<div class="title1-content">
+  <div class="title2">
+    月度经济活动分析会
+  </div>
+  <div class="title3 content">
+    <div class="content-name flex-1">
+      {{month1}}月
+    </div>
+    <div class="content-div flex-4">
+      <div>
+        <div class="content-name flex-2">
+          <p>是否召开</p>
+        </div>
+        <div class="flex-4 content-input">
+          <select name="" id="" [(ngModel)]='tableData.h1'>
+            <option value="1">是</option>
+            <option value="0">否</option>
+          </select>
+        </div>
+      </div>
+      <div>
+        <div class="content-name flex-2">
+          <p>处理重大问题项数</p>
+        </div>
+        <div class="flex-4 content-input">
+          <p>
+            <input [(ngModel)]='tableData.h2' type="text" name="">
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="title3 content">
+    <div class="content-name flex-1">
+      {{month1 + 1 }}月
+    </div>
+    <div class="content-div flex-4">
+      <div>
+        <div class="content-name flex-2">
+          <p>是否召开</p>
+        </div>
+        <div class="flex-4 content-input">
+          <select name="" id="" [(ngModel)]='tableData.i1'>
+            <option value="1">是</option>
+            <option value="0">否</option>
+          </select>
+        </div>
+      </div>
+      <div>
+        <div class="content-name flex-2">
+          <p>处理重大问题项数</p>
+        </div>
+        <div class="flex-4 content-input">
+          <p>
+            <input [(ngModel)]='tableData.i2' type="text" name="">
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="title3 content">
+    <div class="content-name flex-1">
+      {{month1 + 2}}月
+    </div>
+    <div class="content-div flex-4">
+      <div>
+        <div class="content-name flex-2">
+          <p>是否召开</p>
+        </div>
+        <div class="flex-4 content-input">
+          <select name="" id="" [(ngModel)]='tableData.j1'>
+            <option value="1">是</option>
+            <option value="0">否</option>
+          </select>
+        </div>
+      </div>
+      <div>
+        <div class="content-name flex-2">
+          <p>处理重大问题项数</p>
+        </div>
+        <div class="flex-4 content-input">
+          <p>
+            <input [(ngModel)]='tableData.j2' type="text" name="">
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+  <div class="title2">
+    存货盘点
+  </div>
+  <div class="title3 content">
+    <div class="content-name flex-1">
+      {{month1}}月
+    </div>
+    <div class="content-div flex-4">
+      <div>
+        <div class="content-name flex-4">
+          <p>原材料、周转材料、低值易耗品、半成品、待摊周转材料</p>
+        </div>
+        <div class="flex-4 content-input">
+          <input [(ngModel)]='tableData.k' type="text" name="">
+        </div>
+      </div>
+      <div>
+        <div class="content-name flex-4">
+          <p>退库部分</p>
+        </div>
+        <div class="flex-4 content-input">
+          <input [(ngModel)]='tableData.l' type="text" name="">
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="title3 content">
+    <div class="content-name flex-1">
+      {{month1 + 1 }}月
+    </div>
+    <div class="content-div flex-4">
+      <div>
+        <div class="content-name flex-4">
+          <p>原材料、周转材料、低值易耗品、半成品、待摊周转材料</p>
+        </div>
+        <div class="flex-4 content-input">
+          <input [(ngModel)]='tableData.m' type="text" name="">
+        </div>
+      </div>
+      <div>
+        <div class="content-name flex-4">
+          <p>退库部分</p>
+        </div>
+        <div class="flex-4 content-input">
+          <p>
+            <input [(ngModel)]='tableData.n' type="text" name="">
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="title3 content">
+    <div class="content-name flex-1">
+      {{month1 + 2}}月
+    </div>
+    <div class="content-div flex-4">
+      <div>
+        <div class="content-name flex-4">
+          <p>原材料、周转材料、低值易耗品、半成品、待摊周转材料</p>
+        </div>
+        <div class="flex-4 content-input">
+          <input [(ngModel)]='tableData.o' type="text" name="">
+        </div>
+      </div>
+      <div>
+        <div class="content-name flex-4">
+          <p>退库部分</p>
+        </div>
+        <div class="flex-4 content-input">
+          <p>
+            <input [(ngModel)]='tableData.p' type="text" name="">
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="title2">
+    月结月清
+  </div>
+  <div class="title3 content height-4">
+    <div class="content-name flex-1 ">
+      {{month1}}月
+    </div>
+    <div class="content-div flex-4">
+      <div>
+        <div class="content-name flex-2">
+          <p>分包份数</p>
+        </div>
+        <div class="flex-4 content-input">
+          <p>
+            <input type="number" [(ngModel)]='tableData.q' name="">
+          </p>
+        </div>
+      </div>
+      <div>
+        <div class="content-name flex-2">
+          <p>分包月结月清金额</p>
+        </div>
+        <div class="flex-4 content-input">
+          <p>
+            <input type="number" [(ngModel)]='tableData.r' name="">
+          </p>
+        </div>
+      </div>
+      <div>
+        <div class="content-name flex-2">
+          <p>分供份数</p>
+        </div>
+        <div class="flex-4 content-input">
+          <p>
+            <input type="number" [(ngModel)]='tableData.s' name="">
+          </p>
+        </div>
+      </div>
+      <div>
+        <div class="content-name flex-2">
+          <p>分供月结月清金额</p>
+        </div>
+        <div class="flex-4 content-input">
+          <p>
+            <input type="number" [(ngModel)]='tableData.t' name="">
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="title3 content height-4">
+    <div class="content-name flex-1 ">
+      {{month1 + 1}}月
+    </div>
+    <div class="content-div flex-4">
+      <div>
+        <div class="content-name flex-2">
+          <p>分包份数</p>
+        </div>
+        <div class="flex-4 content-input">
+          <p>
+            <input type="number" [(ngModel)]='tableData.u' name="">
+          </p>
+        </div>
+      </div>
+      <div>
+        <div class="content-name flex-2">
+          <p>分包月结月清金额</p>
+        </div>
+        <div class="flex-4 content-input">
+          <p>
+            <input type="number" [(ngModel)]='tableData.v' name="">
+          </p>
+        </div>
+      </div>
+      <div>
+        <div class="content-name flex-2">
+          <p>分供份数</p>
+        </div>
+        <div class="flex-4 content-input">
+          <p>
+            <input type="number" [(ngModel)]='tableData.w' name="">
+          </p>
+        </div>
+      </div>
+      <div>
+        <div class="content-name flex-2">
+          <p>分供月结月清金额</p>
+        </div>
+        <div class="flex-4 content-input">
+          <p>
+            <input type="number" [(ngModel)]='tableData.x' name="">
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="title3 content height-4">
+    <div class="content-name flex-1 ">
+      {{month1 + 2}}月
+    </div>
+    <div class="content-div flex-4">
+      <div>
+        <div class="content-name flex-2">
+          <p>分包份数</p>
+        </div>
+        <div class="flex-4 content-input">
+          <p>
+            <input type="number" [(ngModel)]='tableData.y' name="">
+          </p>
+        </div>
+      </div>
+      <div>
+        <div class="content-name flex-2">
+          <p>分包月结月清金额</p>
+        </div>
+        <div class="flex-4 content-input">
+          <p>
+            <input type="number" [(ngModel)]='tableData.z' name="">
+          </p>
+        </div>
+      </div>
+      <div>
+        <div class="content-name flex-2">
+          <p>分供份数</p>
+        </div>
+        <div class="flex-4 content-input">
+          <p>
+            <input type="number" [(ngModel)]='tableData.aa' name="">
+          </p>
+        </div>
+      </div>
+      <div>
+        <div class="content-name flex-2">
+          <p>分供月结月清金额</p>
+        </div>
+        <div class="flex-4 content-input">
+          <p>
+            <input type="number" [(ngModel)]='tableData.ab' name="">
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="title2">
+    钢筋精细化
+  </div>
+  <div class="content">
+    <div class="content-name">是否成立钢筋小组</div>
+    <div class="content-input">
+      <select name="" id="" [(ngModel)]='tableData.ac1'>
+        <option value="1">是</option>
+        <option value="0">否</option>
+      </select>
+    </div>
+    <div class="content-name">是否签订目标责任书</div>
+    <div class="content-input">
+      <select name="" id="" [(ngModel)]='tableData.ac2'>
+        <option value="1">是</option>
+        <option value="0">否</option>
+      </select>
+    </div>
+  </div>
+  <div class="title3 content height-3">
+    <div class="content-name flex-1 ">
+      翻样钢筋数量（T)
+    </div>
+    <div class="content-div flex-4">
+      <div>
+        <div class="content-name flex-2">
+          <p>{{month1}}月</p>
+        </div>
+        <div class="flex-4 content-input">
+          <p>
+            <input type="number" [(ngModel)]='tableData.ad' name="">
+          </p>
+        </div>
+      </div>
+      <div>
+        <div class="content-name flex-2">
+          <p>{{month1 + 1}}月</p>
+        </div>
+        <div class="flex-4 content-input">
+          <p>
+            <input type="number" [(ngModel)]='tableData.ae' name="">
+          </p>
+        </div>
+      </div>
+      <div>
+        <div class="content-name flex-2">
+          <p>{{month1 + 2}}月</p>
+        </div>
+        <div class="flex-4 content-input">
+          <p>
+            <input type="number" [(ngModel)]='tableData.af' name="">
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="title2">
+    截止到本季度末开累
+  </div>
+  <div class="content">
+    <div class="content-name">开累预算量（T)</div>
+    <div class="content-input">
+      <input type="number" [(ngModel)]='tableData.ag' name="">
+    </div>
+    <div class="content-name">开累实际消耗量（T)</div>
+    <div class="content-input">
+      <input type="number" [(ngModel)]='tableData.ah' name="">
+    </div>
+  </div>
+  <div class="content">
+    <div class="content-name">开累实际翻样量（T)</div>
+    <div class="content-input">
+      <input type="number" [(ngModel)]='tableData.ai' name="">
+    </div>
+    <div class="content-name">损耗率（%）</div>
+    <div class="content-input">
+      {{tableAJ(tableData.ah,tableData.ai)}}
+    </div>
+  </div>
+  <div class="content">
+    <div class="content-name">预计综合效益（%）</div>
+    <div class="content-input">
+        {{tableAK(tableData.ag,tableData.ah)}}
+    </div>
+  </div>
+</div>
+<div class="button-div">
+  <button class="btn btn-primary btn-block" (click)='submit()'>提交</button>
+</div>

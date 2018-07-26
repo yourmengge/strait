@@ -1,0 +1,39 @@
+.table-div table {
+    width: 1600px;
+    font-size: 13px;
+    text-align: center;
+}
+
+.table-div {
+    width: 100%;
+    overflow-x: scroll;
+    position: relative;
+    z-index: 100;
+}
+
+.navigation {
+    margin-bottom: 20px;
+    margin-top: 10px;
+    border-bottom: solid 1px #ccc;
+    padding-left: 10px;
+}
+
+.navigation .button {
+    border: none;
+    background: #fff;
+    height: 50px;
+    cursor: pointer;
+    margin: 0 15px;
+    outline: none;
+}
+
+.navigation .button:hover{
+    color: #cc4a4a;
+}
+
+.button-active{
+    border-bottom: solid 3px #cc4a4a !important;
+    margin-bottom: -1px;
+    border-radius: 5px 5px 0 0;
+    color: #cc4a4a;
+}

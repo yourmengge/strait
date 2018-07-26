@@ -43,7 +43,8 @@ export class TAB012Component implements OnInit {
       aq: '',
       ar: '',
       as1: '',
-      at: ''
+      at: '',
+      id: ''
     };
   }
 
@@ -54,6 +55,7 @@ export class TAB012Component implements OnInit {
   getDetail() {
     this.http.getTableDetail(this.data.projectId, 'TAB012').subscribe((res) => {
       console.log(res);
+      this.tableData.id = res['id'] || '';
       this.tableData.i = res['i'];
       this.tableData.j = res['j'];
       this.tableData.l = res['l'];
@@ -103,13 +105,26 @@ export class TAB012Component implements OnInit {
 
   tableK(i, j) {
     if (!this.data.isAllNull(i, j)) {
-      return ((i / j) * 100).toFixed(2) + '%';
+      if (i === 0 || i === null) {
+        return '';
+      } else {
+        return ((j / i) * 100).toFixed(2) + '%';
+      }
+
+    } else {
+      return '';
     }
   }
 
   tableN(l, m) {
     if (!this.data.isAllNull(l, m)) {
-      return ((l - m) / l).toFixed(2) + '%';
+      if (l === 0 || l === null || m === null) {
+        return '';
+      } else {
+        return (((l - m) / l) * 100).toFixed(2) + '%';
+      }
+    } else {
+      return '';
     }
   }
 

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
 import { StaticService } from '../static.service';
-import { Response, RequestOptions, Headers } from '@angular/http';
+import { Response } from '@angular/http';
 import { ApiService } from '../api.service';
 import { Md5 } from 'ts-md5/dist/md5';
 
@@ -21,8 +21,8 @@ export class LoginComponent implements OnInit {
     'Authorization': ''
   };
   constructor(public staticData: StaticService, public data: DataService, public http: ApiService) {
-    this.phone = '15990000001';
-    this.loginCode = '000001';
+    this.phone = '';
+    this.loginCode = '';
   }
 
   ngOnInit() {

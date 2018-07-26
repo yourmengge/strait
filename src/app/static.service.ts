@@ -8,7 +8,9 @@ export class StaticService {
   isPhone = /^0?1[3|4|5|6|7|8|9][0-9]\d{8}$/;
   isFreeNum = /^\-?\d{1,8}(\.\d{1,4})?$/;
   isFormatDate = /^\d{8}/;
-  host = 'http://218.85.23.217:8082/zjhx/';
+  // host = 'http://192.168.1.104:8082/zjhx/';
+  host = 'http://101.37.85.69:8081/zjhx/';
+  // host = 'http://218.85.23.217:8082/zjhx/';
   // host = 'http://192.168.88.148:8080/zjhx/';
   tableData = {
 

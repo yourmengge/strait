@@ -30,8 +30,18 @@ import { TAB021Component } from './tab021/TAB021.component';
 import { TAB052Component } from './tab052/TAB052.component';
 import { TAB071Component } from './tab071/tab071.component';
 import { AlertComponent } from './alert/alert.component';
+import { Tab031Component } from './tab031/tab031.component';
+import { Tab201Component } from './tab201/tab201.component';
+import { Tab141Component } from './tab141/tab141.component';
+import { Tab211Component } from './tab211/tab211.component';
+import { Tab061Component } from './tab061/tab061.component';
 
 const appChildRoutes: Routes = [
+  { path: 'TAB061', component: Tab061Component }, // 6.2018年度四坚持一推进开展情况表
+  { path: 'TAB211', component: Tab211Component }, // 21.在施项目A级分包企业使用情况月报告
+  { path: 'TAB141', component: Tab141Component }, // 14.成本晾晒报表
+  { path: 'TAB201', component: Tab201Component }, // 20.合同台账
+  { path: 'TAB031', component: Tab031Component }, // 3.专项策划月进度情况报表
   { path: 'TAB071', component: TAB071Component }, // 7.分包结算报送套表
   { path: 'TAB052', component: TAB052Component }, // 5.业主中间计量、已完工未结算款金额统计表
   { path: 'TAB021', component: TAB021Component }, // 2.班组分包签证台账
@@ -48,7 +58,7 @@ const appChildRoutes: Routes = [
   { path: 'TAB011', component: Tab011Component }, // 1.商务索赔台账
   { path: 'TAB012', component: TAB012Component }, // 1.月商务索赔报表
   { path: 'TAB051', component: TAB051Component }, // 5.甲方中间计量台账
-  { path: '', redirectTo: 'TAB091', pathMatch: 'full' }
+  { path: '', redirectTo: 'TAB141', pathMatch: 'full' }
 ];
 
 const router: Routes = [
@@ -70,6 +80,11 @@ const router: Routes = [
     Tab011Component,
     TAB071Component,
     AlertComponent,
+    Tab061Component,
+    Tab141Component,
+    Tab211Component,
+    Tab201Component,
+    Tab031Component,
     TAB052Component,
     TAB021Component,
     TAB181Component,

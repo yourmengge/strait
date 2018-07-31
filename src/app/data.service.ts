@@ -50,19 +50,30 @@ export class DataService {
    * 获取季度
    */
   getJD() {
+    const year = new Date().getFullYear() + '';
     const month = new Date().getMonth() + 1 + '';
-    console.log(month);
     if (month === '1' || month === '2' || month === '3') {
-      return 1;
+      return year + this.add0(1);
     }
     if (month === '4' || month === '5' || month === '6') {
-      return 2;
+      return year + this.add0(2);
     }
     if (month === '7' || month === '8' || month === '9') {
-      return 3;
+      return year + this.add0(3);
     }
     if (month === '10' || month === '11' || month === '12') {
-      return 4;
+      return year + this.add0(4);
+    }
+  }
+
+  /**
+   * 判断大于等于0小于等于1
+   */
+  isFormat(num: number) {
+    if (num >= 0 && num <= 1) {
+      return true;
+    } else {
+      return false;
     }
   }
 
@@ -75,6 +86,14 @@ export class DataService {
       this.alert = false;
     }, 2000);
     this.errMsg = desc;
+  }
+
+  ErrorMsg2(desc) {
+    this.alert = true;
+    setTimeout(() => {
+      this.alert = false;
+    }, 2000);
+    this.errMsg = desc + '必须大于等于0且小于等于1';
   }
 
   removeSession(name) {

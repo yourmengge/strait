@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 import { ApiService } from '../api.service';
 import { DataService } from '../data.service';
+import { GetList } from '../get-list';
 
 @Component({
   selector: 'app-jfjltz',
@@ -22,11 +23,15 @@ import { DataService } from '../data.service';
     ])
   ]
 })
-export class TAB052Component implements OnInit {
-  state = 'inactive';
-  list: any;
+export class TAB052Component extends GetList {
   detail: any;
   constructor(public http: ApiService, public data: DataService) {
+    super();
+    this.TabNum = 'TAB052';
+    this.initData();
+  }
+
+  initData() {
     this.detail = {
       projectId: this.data.projectId,
       month: this.data.month(),
@@ -49,58 +54,9 @@ export class TAB052Component implements OnInit {
     };
   }
 
-  ngOnInit() {
-    this.getDetail();
-  }
-
-  add() {
-    this.state = this.state === 'active' ? 'inactive' : 'active';
-  }
-
-  getDetail() {
-    const data = {
-      projectId: this.data.projectId,
-      alias: 'TAB052',
-      pageNo: 1
-    };
-    this.http.tableDetail(data).subscribe((res) => {
-      this.list = res['rows'];
-    }, (err) => {
-      this.data.error = err.error;
-      this.data.isError();
-    });
-  }
-
   submit() {
-    this.http.postTableDetail(this.detail, 'TAB052').subscribe((res) => {
-      console.log(res);
-      this.data.ErrorMsg('提交成功！');
-      this.state = 'inactive';
-      this.detail = {
-        projectId: this.data.projectId,
-        month: this.data.month(),
-        b: '',
-        d: '',
-        e: '',
-        f: '',
-        g: '',
-        h: '',
-        i: '',
-        j: '',
-        k: '',
-        l: '',
-        m: '',
-        n: '',
-        o: '',
-        p: '',
-        q: '',
-        r: ''
-      };
-      this.getDetail();
-    }, (err) => {
-      this.data.error = err.error;
-      this.data.isError();
-    });
+    super.submit(this.detail);
+    this.initData();
   }
 
 }

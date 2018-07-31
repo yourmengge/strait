@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 import { ApiService } from '../api.service';
 import { DataService } from '../data.service';
+import { GetList } from '../get-list';
+import { ThrowStmt } from '@angular/compiler';
 
 @Component({
   selector: 'app-tab201',
@@ -22,13 +24,15 @@ import { DataService } from '../data.service';
     ])
   ]
 })
-export class Tab201Component implements OnInit {
+export class Tab201Component extends GetList {
   state = 'inactive';
   list: any;
   detail: any;
   tableTitle: string;
   tableType: number;
   constructor(public http: ApiService, public data: DataService) {
+    super();
+    this.TabNum = 'TAB201';
     this.tableType = 0;
     this.tableTitle = '工程专业分包合同登记表';
     this.initDetail();
@@ -75,13 +79,6 @@ export class Tab201Component implements OnInit {
     }
   }
 
-  ngOnInit() {
-    this.getDetail();
-  }
-  add() {
-    this.state = this.state === 'active' ? 'inactive' : 'active';
-  }
-
   getDetail() {
     this.list = [];
     const data = {
@@ -122,16 +119,8 @@ export class Tab201Component implements OnInit {
   }
 
   submit() {
-    this.http.postTableDetail(this.detail, 'TAB201').subscribe((res) => {
-      console.log(res);
-      this.data.ErrorMsg('提交成功！');
-      this.state = 'inactive';
-      this.initDetail();
-      this.getDetail();
-    }, (err) => {
-      this.data.error = err.error;
-      this.data.isError();
-    });
+    super.submit(this.detail);
+    this.initDetail();
   }
 
 }

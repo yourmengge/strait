@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 import { ApiService } from '../api.service';
 import { DataService } from '../data.service';
+import { GetList } from '../get-list';
 
 @Component({
   selector: 'app-bzfbtz',
@@ -22,11 +23,15 @@ import { DataService } from '../data.service';
     ])
   ]
 })
-export class TAB021Component implements OnInit {
-  state = 'inactive';
-  list: any;
+export class TAB021Component extends GetList {
   detail: any;
   constructor(public http: ApiService, public data: DataService) {
+    super();
+    this.TabNum = 'TAB021';
+    this.initData();
+  }
+
+  initData() {
     this.detail = {
       projectId: this.data.projectId,
       month: this.data.month(),
@@ -49,58 +54,9 @@ export class TAB021Component implements OnInit {
     };
   }
 
-  ngOnInit() {
-    this.getDetail();
-  }
-
-  add() {
-    this.state = this.state === 'active' ? 'inactive' : 'active';
-  }
-
-  getDetail() {
-    const data = {
-      projectId: this.data.projectId,
-      alias: 'TAB021',
-      pageNo: 1
-    };
-    this.http.tableDetail(data).subscribe((res) => {
-      this.list = res['rows'];
-    }, (err) => {
-      this.data.error = err.error;
-      this.data.isError();
-    });
-  }
-
   submit() {
-    this.http.postTableDetail(this.detail, 'TAB021').subscribe((res) => {
-      console.log(res);
-      this.data.ErrorMsg('提交成功！');
-      this.detail = {
-        projectId: this.data.projectId,
-        month: this.data.month(),
-        c: '',
-        d: '',
-        e: '',
-        f: '',
-        g: '',
-        h: '',
-        i: '',
-        j: '',
-        k: '',
-        l: '',
-        m: '',
-        n: '',
-        o: '',
-        p: '',
-        q: '',
-        r: ''
-      };
-      this.state = 'inactive';
-      this.getDetail();
-    }, (err) => {
-      this.data.error = err.error;
-      this.data.isError();
-    });
+    super.submit(this.detail);
+    this.initData();
   }
 
 }

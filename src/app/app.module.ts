@@ -21,7 +21,6 @@ import { XcjfmxComponent } from './xcjfmx/xcjfmx.component';
 import { ChydpdComponent } from './chydpd/chydpd.component';
 import { SwjlybComponent } from './swjlyb/swjlyb.component';
 import { TAB091Component } from './tab091/tab091.component';
-import { FbsjdkcComponent } from './fbsjdkc/fbsjdkc.component';
 import { TAB151Component } from './tab151/tab151.component';
 import { TAB161Component } from './tab161/tab161.component';
 import { TAB181Component } from './tab181/tab181.component';
@@ -35,8 +34,11 @@ import { Tab201Component } from './tab201/tab201.component';
 import { Tab141Component } from './tab141/tab141.component';
 import { Tab211Component } from './tab211/tab211.component';
 import { Tab061Component } from './tab061/tab061.component';
+import { Tab231Component } from './tab231/tab231.component';
+import { Tab121Component } from './tab121/tab121.component';
 
 const appChildRoutes: Routes = [
+  { path: 'TAB231', component: Tab231Component }, // 23.工程统计报表
   { path: 'TAB061', component: Tab061Component }, // 6.2018年度四坚持一推进开展情况表
   { path: 'TAB211', component: Tab211Component }, // 21.在施项目A级分包企业使用情况月报告
   { path: 'TAB141', component: Tab141Component }, // 14.成本晾晒报表
@@ -49,7 +51,7 @@ const appChildRoutes: Routes = [
   { path: 'TAB181', component: TAB181Component }, // 18.钢筋精细化管理报表
   { path: 'TAB161', component: TAB161Component }, // 16.月度盘点表
   { path: 'TAB151', component: TAB151Component }, // 15.合同外垫资报表
-  { path: 'fbsjdkc', component: FbsjdkcComponent }, // 12.分包商季度考察评价表
+  { path: 'TAB121', component: Tab121Component }, // 12.分包商季度考察评价表
   { path: 'TAB091', component: TAB091Component }, // 9.总包履约监控报表
   { path: 'swjlyb', component: SwjlybComponent }, // 10.商务经理月报
   { path: 'chydpd', component: ChydpdComponent }, // 16.月度盘点表
@@ -58,7 +60,7 @@ const appChildRoutes: Routes = [
   { path: 'TAB011', component: Tab011Component }, // 1.商务索赔台账
   { path: 'TAB012', component: TAB012Component }, // 1.月商务索赔报表
   { path: 'TAB051', component: TAB051Component }, // 5.甲方中间计量台账
-  { path: '', redirectTo: 'TAB141', pathMatch: 'full' }
+  { path: '', redirectTo: 'TAB061', pathMatch: 'full' }
 ];
 
 const router: Routes = [
@@ -80,6 +82,8 @@ const router: Routes = [
     Tab011Component,
     TAB071Component,
     AlertComponent,
+    Tab231Component,
+    Tab121Component,
     Tab061Component,
     Tab141Component,
     Tab211Component,
@@ -94,7 +98,6 @@ const router: Routes = [
     TAB081Component,
     SwjlybComponent,
     TAB091Component,
-    FbsjdkcComponent,
     TAB151Component,
     TAB161Component
   ],

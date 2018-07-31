@@ -1,21 +1,27 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
-import { StaticService } from '../static.service';
 import { ApiService } from '../api.service';
+import { Submit } from '../submit';
 
 @Component({
   selector: 'app-gjjxhgl',
   templateUrl: './tab181.component.html',
   styleUrls: ['./tab181.component.css']
 })
-export class TAB181Component implements OnInit {
-  tableData: any; // 简单粗暴的写法
-  constructor(public staticData: StaticService, public data: DataService, public http: ApiService) {
+export class TAB181Component extends Submit {
+  tableData: any;
+  constructor(public data: DataService, public http: ApiService) {
+    super();
+    this.TabNum = 'TAB181';
+    this.initData();
+  }
+
+  initData() {
     this.tableData = {
       projectId: this.data.projectId,
       month: this.data.month(),
-      an: '',
-      ao: '',
+      an: '1',
+      ao: '1',
       ap: '',
       aq: '',
       ar: '',
@@ -27,43 +33,9 @@ export class TAB181Component implements OnInit {
     };
   }
 
-  ngOnInit() {
-    this.getDetail();
-  }
-
-  getDetail() {
-    this.http.getTableDetail(this.data.projectId, 'TAB181').subscribe((res) => {
-      console.log(res);
-      if (!this.data.isNull(res)) {
-        this.tableData.id = res['id'] || '';
-        this.tableData.an = res['an'];
-        this.tableData.ao = res['ao'];
-        this.tableData.ap = res['ap'];
-        this.tableData.aq = res['aq'];
-        this.tableData.ar = res['ar'];
-        this.tableData.as1 = res['as1'];
-        this.tableData.au = res['au'];
-        this.tableData.av = res['av'];
-        this.tableData.ax = res['ax'];
-      } else {
-        this.tableData.an = 1;
-        this.tableData.ao = 1;
-      }
-    }, (err) => {
-      this.data.error = err.error;
-      this.data.isError();
-    });
-  }
 
   submit() {
-    this.http.postTableDetail(this.tableData, 'TAB181').subscribe((res) => {
-      console.log(res);
-      this.data.ErrorMsg('提交成功！');
-      this.getDetail();
-    }, (err) => {
-      this.data.error = err.error;
-      this.data.isError();
-    });
+    super.submit(this.tableData, this.data.month());
   }
 
   tableAT(ar, as1) {

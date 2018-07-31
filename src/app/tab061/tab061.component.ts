@@ -1,31 +1,39 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { DataService } from '../data.service';
-import { StaticService } from '../static.service';
 import { ApiService } from '../api.service';
+import { Submit } from '../submit';
 
 @Component({
   selector: 'app-tab061',
   templateUrl: './tab061.component.html',
   styleUrls: ['./tab061.component.css']
 })
-export class Tab061Component implements OnInit {
+export class Tab061Component extends Submit {
   tableData: any;
   month1: number;
-  constructor(public staticData: StaticService, public data: DataService, public http: ApiService) {
-    switch (this.data.getJD()) {
-      case 1:
+  constructor( public data: DataService, public http: ApiService) {
+    super();
+    this.TabNum = 'TAB061';
+    const jd = this.data.getJD();
+    switch (jd.substr(5, 5)) {
+      case '1':
         this.month1 = 1;
         break;
-      case 2:
+      case '2':
         this.month1 = 4;
         break;
-      case 3:
+      case '3':
         this.month1 = 7;
         break;
-      case 4:
+      case '4':
         this.month1 = 10;
         break;
     }
+    this.initData();
+
+  }
+
+  initData() {
     this.tableData = {
       projectId: this.data.projectId,
       month: this.data.getJD(),
@@ -64,7 +72,6 @@ export class Tab061Component implements OnInit {
       ai: ''
     };
   }
-
   tableAJ(ah, ai) {
     if (!this.data.isAllNull(ah, ai)) {
       return (this.data.addNum(ah, ai, '-') / ai * 100).toFixed(2);
@@ -77,31 +84,8 @@ export class Tab061Component implements OnInit {
     }
   }
 
-  ngOnInit() {
-    this.getDetail();
-  }
-
-  getDetail() {
-    this.http.getTableDetail(this.data.projectId, 'TAB061').subscribe((res) => {
-      console.log(res);
-      if (!this.data.isNull(res)) {
-        this.tableData = res;
-      }
-    }, (err) => {
-      this.data.error = err.error;
-      this.data.isError();
-    });
-  }
-
   submit() {
-    this.http.postTableDetail(this.tableData, 'TAB061').subscribe((res) => {
-      console.log(res);
-      this.data.ErrorMsg('提交成功！');
-      this.getDetail();
-    }, (err) => {
-      this.data.error = err.error;
-      this.data.isError();
-    });
+    super.submit(this.tableData, this.data.getJD());
   }
 
   tableL(j, k) {

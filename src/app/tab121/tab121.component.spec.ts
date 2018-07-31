@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FbsjdkcComponent } from './fbsjdkc.component';
+import { Tab121Component } from './tab121.component';
 
-describe('FbsjdkcComponent', () => {
-  let component: FbsjdkcComponent;
-  let fixture: ComponentFixture<FbsjdkcComponent>;
+describe('Tab121Component', () => {
+  let component: Tab121Component;
+  let fixture: ComponentFixture<Tab121Component>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FbsjdkcComponent ]
+      declarations: [ Tab121Component ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FbsjdkcComponent);
+    fixture = TestBed.createComponent(Tab121Component);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

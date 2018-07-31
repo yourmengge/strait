@@ -95,14 +95,19 @@ export class MainComponent implements DoCheck, OnInit {
   }
 
   postDetail() {
-    this.tableData['id'] = this.projectValue;
-    this.http.postProjectDetail(this.tableData).subscribe(() => {
-      this.data.ErrorMsg('提交成功');
-      this.getDetail();
-    }, (err) => {
-      this.data.error = err.error;
-      this.data.isError();
-    });
+    if (this.tableData.prePay <= 1 && this.tableData.prePay >= 0) {
+      this.tableData['id'] = this.projectValue;
+      this.http.postProjectDetail(this.tableData).subscribe(() => {
+        this.data.ErrorMsg('提交成功');
+        this.getDetail();
+      }, (err) => {
+        this.data.error = err.error;
+        this.data.isError();
+      });
+    } else {
+      this.data.ErrorMsg('预付款比例必须为0到1的小数');
+    }
+
   }
 
   getDetail() {
@@ -154,8 +159,6 @@ export class MainComponent implements DoCheck, OnInit {
       } else {
         this.dateType = this.dateList[0].id;
       }
-
-      console.log(this.dateType);
       this.showTableList = this.typeOfTableList(this.dateType);
     }, (err) => {
       this.data.error = err.error;

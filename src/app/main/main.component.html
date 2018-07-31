@@ -72,7 +72,7 @@
 
         </div>
         <div class="content">
-          <div class="content-name">合同金额</div>
+          <div class="content-name">合同金额(万元)</div>
           <div class="content-input">
             <input type="number" name="" id="" [(ngModel)]='tableData.ctAmount'>
           </div>
@@ -265,7 +265,7 @@
           </div>
           <div class="content-name">预付款比例(%)</div>
           <div class="content-input">
-            <input type="number" name="" id="" [(ngModel)]='tableData.prePay'>
+            <input type="number" name="" id="" [(ngModel)]='tableData.prePay' max="1" min="0">
           </div>
         </div>
 

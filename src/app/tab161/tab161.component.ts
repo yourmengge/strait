@@ -1,16 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { DataService } from '../data.service';
-import { StaticService } from '../static.service';
 import { ApiService } from '../api.service';
+import { Submit } from '../submit';
 
 @Component({
   selector: 'app-ydpdb',
   templateUrl: './tab161.component.html',
   styleUrls: ['./tab161.component.css']
 })
-export class TAB161Component implements OnInit {
+export class TAB161Component extends Submit {
   tableData: any;
-  constructor(public staticData: StaticService, public data: DataService, public http: ApiService) {
+  constructor(public data: DataService, public http: ApiService) {
+    super();
+    this.TabNum = 'TAB161';
     this.tableData = {
       projectId: this.data.projectId,
       month: this.data.month(),
@@ -26,44 +28,13 @@ export class TAB161Component implements OnInit {
     };
   }
 
-  ngOnInit() {
-    this.getDetail();
-  }
-
-  getDetail() {
-    this.http.getTableDetail(this.data.projectId, 'TAB161').subscribe((res) => {
-      console.log(res);
-      if (!this.data.isNull(res)) {
-        this.tableData.id = res['id'] || '';
-        this.tableData.c = res['c'];
-        this.tableData.d = res['d'];
-        this.tableData.e = res['e'];
-        this.tableData.f = res['f'];
-        this.tableData.g = res['g'];
-        this.tableData.h = res['h'];
-        this.tableData.j = res['j'];
-        this.tableData.k = res['k'];
-      }
-    }, (err) => {
-      this.data.error = err.error;
-      this.data.isError();
-    });
-  }
-
   submit() {
-    this.http.postTableDetail(this.tableData, 'TAB161').subscribe((res) => {
-      console.log(res);
-      this.data.ErrorMsg('提交成功！');
-      this.getDetail();
-    }, (err) => {
-      this.data.error = err.error;
-      this.data.isError();
-    });
+    super.submit(this.tableData, this.data.month());
   }
 
   tableI(c, d, e, f, g, h) {
     if (!this.data.isAllNull(c, d, e, f, g, h)) {
-      return c + d + e + f + g + h;
+      return (c + d + e + f + g + h).toFixed(2);
     }
   }
 

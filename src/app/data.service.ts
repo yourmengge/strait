@@ -22,6 +22,14 @@ export class DataService {
     this.tableValue = this.getSession('tableId');
   }
 
+  randomJPGName() {
+    let name = '';
+    for (let i = 0; i < 32; i++) {
+      name += this.staticData.random[Math.floor(Math.random() * 52)];
+    }
+    return name + '.jpg';
+  }
+
   public getSession(name): any {
     return sessionStorage.getItem(name);
   }

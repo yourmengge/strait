@@ -6,6 +6,8 @@ export class DateFormat {
         switch (type) {
             case 'yyyy/MM/dd':
                 return year + '/' + this.add0(month) + '/' + this.add0(day);
+            case 'yyyyMMdd':
+                return year + this.add0(month) + this.add0(day);
         }
     }
 

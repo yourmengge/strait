@@ -2,18 +2,35 @@ import { DataService } from './data.service';
 import { ApiService } from './api.service';
 import { StaticService } from './static.service';
 import { OnInit } from '@angular/core';
+import { DateFormat } from './date-format';
 
 export class Submit implements OnInit {
     isFreeNum = /^\-?\d{1,8}(\.\d{1,4})?$/;
     TabNum: any;
     tableData: any;
-    dateFormat: any;
+    dateFormat: DateFormat;
+    client: any;
     constructor(public data: DataService, public http: ApiService, public staticData: StaticService) {
-
+        this.dateFormat = new DateFormat();
     }
 
     ngOnInit() {
         this.getDetail();
+        this.getOssToken();
+        console.log(this.TabNum + '/' + this.dateFormat.formatDate(new Date(), 'yyyyMMdd') + '/' + this.data.randomJPGName());
+    }
+
+    getOssToken() {
+        this.http.getOssToken().subscribe(res => {
+            this.client = new OSS.Wrapper({
+                region: 'oss-cn-hangzhou',
+                accessKeyId: res['accessKeyId'],
+                accessKeySecret: res['accessKeySecret'],
+                bucket: res['bucketName'],
+                stsToken: res['securityToken'],
+                secure: true
+            });
+        });
     }
 
 

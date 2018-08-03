@@ -267,4 +267,7 @@ export class Tab101Component extends Submit {
       return a - b;
     }
   }
+
+  upload() {
+  }
 }

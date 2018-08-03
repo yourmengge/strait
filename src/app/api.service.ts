@@ -27,6 +27,13 @@ export class ApiService {
     return this.POST('third/projects/' + id + '/table', {});
   }
 
+  /**
+   * 获取oss token
+   */
+  getOssToken() {
+    return this.POST('third/oss/sts', {});
+  }
+
   tableDetail(data) {
     return this.POST('third/project/' + data.projectId + '/' + data.alias + '?pageNo=' + data.pageNo + '&pageSize='
       + this.pageSize + (data.type === undefined ? '' : ('&type=' + data.type)), {});

@@ -13,7 +13,10 @@ export class Submit implements OnInit {
     }
 
     ngOnInit() {
-        this.getDetail();
+        if (!this.data.isNull(this.data.projectId)) {
+            this.getDetail();
+        }
+
     }
 
 

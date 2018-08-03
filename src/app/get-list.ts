@@ -16,7 +16,9 @@ export class GetList implements OnInit {
     }
 
     ngOnInit() {
-        this.getDetail();
+        if (!this.data.isNull(this.data.projectId)) {
+            this.getDetail();
+        }
     }
 
     submit() {

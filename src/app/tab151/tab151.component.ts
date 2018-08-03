@@ -2,16 +2,15 @@ import { Component } from '@angular/core';
 import { DataService } from '../data.service';
 import { ApiService } from '../api.service';
 import { Submit } from '../submit';
-
+import { StaticService } from '../static.service';
 @Component({
   selector: 'app-htwdz',
   templateUrl: './tab151.component.html',
   styleUrls: ['./tab151.component.css']
 })
 export class TAB151Component extends Submit {
-  tableData: any; // 简单粗暴的写法
-  constructor(public data: DataService, public http: ApiService) {
-    super();
+  constructor(public data: DataService, public http: ApiService, public staticData: StaticService) {
+    super(data, http, staticData);
     this.TabNum = 'TAB151';
     this.tableData = {
       projectId: this.data.projectId,
@@ -28,11 +27,6 @@ export class TAB151Component extends Submit {
       ac: '',
       id: ''
     };
-  }
-
-
-  submit() {
-    super.submit(this.tableData, this.data.month());
   }
 
   tableQ(r, s) {

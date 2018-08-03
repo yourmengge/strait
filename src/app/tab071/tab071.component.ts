@@ -3,7 +3,7 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
 import { ApiService } from '../api.service';
 import { DataService } from '../data.service';
 import { GetList } from '../get-list';
-
+import { StaticService } from '../static.service';
 @Component({
   selector: 'app-wcjjg',
   templateUrl: './tab071.component.html',
@@ -24,9 +24,8 @@ import { GetList } from '../get-list';
   ]
 })
 export class TAB071Component extends GetList {
-  detail: any;
-  constructor(public http: ApiService, public data: DataService) {
-    super();
+  constructor(public http: ApiService, public data: DataService, public staticData: StaticService) {
+    super(data, http, staticData);
     this.TabNum = 'TAB071';
     this.initData();
   }
@@ -49,11 +48,6 @@ export class TAB071Component extends GetList {
       p: '',
       q: ''
     };
-  }
-
-  submit() {
-    super.submit(this.detail);
-    this.initData();
   }
 
 

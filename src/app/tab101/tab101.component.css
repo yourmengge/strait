@@ -1,0 +1,24 @@
+input[type=radio] {
+    height: 15px;
+    width: 15px;
+    margin-right: 7px;
+    margin-top: -2px;
+    margin-left: 13px;
+    vertical-align: middle;
+}
+
+input[type=number] {
+    min-width: 100px;
+    width: 100%;
+    text-align: center;
+    cursor: pointer;
+}
+
+input {
+    text-align: center;
+}
+
+.input-number {
+    min-width: 50px !important;
+    border-bottom: solid 1px #ccc;
+}

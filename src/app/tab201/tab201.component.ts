@@ -3,7 +3,7 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
 import { ApiService } from '../api.service';
 import { DataService } from '../data.service';
 import { GetList } from '../get-list';
-import { ThrowStmt } from '@angular/compiler';
+import { StaticService } from '../static.service';
 
 @Component({
   selector: 'app-tab201',
@@ -27,11 +27,10 @@ import { ThrowStmt } from '@angular/compiler';
 export class Tab201Component extends GetList {
   state = 'inactive';
   list: any;
-  detail: any;
   tableTitle: string;
   tableType: number;
-  constructor(public http: ApiService, public data: DataService) {
-    super();
+  constructor(public http: ApiService, public data: DataService, public staticData: StaticService) {
+    super(data, http, staticData);
     this.TabNum = 'TAB201';
     this.tableType = 0;
     this.tableTitle = '工程专业分包合同登记表';
@@ -62,20 +61,20 @@ export class Tab201Component extends GetList {
       type: this.tableType
     };
     if (this.tableType === 0 || this.tableType === 1) {
-      this.detail.j = 1;
-      this.detail.q = 1;
+      this.detail.j = '是';
+      this.detail.q = '是';
     }
     if (this.tableType === 2) {
-      this.detail.i = 1;
-      this.detail.o = 1;
+      this.detail.i = '是';
+      this.detail.o = '是';
     }
     if (this.tableType === 3) {
-      this.detail.k = 1;
-      this.detail.q = 1;
+      this.detail.k = '是';
+      this.detail.q = '是';
     }
     if (this.tableType === 4) {
-      this.detail.h = 1;
-      this.detail.m = 1;
+      this.detail.h = '是';
+      this.detail.m = '是';
     }
   }
 
@@ -118,9 +117,8 @@ export class Tab201Component extends GetList {
     this.getDetail();
   }
 
-  submit() {
-    super.submit(this.detail);
-    this.initDetail();
+  isTrue(string) {
+    return string === '1' ? '是' : '否';
   }
 
 }

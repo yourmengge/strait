@@ -10,7 +10,6 @@ import { Submit } from '../submit';
   styleUrls: ['./tab051.component.css']
 })
 export class TAB051Component extends Submit {
-  tableData: any; // 简单粗暴的写法
   contractPriceType: any;
   optionsValue: any; // 下拉框中的id
   bizType: any;
@@ -20,7 +19,7 @@ export class TAB051Component extends Submit {
   picBudgetStatusDis = true;
   picVerifyStatusDis = true;
   constructor(public staticData: StaticService, public data: DataService, public http: ApiService) {
-    super();
+    super(data, http, staticData);
     this.contractPriceType = this.staticData.contractPriceType;
     this.bizType = this.staticData.bizType;
     this.payType = this.staticData.payType;
@@ -80,9 +79,5 @@ export class TAB051Component extends Submit {
       this.picVerifyStatusDis = false;
 
     }
-  }
-
-  submit() {
-    super.submit(this.tableData, this.data.month());
   }
 }

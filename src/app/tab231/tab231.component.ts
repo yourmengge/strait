@@ -2,15 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
 import { DataService } from '../data.service';
 import { Submit } from '../submit';
+import { StaticService } from '../static.service';
 @Component({
   selector: 'app-tab231',
   templateUrl: './tab231.component.html',
   styleUrls: ['./tab231.component.css']
 })
 export class Tab231Component extends Submit {
-  tableData: any;
-  constructor(public http: ApiService, public data: DataService) {
-    super();
+  constructor(public http: ApiService, public data: DataService, public staticData: StaticService) {
+    super(data, http, staticData);
     this.TabNum = 'TAB231';
     this.initTableData();
   }
@@ -76,10 +76,6 @@ export class Tab231Component extends Submit {
     if (!this.data.isAllNull(a, b, c)) {
       return a - b + c;
     }
-  }
-
-  submit() {
-    super.submit(this.tableData, this.data.month());
   }
 
 }

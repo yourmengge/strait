@@ -16,7 +16,7 @@
         <option [value]="4">台账</option> -->
       </select>
       表格：
-      <select [(ngModel)]='tableValue' (change)='change()'>
+      <select [(ngModel)]='tableValue' (ngModelChange)='selectData=i;change()'>
         <option *ngFor="let i of showTableList" [value]="i.alias">{{i.tableName}}</option>
       </select>
     </div>
@@ -279,6 +279,16 @@
             <input type="date" [(ngModel)]='tableData.receivePicDate'>
           </div>
         </div>
+        <div class="content">
+          <div class="content-name">支付比例</div>
+          <div class="content-input">
+            <input type="number" name="" id="" [(ngModel)]='tableData.payRate'>
+          </div>
+          <div class="content-name"></div>
+          <div class="content-input">
+            
+          </div>
+        </div>
         <div class="content textarea">
           <div class="content-name flex-2">形象进度</div>
           <div class="content-input flex-4">
@@ -290,7 +300,7 @@
         </div>
       </div>
     </div>
-    <div >
+    <div>
       <router-outlet></router-outlet>
     </div>
 

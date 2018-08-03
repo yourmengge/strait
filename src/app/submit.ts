@@ -1,23 +1,30 @@
 import { DataService } from './data.service';
 import { ApiService } from './api.service';
-import { OnInit } from '@angular/core';
 import { StaticService } from './static.service';
+import { OnInit } from '@angular/core';
 
 export class Submit implements OnInit {
-    public data: DataService;
-    public http: ApiService;
-    public staticData: StaticService;
     isFreeNum = /^\-?\d{1,8}(\.\d{1,4})?$/;
     TabNum: any;
     tableData: any;
-    show = true;
-    hide = false;
-    alertDiv = false;
-    submit(data, month) {
-        data.month = month;
-        data.projectId = this.data.projectId;
-        this.http.postTableDetail(data, this.TabNum).subscribe((res) => {
+    dateFormat: any;
+    constructor(public data: DataService, public http: ApiService, public staticData: StaticService) {
 
+    }
+
+    ngOnInit() {
+        this.getDetail();
+    }
+
+
+    submit() {
+        if (this.data.submitCycle === 1) {
+            this.tableData.month = this.data.getJD();
+        } else {
+            this.tableData.month = this.data.month();
+        }
+        this.tableData.projectId = this.data.projectId;
+        this.http.postTableDetail(this.tableData, this.TabNum).subscribe((res) => {
             this.getDetail();
             this.data.ErrorMsg('提交成功！');
         }, (err) => {
@@ -28,19 +35,21 @@ export class Submit implements OnInit {
 
     getDetail() {
         this.http.getTableDetail(this.data.projectId, this.TabNum).subscribe((res) => {
-
             if (!this.data.isNull(res)) {
                 this.tableData = res;
                 this.tableData.id = res['id'] || '';
             }
+            this.afterGetDetail();
         }, (err) => {
             this.data.error = err.error;
             this.data.isError();
         });
     }
 
-    ngOnInit() {
-        this.getDetail();
+    afterGetDetail() {
+    }
+
+    beforeSubmit() {
     }
 
     verifyNum(num: string, name: string) {
@@ -68,7 +77,7 @@ export class Submit implements OnInit {
             }
             this.tableData[name] = num;
         } else {
-            this.alertDiv = this.show;
+            this.staticData.alertDiv = this.staticData.show;
             this.data.hideAlert();
         }
     }

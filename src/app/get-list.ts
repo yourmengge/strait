@@ -1,20 +1,31 @@
 import { DataService } from './data.service';
 import { ApiService } from './api.service';
+import { StaticService } from './static.service';
 import { OnInit } from '@angular/core';
 
 export class GetList implements OnInit {
-    public data: DataService;
-    public http: ApiService;
     TabNum: any;
-    tableData: any;
     state = 'inactive';
     list: any;
-    submit(data) {
-        data.month = this.data.month();
-        data.projectId = this.data.projectId;
-        this.http.postTableDetail(data, this.TabNum).subscribe((res) => {
+    detail: any;
+    constructor(public data: DataService, public http: ApiService, public staticData: StaticService) {
+    }
+
+    initData() {
+
+    }
+
+    ngOnInit() {
+        this.getDetail();
+    }
+
+    submit() {
+        this.detail.month = this.data.month();
+        this.detail.projectId = this.data.projectId;
+        this.http.postTableDetail(this.detail, this.TabNum).subscribe((res) => {
             this.getDetail();
             this.data.ErrorMsg('提交成功！');
+            this.initData();
         }, (err) => {
             this.data.error = err.error;
             this.data.isError();
@@ -33,10 +44,6 @@ export class GetList implements OnInit {
             this.data.error = err.error;
             this.data.isError();
         });
-    }
-
-    ngOnInit() {
-        this.getDetail();
     }
 
     add() {

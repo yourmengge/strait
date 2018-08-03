@@ -3,6 +3,7 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
 import { ApiService } from '../api.service';
 import { DataService } from '../data.service';
 import { GetList } from '../get-list';
+import { StaticService } from '../static.service';
 @Component({
   selector: 'app-fbfght',
   templateUrl: './tab081.component.html',
@@ -23,9 +24,8 @@ import { GetList } from '../get-list';
   ]
 })
 export class TAB081Component extends GetList {
-  detail: any;
-  constructor(public http: ApiService, public data: DataService) {
-    super();
+  constructor(public http: ApiService, public data: DataService, public staticData: StaticService) {
+    super(data, http, staticData);
     this.TabNum = 'TAB081';
     this.initData();
   }
@@ -46,11 +46,6 @@ export class TAB081Component extends GetList {
       k: '',
       l: ''
     };
-  }
-
-  submit() {
-    super.submit(this.detail);
-    this.initData();
   }
 
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
 import { ApiService } from '../api.service';
 import { Submit } from '../submit';
+import { StaticService } from '../static.service';
 
 @Component({
   selector: 'app-gjjxhgl',
@@ -9,9 +10,8 @@ import { Submit } from '../submit';
   styleUrls: ['./tab181.component.css']
 })
 export class TAB181Component extends Submit {
-  tableData: any;
-  constructor(public data: DataService, public http: ApiService) {
-    super();
+  constructor(public data: DataService, public http: ApiService, public staticData: StaticService) {
+    super(data, http, staticData);
     this.TabNum = 'TAB181';
     this.initData();
   }
@@ -31,11 +31,6 @@ export class TAB181Component extends Submit {
       av: '',
       ax: ''
     };
-  }
-
-
-  submit() {
-    super.submit(this.tableData, this.data.month());
   }
 
   tableAT(ar, as1) {

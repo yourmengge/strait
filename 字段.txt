@@ -157,3 +157,265 @@
 
     @Length(max=64, message="主要履约风险(tab9)长度最大长度为64")
     private String mainRisk; // 主要履约风险(tab9)
+
+
+
+
+
+
+
+
+
+
+
+
+    private Integer days31; // 业主调整工期，增加则为正数，缩短则为负数
+
+	private Integer days41; // 调整后总工期
+
+	private Integer days51; // 已办理未批准天数
+
+	private Integer days52; // 已明确不批准天数
+
+	private Integer days61; // 施工进展天数
+
+	@Length(max=128, message="已（竣）完工工程的总体质量情况长度最大长度为128")
+	private String quality1; // 已（竣）完工工程的总体质量情况
+
+	private Integer claim11; // 本月已获批准的费用签证索赔-份数
+
+	private Double claim12; // 本月已获批准的费用签证索赔-金额
+
+	private Integer claim21; // 自开工累计已获批准的费用签证索赔-份数
+
+	private Double claim22; // 自开工累计已获批准的费用签证索赔-金额
+
+	private Integer claim31; // 本月已报送未获批准的费用签证索赔-份数
+
+	private Double claim32; // 本月已报送未获批准的费用签证索赔-金额
+
+	private Integer claim41; // 自开工累计已报送未获批准的费用签证索赔-份数
+
+	private Double claim42; // 自开工累计已报送未获批准的费用签证索赔-金额
+
+	private Integer claim51; // 本月尚未办理的费用签证索赔-份数
+
+	private Double claim52; // 本月尚未办理的费用签证索赔-金额
+
+	private Integer claim61; // 自开工累计尚未办理的费用签证索赔-份数
+
+	private Double claim62; // 自开工累计尚未办理的费用签证索赔-金额
+
+	private Integer risk11; // 依合同已延误工期
+
+	private Double risk12; // 逾期违约金额
+
+	private Double risk21; // 已确认工期违约金合计
+
+	private Double risk22; // 或有工期违约金合计
+
+	private Double risk31; // 质量违约处罚（含保函）
+
+	private Double risk32; // 已确认质量违约处罚
+
+	private Double risk41; // 安全违约处罚（含保函）
+
+	private Double risk42; // 已确认安全违约处罚
+
+	private Double risk51; // 环保违规处罚
+
+	private Double risk52; // 已确认环保违规处罚
+
+	private Double risk61; // 维稳违规处罚
+
+	private Double risk62;
+
+	private Double risk71; // 廉政建设处罚
+
+	private Double risk72; // 已确认廉政建设处罚
+
+	private Double risk81; // 拖欠农民工工资处罚
+
+	private Double risk82; // 已确认拖欠农民工工资处罚
+
+	private Double risk91; // 其它违约处罚（含保函）
+
+	private Double risk92; // 其它违约处罚（含保函）-已确认
+
+	private Double val11; // 本月计划产值
+
+	private Double val12; // 本月实际完成产值
+
+	private Double val21; // 自开工累计计划产值
+
+	private Double val22; // 自开工累计实际完成产值
+
+	private Double val31; // 自年初累计计划产值
+
+	private Double val32; // 自年初累计完成产值
+
+	@Length(max=64, message="产值未完成原因长度最大长度为64")
+	private String val41; // 产值未完成原因
+
+	private Double val42; // 下月计划产值
+
+	private Double measure11; // 本月向业主报送产值
+
+	private Double measure12; // 上月业主确认收入
+
+	private Double measure13; // 上月确认率
+
+	private Double measure21; // 自开工累计向业主报送产值
+
+	private Double measure22; // 自开工累计业主确认收入
+
+	private Double measure23; // 完成率
+
+	private Double measure31; // 财务列收
+
+	private Double measure32; // 下月计划收入
+
+	private Date pay11; // 按合同本月工程款应收时间
+
+	private Date pay12; // 本月实际收取工程款时间
+
+	private Integer pay21; // 工程款支付时间（月合同约定）提前-/正常0/滞后+
+
+	private Double pay31; // 按合同本月应收工程款
+
+	private Double pay32; // 本月实际收取工程款
+
+	@Excel(useDesc=true) // TODO
+	private Double pay41; // 合同支付比例
+
+	private Double pay42; // 本月收款比例
+
+	private Double pay71; // 按合同自开工累计应收工程款
+
+	private Double pay72; // 自开工累计收取工程款
+
+	private Double pay82; // 本月实际收取工程款
+
+	private Double pay91; // 自开工累计收款比例与合同约定比例
+
+	private Double pay101; // 自开工累计收款金额与合同约定金额
+
+	private Double pay111; // 自开工累计收取工程款相对于自开工累计完成产值的比例
+
+	private Double pay112; // 自开工累计收取工程款相对于自开工累计业主确认收入的比例
+
+	private Double pay121; // 自开工累计收取工程款相对于原合同额的比例
+
+	private Double pay122; // 自开工累计收取工程款相对于自开工至本月累计合同额的比例
+
+	private Double paid11; // 劳务分包
+
+	private Double paid12;
+
+	private Double paid13;
+
+	private Double paid14;
+
+	private Double paid21;
+
+	private Double paid22;
+
+	private Double paid23;
+
+	private Double paid24;
+
+	private Double paid31;
+
+	private Double paid32;
+
+	private Double paid33;
+
+	private Double paid34;
+
+	private Double paid41;
+
+	private Double paid42;
+
+	private Double paid43;
+
+	private Double paid44;
+
+	private Double paid51;
+
+	private Double paid52;
+
+	private Double paid53;
+
+	private Double paid54;
+
+	private Integer sub11;
+
+	@Length(max=20, message="逾期违约金额，值为：xxx元 或 yyy元/天，含单位长度最大长度为20")
+	private String sub12; // 逾期违约金额，值为：xxx元 或 yyy元/天，含单位
+
+	private Double sub21; // 已确认工期违约金
+
+	private Double sub22; // 或有工期违约金
+
+	private Double sub31; // 已确认质量违约金
+
+	private Double sub32; // 或有质量违约金
+
+	private Double sub41; // 已确认安全违约金
+
+	private Double sub42; // 或有安全违约金
+
+	private Double sub51; // 已确认其它违约金
+
+	private Double sub52; // 或有其它违约金
+
+	private Integer sub61; // 依合同已延误分包工期
+
+	@Length(max=20, message="延误工期违约金额，值为：xxx元 或 yyy元/天，含单位长度最大长度为20")
+	private String sub62; // 延误工期违约金额，值为：xxx元 或 yyy元/天，含单位
+
+	private Double sub71; // 已确认工期违约金
+
+	private Double sub72; // 或有工期违约金
+
+	private Double sub81; // 已确认其它违约金
+
+	private Double sub82; // 或有其它违约金
+
+	@Length(max=255, message="风险化解情况长度最大长度为255")
+	private String r11; // 风险化解情况
+
+	private Integer done11; // 项目策划：1已编制 0未编制
+
+	private Date done21; // 责任书签订签订时间
+
+	private Double done22; // 约定上交利润率
+
+	@Length(max=64, message="已交纳金额，可能多个值长度最大长度为64")
+	private String done31; // 已交纳金额，可能多个值
+
+	@Length(max=64, message="交纳比例(%)，可能多个值长度最大长度为64")
+	private String done32; // 交纳比例(%)，可能多个值
+
+	@Length(max=64, message="考核节点名称，可能多个值长度最大长度为64")
+	private String done41; // 考核节点名称，可能多个值
+
+	@Length(max=64, message="考核时间，可能多个值长度最大长度为64")
+	private String done42; // 考核时间，可能多个值
+	
+	private Integer done51;// 考核评估：1风险较大 2风险一般 3风险较小 4正常
+
+	@Length(max=255, message="月度经济活动分析会长度最大长度为255")
+	private String persist11; // 月度经济活动分析会
+
+	@Length(max=255, message="坚持存货月度盘点，季度考核长度最大长度为255")
+	private String persist21; // 坚持存货月度盘点，季度考核
+
+	@Length(max=255, message="分包分供月结月清，年度终结长度最大长度为255")
+	private String persist31; // 分包分供月结月清，年度终结
+
+	@Length(max=255, message="需企业解决的问题长度最大长度为255")
+	private String solve11; // 需企业解决的问题
+
+	@Length(max=255, message="其他需说明的问题长度最大长度为255")
+	private String other11; // 其他需说明的问题

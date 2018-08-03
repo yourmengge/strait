@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
 import { DataService } from '../data.service';
 import { Submit } from '../submit';
+import { StaticService } from '../static.service';
 
 @Component({
   selector: 'app-yswspb',
@@ -9,9 +10,8 @@ import { Submit } from '../submit';
   styleUrls: ['./tab012.component.css']
 })
 export class TAB012Component extends Submit {
-  tableData: any;
-  constructor(public http: ApiService, public data: DataService) {
-    super();
+  constructor(public http: ApiService, public data: DataService, public staticData: StaticService) {
+    super(data, http, staticData);
     this.TabNum = 'TAB012';
     this.tableData = {
       projectId: this.data.projectId,
@@ -48,10 +48,6 @@ export class TAB012Component extends Submit {
       at: '',
       id: ''
     };
-  }
-
-  submit() {
-    super.submit(this.tableData, this.data.month());
   }
 
   tableK(i, j) {

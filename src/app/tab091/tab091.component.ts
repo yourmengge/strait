@@ -10,9 +10,8 @@ import { Submit } from '../submit';
   styleUrls: ['./tab091.component.css']
 })
 export class TAB091Component extends Submit {
-  tableData: any; // 简单粗暴的写法
   constructor(public staticData: StaticService, public data: DataService, public http: ApiService) {
-    super();
+    super(data, http, staticData);
     this.TabNum = 'TAB091';
     this.tableData = {
       projectId: this.data.projectId,
@@ -48,15 +47,6 @@ export class TAB091Component extends Submit {
       ak: '1',
       am: ''
     };
-  }
-
-  submit() {
-    if (!this.data.isFormat(this.tableData.o)) {
-      this.data.ErrorMsg2('质量合格率');
-    } else {
-      super.submit(this.tableData, this.data.getJD());
-    }
-
   }
 
   tableW(u, v) {

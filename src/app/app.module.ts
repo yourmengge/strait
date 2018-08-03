@@ -19,7 +19,6 @@ import { Tab011Component } from './tab011/tab011.component';
 import { XmmbzrglComponent } from './xmmbzrgl/xmmbzrgl.component';
 import { XcjfmxComponent } from './xcjfmx/xcjfmx.component';
 import { ChydpdComponent } from './chydpd/chydpd.component';
-import { SwjlybComponent } from './swjlyb/swjlyb.component';
 import { TAB091Component } from './tab091/tab091.component';
 import { TAB151Component } from './tab151/tab151.component';
 import { TAB161Component } from './tab161/tab161.component';
@@ -36,6 +35,7 @@ import { Tab211Component } from './tab211/tab211.component';
 import { Tab061Component } from './tab061/tab061.component';
 import { Tab231Component } from './tab231/tab231.component';
 import { Tab121Component } from './tab121/tab121.component';
+import { Tab101Component } from './tab101/tab101.component';
 
 const appChildRoutes: Routes = [
   { path: 'TAB231', component: Tab231Component }, // 23.工程统计报表
@@ -53,7 +53,7 @@ const appChildRoutes: Routes = [
   { path: 'TAB151', component: TAB151Component }, // 15.合同外垫资报表
   { path: 'TAB121', component: Tab121Component }, // 12.分包商季度考察评价表
   { path: 'TAB091', component: TAB091Component }, // 9.总包履约监控报表
-  { path: 'swjlyb', component: SwjlybComponent }, // 10.商务经理月报
+  { path: 'TAB101', component: Tab101Component }, // 10.商务经理月报
   { path: 'chydpd', component: ChydpdComponent }, // 16.月度盘点表
   { path: 'xcjfmx', component: XcjfmxComponent }, // 11.现场经费
   { path: 'xmmbzrgl', component: XmmbzrglComponent }, // 4.项目目标责任考核计划表
@@ -83,6 +83,7 @@ const router: Routes = [
     TAB071Component,
     AlertComponent,
     Tab231Component,
+    Tab101Component,
     Tab121Component,
     Tab061Component,
     Tab141Component,
@@ -96,7 +97,6 @@ const router: Routes = [
     XcjfmxComponent,
     ChydpdComponent,
     TAB081Component,
-    SwjlybComponent,
     TAB091Component,
     TAB151Component,
     TAB161Component

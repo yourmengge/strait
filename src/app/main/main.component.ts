@@ -34,6 +34,7 @@ export class MainComponent implements DoCheck, OnInit {
   dateList = [];
   refresh = true;
   tableData: any;
+  submitCycle: any;
 
   constructor(public staticData: StaticService, public data: DataService, public http: ApiService) {
     this.dateType = this.data.dateType;
@@ -95,19 +96,14 @@ export class MainComponent implements DoCheck, OnInit {
   }
 
   postDetail() {
-    if (this.tableData.prePay <= 1 && this.tableData.prePay >= 0) {
-      this.tableData['id'] = this.projectValue;
-      this.http.postProjectDetail(this.tableData).subscribe(() => {
-        this.data.ErrorMsg('提交成功');
-        this.getDetail();
-      }, (err) => {
-        this.data.error = err.error;
-        this.data.isError();
-      });
-    } else {
-      this.data.ErrorMsg('预付款比例必须为0到1的小数');
-    }
-
+    this.tableData['id'] = this.projectValue;
+    this.http.postProjectDetail(this.tableData).subscribe(() => {
+      this.data.ErrorMsg('提交成功');
+      this.getDetail();
+    }, (err) => {
+      this.data.error = err.error;
+      this.data.isError();
+    });
   }
 
   getDetail() {
@@ -228,7 +224,13 @@ export class MainComponent implements DoCheck, OnInit {
    */
   change() {
     this.data.projectId = this.projectValue;
+    for (const i of this.showTableList) {
+      if (this.tableValue === i.alias) {
+        this.data.submitCycle = i.submitCycle;
+      }
+    }
     this.data.goto('main/' + this.tableValue);
+
   }
 
   /**

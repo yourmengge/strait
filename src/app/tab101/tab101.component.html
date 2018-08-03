@@ -1,0 +1,960 @@
+<!-- <div class="title">
+  <span>项目编码</span>
+  <input type="text">
+  <span>本次报告时间</span>
+  <input type="date" name="" id=""> 第
+  <input type="text">次填报
+</div> -->
+<div class="table-div">
+  <table border="1">
+    <tr>
+      <th rowspan="6">合同</th>
+      <th>合同编号</th>
+      <td>
+        <input type="text" placeholder="与合同一致" [(ngModel)]='tableData.ct11'>
+      </td>
+      <th>签订日期</th>
+      <td>
+        <input type="date" placeholder="与合同一致" [(ngModel)]='tableData.ct12'>
+      </td>
+    </tr>
+    <tr>
+      <th>初始风险等级</th>
+      <td>
+        <input type="text" placeholder="" [(ngModel)]='tableData.ct21'>
+      </td>
+      <th>目前风险等级</th>
+      <td>
+        <input type="text" placeholder="" [(ngModel)]='tableData.ct22'>
+      </td>
+    </tr>
+    <tr>
+      <th>评审层级</th>
+      <td colspan="3">
+        <input type="radio" name="pscj" id="" [value]='1' [(ngModel)]='tableData.ct31'>股份公司
+        <input type="radio" name="pscj" id="" [value]='2' [(ngModel)]='tableData.ct31'>局
+        <input type="radio" name="pscj" id="" [value]='3' [(ngModel)]='tableData.ct31'>公司
+      </td>
+    </tr>
+    <tr>
+      <th>签订层级</th>
+      <td colspan="3">
+        <input type="radio" name="qdcj" id="" [value]='1' [(ngModel)]='tableData.ct41'>股份公司
+        <input type="radio" name="qdcj" id="" [value]='2' [(ngModel)]='tableData.ct41'>局
+        <input type="radio" name="qdcj" id="" [value]='3' [(ngModel)]='tableData.ct41'>公司
+      </td>
+    </tr>
+    <tr>
+      <th>原合同额</th>
+      <td>
+        <input type="text" placeholder="与合同一致" [(ngModel)]='tableData.ct51'>
+      </td>
+      <th>自开工至上月累计合同额</th>
+      <td>
+        <input type="text" placeholder="" [(ngModel)]='tableData.ct52'>
+      </td>
+    </tr>
+    <tr>
+      <th>本月新签合同额</th>
+      <td>
+        <input type="text" placeholder="" [(ngModel)]='tableData.ct61'>
+      </td>
+      <th>自开工至本月累计合同额</th>
+      <td>
+        <input type="text" placeholder="" [(ngModel)]='tableData.ct62'>
+      </td>
+    </tr>
+  </table>
+</div>
+<div class="table-div">
+  <table border="1">
+    <tr>
+      <th rowspan="7">工期</th>
+      <th>合同开工日期</th>
+      <td>
+        <input type="date" [(ngModel)]='tableData.days11' placeholder="与合同一致">
+      </td>
+      <th>合同竣工日期</th>
+      <td>
+        <input type="date" [(ngModel)]='tableData.days12' placeholder="与合同一致">
+      </td>
+      <th>合同总工期</th>
+      <td>
+        <input type="number" [(ngModel)]='tableData.days13' placeholder="与合同一致">
+      </td>
+    </tr>
+    <tr>
+      <th>实际开工日期</th>
+      <td>
+        <input type="date" [(ngModel)]='tableData.days21' placeholder="与批准的施工进度计划一致">
+      </td>
+      <th>预计竣工日期</th>
+      <td>
+        <input type="date" [(ngModel)]='tableData.days22' placeholder="与批准的施工进度计划一致">
+      </td>
+      <th>预计总工期</th>
+      <td>
+        <input type="number" [(ngModel)]='tableData.days23' placeholder="与批准的施工进度计划一致">
+      </td>
+    </tr>
+    <tr>
+      <th colspan="2">业主调整工期（含签证）</th>
+      <td>
+        <input type="radio" (click)='radioClick(1)' [value]='1' [(ngModel)]='days31' name="days" id="">增加
+      </td>
+      <td>
+        <input type="number" [(ngModel)]='days32'>
+      </td>
+      <td>
+        <input type="radio" (click)='radioClick(1)' [value]='-1' [(ngModel)]='days31' name="days" id="">缩短
+      </td>
+      <td>
+        <input type="number" [(ngModel)]='days34'>
+      </td>
+    </tr>
+    <tr>
+      <th>调整后总工期</th>
+      <td>
+        <input type="number" placeholder="" [(ngModel)]='tableData.days41'>
+      </td>
+      <th colspan="3">调整后竣工日期</th>
+      <td>
+        {{tzhjgrq(tableData.days11,tableData.days41)}}
+      </td>
+    </tr>
+    <tr>
+      <th>已办理未批准天数</th>
+      <td>
+        <input type="number" placeholder="" [(ngModel)]='tableData.days51'>
+      </td>
+      <th colspan="3">其中：已明确不批准天数</th>
+      <td>
+        <input type="number" placeholder="" [(ngModel)]='tableData.days52'>
+      </td>
+    </tr>
+    <tr>
+      <th>施工进展天数</th>
+      <td>
+        <input type="number" placeholder="" [(ngModel)]='tableData.days61'>
+      </td>
+      <th colspan="3">占合同总工期(%)</th>
+      <td>
+        {{chu(tableData.days61,tableData.days13)}}
+      </td>
+    </tr>
+    <tr>
+      <th>占预计总工期(%)</th>
+      <td>
+        {{chu(tableData.days61,tableData.days23)}}
+      </td>
+      <th colspan="3">占调整后总工期(%)</th>
+      <td>
+        {{chu(tableData.days61,tableData.days41)}}
+      </td>
+    </tr>
+  </table>
+</div>
+<div class="table-div">
+  <table border="1">
+    <tr>
+      <th rowspan="2">
+        质量
+      </th>
+      <th>
+        合同约定质量等级
+      </th>
+      <td>
+        <input type="text" placeholder="" [(ngModel)]='tableData.quality11'>
+      </td>
+      <th>
+        已经验收并签署的主要分部工程质量情况
+      </th>
+      <td>
+        <input type="text" placeholder="" [(ngModel)]='tableData.quality12'>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        已（竣）完工工程的总体质量情况
+      </th>
+      <td colspan="3">
+        <input type="text" placeholder="" [(ngModel)]='tableData.quality21'>
+      </td>
+    </tr>
+  </table>
+</div>
+<div class="table-div">
+  <table border="1">
+    <tr>
+      <th rowspan="7">签证索赔</th>
+      <th colspan="2">本月已获批准的费用签证索赔</th>
+      <th>份数</th>
+      <td>
+        <input type="number" placeholder="" [(ngModel)]='tableData.claim11'>
+      </td>
+      <th>金额</th>
+      <td>
+        <input type="number" placeholder="" [(ngModel)]='tableData.claim12'>
+      </td>
+    </tr>
+    <tr>
+      <th colspan="2">自开工累计已获批准的费用签证索赔</th>
+      <th>份数</th>
+      <td>
+        <input type="number" placeholder="" [(ngModel)]='tableData.claim21'>
+      </td>
+      <th>金额</th>
+      <td>
+        <input type="number" placeholder="分两部分1、事项、费用均已确认2、事项确认，费用预估" [(ngModel)]='tableData.claim22'>
+      </td>
+    </tr>
+    <tr>
+      <th colspan="2">本月已报送未获批准的费用签证索赔</th>
+      <th>份数</th>
+      <td>
+        <input type="number" placeholder="" [(ngModel)]='tableData.claim31'>
+      </td>
+      <th>金额</th>
+      <td>
+        <input type="number" placeholder="" [(ngModel)]='tableData.claim32'>
+      </td>
+    </tr>
+    <tr>
+      <th colspan="2">自开工累计已报送未获批准的费用签证索赔</th>
+      <th>份数</th>
+      <td>
+        <input type="number" placeholder="" [(ngModel)]='tableData.claim41'>
+      </td>
+      <th>金额</th>
+      <td>
+        <input type="number" placeholder="" [(ngModel)]='tableData.claim42'>
+      </td>
+    </tr>
+    <tr>
+      <th colspan="2">本月尚未办理的费用签证索赔</th>
+      <th>份数</th>
+      <td>
+        <input type="number" placeholder="" [(ngModel)]='tableData.claim51'>
+      </td>
+      <th>金额</th>
+      <td>
+        <input type="number" placeholder="" [(ngModel)]='tableData.claim52'>
+      </td>
+    </tr>
+    <tr>
+      <th colspan="2">自开工累计尚未办理的费用签证索赔</th>
+      <th>份数</th>
+      <td>
+        <input type="number" placeholder="" [(ngModel)]='tableData.claim61'>
+      </td>
+      <th>金额</th>
+      <td>
+        <input type="number" placeholder="" [(ngModel)]='tableData.claim62'>
+      </td>
+    </tr>
+  </table>
+</div>
+<div class="table-div">
+  <table border="1">
+    <tr>
+      <th rowspan="9">履约及违规风险</th>
+      <th>依合同已延误工期</th>
+      <td>
+        <input type="number" placeholder="与“工期”一栏填写一致" [(ngModel)]='tableData.risk11'>
+      </td>
+      <th>逾期违约金额</th>
+      <td>
+        <input type="number" placeholder="" [(ngModel)]='tableData.risk12'>
+      </td>
+    </tr>
+    <tr>
+      <th>已确认工期违约金合计</th>
+      <td>
+        <input type="number" placeholder="" [(ngModel)]='tableData.risk21'>
+      </td>
+      <th>或有工期违约金合计</th>
+      <td>
+        <input type="number" placeholder="" [(ngModel)]='tableData.risk22'>
+      </td>
+    </tr>
+    <tr>
+      <th>质量违约处罚（含保函）</th>
+      <td>
+        <input type="number" placeholder="" [(ngModel)]='tableData.risk31'>
+      </td>
+      <th>已确认质量违约处罚</th>
+      <td>
+        <input type="number" placeholder="" [(ngModel)]='tableData.risk32'>
+      </td>
+    </tr>
+    <tr>
+      <th>安全违约处罚（含保函）</th>
+      <td>
+        <input type="number" placeholder="" [(ngModel)]='tableData.risk41'>
+      </td>
+      <th>已确认安全违约处罚</th>
+      <td>
+        <input type="number" placeholder="" [(ngModel)]='tableData.risk42'>
+      </td>
+    </tr>
+    <tr>
+      <th>环保违规处罚</th>
+      <td>
+        <input type="number" placeholder="" [(ngModel)]='tableData.risk51'>
+      </td>
+      <th>已确认安全违约处罚</th>
+      <td>
+        <input type="number" placeholder="" [(ngModel)]='tableData.risk52'>
+      </td>
+    </tr>
+    <tr>
+      <th>维稳违规处罚</th>
+      <td>
+        <input type="number" placeholder="" [(ngModel)]='tableData.risk61'>
+      </td>
+      <th>已确认安全违约处罚</th>
+      <td>
+        <input type="number" placeholder="" [(ngModel)]='tableData.risk62'>
+      </td>
+    </tr>
+    <tr>
+      <th>廉政建设处罚</th>
+      <td>
+        <input type="number" placeholder="" [(ngModel)]='tableData.risk71'>
+      </td>
+      <th>已确认安全违约处罚</th>
+      <td>
+        <input type="number" placeholder="" [(ngModel)]='tableData.risk72'>
+      </td>
+    </tr>
+    <tr>
+      <th>拖欠农民工工资处罚</th>
+      <td>
+        <input type="number" placeholder="" [(ngModel)]='tableData.risk81'>
+      </td>
+      <th>已确认拖欠农民工工资处罚</th>
+      <td>
+        <input type="number" placeholder="" [(ngModel)]='tableData.risk82'>
+      </td>
+    </tr>
+    <tr>
+      <th>其它违约处罚（含保函）</th>
+      <td>
+        <input type="number" placeholder="" [(ngModel)]='tableData.risk91'>
+      </td>
+      <th>已确认其它违约处罚</th>
+      <td>
+        <input type="number" placeholder="" [(ngModel)]='tableData.risk92'>
+      </td>
+    </tr>
+  </table>
+</div>
+<div class="table-div">
+  <table border="1">
+    <tr>
+      <th rowspan="4">产值</th>
+      <th>本月计划产值</th>
+      <td>
+        <input type="number" placeholder="" [(ngModel)]='tableData.val11'>
+      </td>
+      <th>本月实际完成产值</th>
+      <td>
+        <input type="number" placeholder="" [(ngModel)]='tableData.val12'>
+      </td>
+      <th>完成率(%)</th>
+      <td>
+        {{chu(tableData.val12,tableData.val11)}}
+      </td>
+    </tr>
+    <tr>
+      <th>自开工累计计划产值</th>
+      <td>
+        <input type="number" placeholder="" [(ngModel)]='tableData.val21'>
+      </td>
+      <th>自开工累计实际完成产值</th>
+      <td>
+        <input type="number" placeholder="" [(ngModel)]='tableData.val22'>
+      </td>
+      <th>完成率(%)</th>
+      <td>
+        {{chu(tableData.val22,tableData.val21)}}
+      </td>
+    </tr>
+    <tr>
+      <th>自年初累计计划产值</th>
+      <td>
+        <input type="number" placeholder="" [(ngModel)]='tableData.val31'>
+      </td>
+      <th>自年初累计完成产值</th>
+      <td>
+        <input type="number" placeholder="" [(ngModel)]='tableData.val32'>
+      </td>
+      <th>完成率(%)</th>
+      <td>
+        {{chu(tableData.val32,tableData.val31)}}
+      </td>
+    </tr>
+    <tr>
+      <th>产值未完成原因</th>
+      <td colspan="3">
+        <input type="text" placeholder="简单描述原因" [(ngModel)]='tableData.val41'>
+      </td>
+      <th>下月计划产值</th>
+      <td>
+        <input type="number" placeholder="" [(ngModel)]='tableData.val42'>
+      </td>
+    </tr>
+  </table>
+</div>
+<div class="table-div">
+  <table border="1">
+    <tr>
+      <th rowspan="3">计量</th>
+      <th>本月向业主报送产值</th>
+      <td>
+        <input type="number" placeholder="" [(ngModel)]='tableData.measure11'>
+      </td>
+      <th>上月业主确认收入</th>
+      <td>
+        <input type="number" placeholder="列明业主确认的为哪一期计量" [(ngModel)]='tableData.measure12'>
+      </td>
+      <th>上月确认率(%)</th>
+      <td>
+        <input type="number" placeholder="业主审批/报送金额" [(ngModel)]='tableData.measure13'>
+      </td>
+    </tr>
+    <tr>
+      <th>自开工累计向业主报送产</th>
+      <td>
+        <input type="number" placeholder="" [(ngModel)]='tableData.measure21'>
+      </td>
+      <th>自开工累计业主确认收入</th>
+      <td>
+        <input type="number" placeholder="" [(ngModel)]='tableData.measure22'>
+      </td>
+      <th>完成率(%)</th>
+      <td>
+        <input type="number" placeholder="业主审批/报送金额" [(ngModel)]='tableData.measure23'>
+      </td>
+    </tr>
+    <tr>
+      <th>财务列收</th>
+      <td colspan="2">
+        <input type="number" placeholder="开累" [(ngModel)]='tableData.measure31'>
+      </td>
+      <th>下月计划收入</th>
+      <td colspan="2">
+        <input type="number" placeholder="" [(ngModel)]='tableData.measure32'>
+      </td>
+    </tr>
+  </table>
+</div>
+<div class="table-div">
+  <table border="1">
+    <tr>
+      <th rowspan="12">工程款</th>
+      <th>按合同本月工程款应收时间</th>
+      <td>
+        <input type="date" placeholder="" [(ngModel)]='tableData.pay11'>
+      </td>
+      <th>本月实际收取工程款时间</th>
+      <td>
+        <input type="date" placeholder="" [(ngModel)]='tableData.pay12'>
+      </td>
+    </tr>
+    <tr>
+      <th>工程款支付时间（月合同约定）</th>
+      <td colspan="3">
+        {{pay21(tableData.pay12,tableData.pay11)}}
+      </td>
+    </tr>
+    <tr>
+      <th>按合同本月应收工程款</th>
+      <td>
+        <input type="number" placeholder="" [(ngModel)]='tableData.pay31'>
+      </td>
+      <th>本月实际收取工程款</th>
+      <td>
+        <input type="number" placeholder="（单位：万元）" [(ngModel)]='tableData.pay32'>
+      </td>
+    </tr>
+    <tr>
+      <th>合同支付比例</th>
+      <td>
+        {{tableData.pay41}}
+      </td>
+      <th>本月收款比例(%)</th>
+      <td>
+        {{chu(tableData.pay31,tableData.pay32)}}
+      </td>
+    </tr>
+    <tr>
+      <th>本月工程款支付比例与合同约定比例</th>
+      <td colspan="3">
+        <span>{{pay51(tableData.pay31,tableData.pay32,tableData.pay41)}}</span>
+      </td>
+    </tr>
+    <tr>
+      <th>本月工程款支付金额与合同约定金额</th>
+      <td colspan="3">
+        {{pay61(tableData.pay32,tableData.pay31)}}
+      </td>
+    </tr>
+    <tr>
+      <th>按合同自开工累计应收工程款</th>
+      <td>
+        <input type="number" placeholder="" [(ngModel)]='tableData.pay71'>
+      </td>
+      <th>自开工累计收取工程款</th>
+      <td>
+        <input type="number" placeholder="" [(ngModel)]='tableData.pay72'>
+      </td>
+    </tr>
+    <tr>
+      <th>自开工累计超（少）付款额度</th>
+      <td>
+        {{pay61(tableData.pay72,tableData.pay71)}}
+      </td>
+      <th>本月实际收取工程款</th>
+      <td>
+        <input type="number" placeholder="" [(ngModel)]='tableData.pay82'>
+      </td>
+    </tr>
+    <tr>
+      <th>自开工累计收款比例与合同约定比例</th>
+      <td colspan="3">
+        <input type="checkbox" name="" id="">超
+        <input type="number" name="" id="">%
+        <input type="checkbox" name="" id="">正常
+        <input type="checkbox" name="" id="">少
+      </td>
+    </tr>
+    <tr>
+      <th>自开工累计收款金额与合同约定金额</th>
+      <td colspan="3">
+        <input type="checkbox" name="" id="">超
+        <input type="number" name="" id="">万元
+        <input type="checkbox" name="" id="">正常
+        <input type="checkbox" name="" id="">少
+      </td>
+    </tr>
+    <tr>
+      <th>自开工累计收取工程款相对于自开工累计完成产值的比例</th>
+      <td>
+        <input type="number" placeholder="" [(ngModel)]='tableData.pay111'>
+      </td>
+      <th>自开工累计收取工程款相对于自开工累计业主确认收入的比例</th>
+      <td>
+        <input type="number" placeholder="" [(ngModel)]='tableData.pay112'>
+      </td>
+    </tr>
+    <tr>
+      <th>自开工累计收取工程款相对于原合同额的比例</th>
+      <td>
+        <input type="number" placeholder="" [(ngModel)]='tableData.pay121'>
+      </td>
+      <th>自开工累计收取工程款相对于自开工至本月累计合同额的比例</th>
+      <td>
+        <input type="number" placeholder="" [(ngModel)]='tableData.pay122'>
+      </td>
+    </tr>
+  </table>
+</div>
+<div class="table-div">
+  <table border="1">
+    <tr>
+      <th rowspan="7">资金支付</th>
+      <th></th>
+      <th>
+        本月应付（万元）
+      </th>
+      <th>
+        本月实付 （万元）
+      </th>
+      <th>
+        付款比例 （%）
+      </th>
+      <th>
+        自开工累计应付（万元）
+      </th>
+      <th>
+        自开工累计实付（万元）
+      </th>
+      <th>
+        付款比例（%）
+      </th>
+    </tr>
+    <tr>
+      <th>
+        劳务分包
+      </th>
+      <th>
+        <input type="number" placeholder="" [(ngModel)]='tableData.paid11'>
+      </th>
+      <th>
+        <input type="number" placeholder="" [(ngModel)]='tableData.paid12'>
+      </th>
+      <td>
+        {{chu(tableData.paid12,tableData.paid11)}}
+      </td>
+      <th>
+        <input type="number" placeholder="" [(ngModel)]='tableData.paid13'>
+      </th>
+      <th>
+        <input type="number" placeholder="" [(ngModel)]='tableData.paid14'>
+      </th>
+      <td>
+        {{chu(tableData.paid14,tableData.paid13)}}
+      </td>
+    </tr>
+    <tr>
+      <th>
+        专业分包
+      </th>
+      <th>
+        <input type="number" placeholder="" [(ngModel)]='tableData.paid21'>
+      </th>
+      <th>
+        <input type="number" placeholder="" [(ngModel)]='tableData.paid22'>
+      </th>
+      <td>
+        {{chu(tableData.paid22,tableData.paid21)}}
+      </td>
+      <th>
+        <input type="number" placeholder="" [(ngModel)]='tableData.paid23'>
+      </th>
+      <th>
+        <input type="number" placeholder="" [(ngModel)]='tableData.paid24'>
+      </th>
+      <td>
+        {{chu(tableData.paid24,tableData.paid23)}}
+      </td>
+    </tr>
+    <tr>
+      <th>
+        材料款
+      </th>
+      <th>
+        <input type="number" placeholder="" [(ngModel)]='tableData.paid31'>
+      </th>
+      <th>
+        <input type="number" placeholder="" [(ngModel)]='tableData.paid32'>
+      </th>
+      <td>
+        {{chu(tableData.paid32,tableData.paid31)}}
+      </td>
+      <th>
+        <input type="number" placeholder="" [(ngModel)]='tableData.paid33'>
+      </th>
+      <th>
+        <input type="number" placeholder="" [(ngModel)]='tableData.paid34'>
+      </th>
+      <td>
+        {{chu(tableData.paid34,tableData.paid33)}}
+      </td>
+    </tr>
+    <tr>
+      <th>
+        设备款
+      </th>
+      <th>
+        <input type="number" placeholder="" [(ngModel)]='tableData.paid41'>
+      </th>
+      <th>
+        <input type="number" placeholder="" [(ngModel)]='tableData.paid42'>
+      </th>
+      <td>
+        {{chu(tableData.paid42,tableData.paid41)}}
+      </td>
+      <th>
+        <input type="number" placeholder="" [(ngModel)]='tableData.paid43'>
+      </th>
+      <th>
+        <input type="number" placeholder="" [(ngModel)]='tableData.paid44'>
+      </th>
+      <td>
+        {{chu(tableData.paid44,tableData.paid43)}}
+      </td>
+    </tr>
+    <tr>
+      <th>
+        其它
+      </th>
+      <th>
+        <input type="number" placeholder="" [(ngModel)]='tableData.paid51'>
+      </th>
+      <th>
+        <input type="number" placeholder="" [(ngModel)]='tableData.paid52'>
+      </th>
+      <td>
+        {{chu(tableData.paid52,tableData.paid51)}}
+      </td>
+      <th>
+        <input type="number" placeholder="" [(ngModel)]='tableData.paid53'>
+      </th>
+      <th>
+        <input type="number" placeholder="" [(ngModel)]='tableData.paid54'>
+      </th>
+      <td>
+        {{chu(tableData.paid54,tableData.paid53)}}
+      </td>
+    </tr>
+    <tr>
+      <th>
+        合计
+      </th>
+      <th>
+        {{add(tableData.paid11,tableData.paid21,tableData.paid31,tableData.paid41,tableData.paid51)}}
+      </th>
+      <th>
+        {{add(tableData.paid12,tableData.paid22,tableData.paid32,tableData.paid42,tableData.paid52)}}
+      </th>
+      <th>
+        {{chu(add(tableData.paid12,tableData.paid22,tableData.paid32,tableData.paid42,tableData.paid52),add(tableData.paid11,tableData.paid21,tableData.paid31,tableData.paid41,tableData.paid51))}}
+      </th>
+      <th>
+        {{add(tableData.paid13,tableData.paid23,tableData.paid33,tableData.paid43,tableData.paid53)}}
+      </th>
+      <th>
+        {{add(tableData.paid14,tableData.paid24,tableData.paid34,tableData.paid44,tableData.paid54)}}
+      </th>
+      <th>
+        {{chu(add(tableData.paid14,tableData.paid24,tableData.paid34,tableData.paid44,tableData.paid54),add(tableData.paid13,tableData.paid23,tableData.paid33,tableData.paid43,tableData.paid53))}}
+      </th>
+    </tr>
+  </table>
+</div>
+<div class="table-div">
+  <table border="1">
+    <tr>
+      <th rowspan="8">计量</th>
+      <th rowspan="5">依合同向分包索赔</th>
+      <th>依合同分包已延误工期</th>
+      <th>
+        <input type="number" placeholder="天" [(ngModel)]='tableData.sub11'>
+      </th>
+      <th>逾期违约金额</th>
+      <th>
+        <input type="text" placeholder="元或元/天" [(ngModel)]='tableData.sub12'>
+      </th>
+    </tr>
+    <tr>
+      <th>已确认工期违约金</th>
+      <th>
+        <input type="number" [(ngModel)]='tableData.sub21'>
+      </th>
+      <th>或有工期违约金</th>
+      <th>
+        <input type="number" [(ngModel)]='tableData.sub22'>
+      </th>
+    </tr>
+    <tr>
+      <th>已确认质量违约金</th>
+      <th>
+        <input type="number" [(ngModel)]='tableData.sub31'>
+      </th>
+      <th>或有质量违约金</th>
+      <th>
+        <input type="number" [(ngModel)]='tableData.sub32'>
+      </th>
+    </tr>
+    <tr>
+      <th>已确认安全违约金</th>
+      <th>
+        <input type="number" [(ngModel)]='tableData.sub41'>
+      </th>
+      <th>或有安全违约金</th>
+      <th>
+        <input type="number" [(ngModel)]='tableData.sub42'>
+      </th>
+    </tr>
+    <tr>
+      <th>已确认其它违约金</th>
+      <th>
+        <input type="number" [(ngModel)]='tableData.sub51'>
+      </th>
+      <th>或有其它违约金</th>
+      <th>
+        <input type="number" [(ngModel)]='tableData.sub52'>
+      </th>
+    </tr>
+    <tr>
+      <th rowspan="3">依合同分包反索赔</th>
+      <th>依合同已延误分包工期</th>
+      <th>
+        <input type="number" placeholder="天" [(ngModel)]='tableData.sub61'>
+      </th>
+      <th>延误工期违约金额</th>
+      <th>
+        <input type="text" placeholder="元或元/天" [(ngModel)]='tableData.sub62'>
+      </th>
+    </tr>
+    <tr>
+      <th>已确认工期违约金</th>
+      <th>
+        <input type="number" [(ngModel)]='tableData.sub71'>
+      </th>
+      <th>或有工期违约金</th>
+      <th>
+        <input type="number" [(ngModel)]='tableData.sub72'>
+      </th>
+    </tr>
+    <tr>
+      <th>已确认其它违约金</th>
+      <th>
+        <input type="number" [(ngModel)]='tableData.sub81'>
+      </th>
+      <th>或有其它违约金</th>
+      <th>
+        <input type="number" [(ngModel)]='tableData.sub82'>
+      </th>
+    </tr>
+  </table>
+</div>
+<div class='table-div'>
+  <table border="1">
+    <tr>
+      <th>
+        风险化解情况
+      </th>
+      <td>
+        <input type="text" placeholder="列举项目风险点及化解措施" [(ngModel)]='tableData.r11'>
+      </td>
+    </tr>
+  </table>
+</div>
+<div class='table-div'>
+  <table border="1">
+    <tr>
+      <th rowspan="5">
+        四个100%落实情况
+      </th>
+      <th>
+        项目策划
+      </th>
+      <td colspan="4">
+        <input type="radio" name="xmch" id="" [value]="1" [(ngModel)]='tableData.done11'>已编制策划书
+        <input type="radio" name="xmch" id="" [value]="0" [(ngModel)]='tableData.done11'>未编制策划书
+      </td>
+    </tr>
+    <tr>
+      <th>
+        责任书签订
+      </th>
+      <th>
+        签订时间
+      </th>
+      <th>
+        <input type="date" placeholder="" [(ngModel)]='tableData.done21'>
+      </th>
+      <th>
+        约定上交利润率(%)
+      </th>
+      <th>
+        <input type="number" placeholder="" [(ngModel)]='tableData.done22'>
+      </th>
+    </tr>
+    <tr>
+      <th>
+        风险抵押金缴纳情况
+      </th>
+      <th>
+        已交纳金额
+      </th>
+      <th>
+        <input type="text" placeholder="若为分批次缴纳，则需注明" [(ngModel)]='tableData.done31'>
+      </th>
+      <th>
+        交纳比例(%)
+      </th>
+      <th>
+        <input type="text" placeholder="若为分批次缴纳，则需注明" [(ngModel)]='tableData.done32'>
+      </th>
+    </tr>
+    <tr>
+      <th rowspan="2">
+        项目节点考核情况
+      </th>
+      <th>
+        考核节点名称
+      </th>
+      <th>
+        <input type="text" placeholder="若有多次考核，需一一表述" [(ngModel)]='tableData.done41'>
+      </th>
+      <th>
+        考核时间
+      </th>
+      <th>
+        <input type="text" placeholder="若有多次考核，需一一表述" [(ngModel)]='tableData.done42'>
+      </th>
+    </tr>
+    <tr>
+      <th>
+        考核评估
+      </th>
+      <th colspan="3">
+        <input type="radio" name="ckpg" [value]='1' [(ngModel)]='tableData.done51'>风险较大
+        <input type="radio" name="ckpg" [value]='2' [(ngModel)]='tableData.done51'>风险一般
+        <input type="radio" name="ckpg" [value]='3' [(ngModel)]='tableData.done51'>风险较小
+        <input type="radio" name="ckpg" [value]='4' [(ngModel)]='tableData.done51'>正常
+      </th>
+    </tr>
+  </table>
+</div>
+<div class='table-div'>
+  <table border="1">
+    <tr>
+      <th rowspan="4" colspan="1" style="width: 138px;">
+        四坚持一推进执行及落实情况
+      </th>
+      <th style="width: 138px;">
+        月度经济活动分析会
+      </th>
+      <td>
+        <input type="text" placeholder="列明数据分析" [(ngModel)]='tableData.persist11'>
+      </td>
+    </tr>
+    <tr>
+      <th style="width: 138px;">
+        坚持存货月度盘点，季度考核
+      </th>
+      <td>
+        <input type="text" placeholder="列明数据分析" [(ngModel)]='tableData.persist21'>
+      </td>
+    </tr>
+    <tr>
+      <th style="width: 138px;">
+        分包分供月结月清，年度终结
+      </th>
+      <td>
+        <input type="text" [(ngModel)]='tableData.persist31' placeholder="截止xx月xx日，累计办理分包分供xx份，累计结算金额xx万元；本月办理分包分供xx份，结算金额xx万元">
+      </td>
+    </tr>
+    <tr>
+      <th style="width: 138px;">
+        钢筋精细化推进情况
+      </th>
+      <td>
+        <input type="text" [(ngModel)]='tableData.persist41' placeholder="列明月度翻样吨数，开累翻样吨数，预计经济效益，开累损耗情况">
+      </td>
+    </tr>
+  </table>
+</div>
+<div class="title1-content">
+  <div class="content textarea">
+    <div class="content-name flex-2">需企业解决的问题</div>
+    <div class="content-input flex-4">
+      <textarea maxlength="1000" [(ngModel)]='tableData.solve11'></textarea>
+    </div>
+  </div>
+  <div class="content textarea">
+    <div class="content-name flex-2">其他需说明的问题</div>
+    <div class="content-input flex-4">
+      <textarea maxlength="1000" [(ngModel)]='tableData.other11'></textarea>
+    </div>
+  </div>
+</div>
+<div class="button-div">
+  <button class="btn btn-primary btn-block" (click)='submit()'>提交</button>
+  <p>21号前，可以重复编辑提交</p>
+</div>

@@ -14,6 +14,7 @@ export class DataService {
   projectId: any;
   dateType: any;
   tableValue: any;
+  submitCycle: any;
   constructor(public staticData: StaticService, public router: Router) {
     this.alert = this.hide;
     this.projectId = this.getSession('projectId');

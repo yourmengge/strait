@@ -256,6 +256,71 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
     border-radius: 4px;
 }
 
-.flex-1{
+.flex-1 {
     flex: 1;
+}
+
+.imgList {
+    width: 100%;
+    margin-top: 30px;
+    display: flex;
+    margin-bottom: 20px;
+    flex-flow: wrap;
+}
+
+.imgDiv {
+    width: 220px;
+    margin: 5px;
+    border: solid 1px #ccc;
+    height: 220px;
+    overflow: hidden;
+    float: left;
+}
+
+.imgDiv img {
+    width: 100%;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+.imgDiv a {
+    width: 25px;
+    height: 25px;
+    position: relative;
+    z-index: 10;
+    margin: 4px;
+    float: right;
+    background: url(./assets/images/del.png) no-repeat;
+    background-size: 100%;
+    cursor: pointer;
+}
+
+.fileDiv {
+    margin: 20px 0;
+}
+
+.fileDiv button {
+    margin-left: 20px;
+    margin-right: 5px;
+    border: none;
+    color: #fff;
+    padding: 5px 20px;
+    cursor: pointer;
+}
+
+.delete-btn {
+    background: #c30000;
+    margin-left: 5px !important;
+}
+
+.delete-btn:hover{
+    background: #990505;
+}
+
+.download-btn {
+    background: #00b59d;
+}
+
+.download-btn:hover{
+    background: #078171;
 }

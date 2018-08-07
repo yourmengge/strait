@@ -36,6 +36,7 @@ import { Tab061Component } from './tab061/tab061.component';
 import { Tab231Component } from './tab231/tab231.component';
 import { Tab121Component } from './tab121/tab121.component';
 import { Tab101Component } from './tab101/tab101.component';
+import { GetFileNamePipe } from './get-file-name.pipe';
 
 const appChildRoutes: Routes = [
   { path: 'TAB231', component: Tab231Component }, // 23.工程统计报表
@@ -83,6 +84,7 @@ const router: Routes = [
     TAB071Component,
     AlertComponent,
     Tab231Component,
+    GetFileNamePipe,
     Tab101Component,
     Tab121Component,
     Tab061Component,

@@ -80,4 +80,12 @@ export class TAB051Component extends Submit {
 
     }
   }
+
+  beforeSubmit() {
+    this.tableData.fileList = this.fileList;
+  }
+
+  afterGetDetail() {
+    this.initImgList();
+  }
 }

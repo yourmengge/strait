@@ -27,7 +27,7 @@ export class DataService {
     for (let i = 0; i < 32; i++) {
       name += this.staticData.random[Math.floor(Math.random() * 52)];
     }
-    return name + '.jpg';
+    return name;
   }
 
   public getSession(name): any {
@@ -39,6 +39,20 @@ export class DataService {
 
   verifyPhone(phone) {
     return this.staticData.isPhone.test(phone);
+  }
+
+  /**
+   * 获取文件名
+   */
+  getFileName(name) {
+    return name.split('/')[2];
+  }
+
+  /**
+   * 获取后缀名
+   */
+  getSuffixName(name) {
+    return name.split('.')[name.split('.').length - 1];
   }
 
   /**

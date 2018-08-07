@@ -28,6 +28,13 @@ export class ApiService {
   }
 
   /**
+   * 获取预览图片
+   */
+  getThumbnail(name) {
+    return this.POST('third/oss/visit?key=' + name, {});
+  }
+
+  /**
    * 获取oss token
    */
   getOssToken() {

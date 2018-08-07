@@ -141,8 +141,8 @@
         </div>
         <div class="flex-4 content-input">
           <p>
-            <input maxlength="13" [(ngModel)]='tableData.v' (blur)='verifyNum(tableData.v,"v")' (keydown)='keyup()' type="text" name="" id=""
-              placeholder="老项目税金不单列，并入实际完成产值中；新项目要填">
+            <input maxlength="13" [(ngModel)]='tableData.v' (blur)='verifyNum(tableData.v,"v")' (keydown)='keyup()' type="text" name=""
+              id="" placeholder="老项目税金不单列，并入实际完成产值中；新项目要填">
           </p>
         </div>
       </div>
@@ -367,7 +367,8 @@
         </div>
         <div class="flex-4 content-input">
           <p>
-            <input maxlength="13" (blur)='verifyNum(tableData.al,"al")' type="text" name="" id="" placeholder="" [(ngModel)]='tableData.al' (keydown)='keyup()'>
+            <input maxlength="13" (blur)='verifyNum(tableData.al,"al")' type="text" name="" id="" placeholder="" [(ngModel)]='tableData.al'
+              (keydown)='keyup()'>
           </p>
         </div>
       </div>
@@ -376,7 +377,8 @@
   <div class="content">
     <div class="content-name flex-2">开工累计未达到计量条件的产值</div>
     <div class="content-input flex-4">
-      <input maxlength="13" type="text" placeholder="如果小于等于，这个数据填0" [(ngModel)]='tableData.am' (blur)='verifyNum(tableData.am,"am")' (keydown)='keyup()'>
+      <input maxlength="13" type="text" placeholder="如果小于等于，这个数据填0" [(ngModel)]='tableData.am' (blur)='verifyNum(tableData.am,"am")'
+        (keydown)='keyup()'>
     </div>
   </div>
 </div>
@@ -458,7 +460,7 @@
         </div>
         <div class="flex-4 content-input">
           <p>
-            <input  type="text" name="" id="" [(ngModel)]='tableData.ar'>
+            <input type="text" name="" id="" [(ngModel)]='tableData.ar'>
           </p>
         </div>
       </div>
@@ -476,6 +478,20 @@
         </div>
       </div>
     </div>
+  </div>
+</div>
+<input type="file" name="" multiple (change)='uploadFile($event)' id="file">
+<div class="fileList">
+  <div *ngFor='let i of docList;let index = index;' class="fileDiv">
+    {{i.key | getFileName}}
+    <button (click)='downLoad(i.path)' class="download-btn">下载</button>
+    <button (click)='delete(i,index)' class="delete-btn">删除</button>
+  </div>
+</div>
+<div class="imgList">
+  <div class="imgDiv" *ngFor='let i of imgList;let index = index'>
+    <a (click)='del(i,index)'></a>
+    <img [src]="i.thumbnail" alt="" (click)='openImg(i.path)'>
   </div>
 </div>
 <div class="button-div">

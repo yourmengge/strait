@@ -10,6 +10,9 @@ export class Submit implements OnInit {
     tableData: any;
     dateFormat: DateFormat;
     client: any;
+    fileList = [];
+    docList = [];
+    imgList = [];
     constructor(public data: DataService, public http: ApiService, public staticData: StaticService) {
         this.dateFormat = new DateFormat();
     }
@@ -17,13 +20,23 @@ export class Submit implements OnInit {
     ngOnInit() {
         this.getDetail();
         this.getOssToken();
-        console.log(this.TabNum + '/' + this.dateFormat.formatDate(new Date(), 'yyyyMMdd') + '/' + this.data.randomJPGName());
+    }
+
+    getFileName(type, name) {
+        let fileName = '';
+        if (this.staticData.isPhoto.test(type)) {
+            fileName = this.data.randomJPGName();
+        } else {
+            fileName = name.split('.')[0] + this.dateFormat.formatDate(new Date(), 'hhmmss');
+        }
+        return this.TabNum + '/' + this.dateFormat.formatDate(new Date(), 'yyyyMMdd')
+            + '/' + fileName + '.' + type;
     }
 
     getOssToken() {
         this.http.getOssToken().subscribe(res => {
             this.client = new OSS.Wrapper({
-                region: 'oss-cn-hangzhou',
+                region: 'oss-cn-shenzhen',
                 accessKeyId: res['accessKeyId'],
                 accessKeySecret: res['accessKeySecret'],
                 bucket: res['bucketName'],
@@ -33,40 +46,63 @@ export class Submit implements OnInit {
         });
     }
 
-
-    submit() {
-        if (this.data.submitCycle === 1) {
-            this.tableData.month = this.data.getJD();
-        } else {
-            this.tableData.month = this.data.month();
+    uploadFile(e) {
+        for (const i of e.target.files) {
+            this.uploadToOss(i);
         }
-        this.tableData.projectId = this.data.projectId;
-        this.http.postTableDetail(this.tableData, this.TabNum).subscribe((res) => {
-            this.getDetail();
-            this.data.ErrorMsg('提交成功！');
-        }, (err) => {
-            this.data.error = err.error;
-            this.data.isError();
-        });
     }
 
-    getDetail() {
-        this.http.getTableDetail(this.data.projectId, this.TabNum).subscribe((res) => {
-            if (!this.data.isNull(res)) {
-                this.tableData = res;
-                this.tableData.id = res['id'] || '';
-            }
-            this.afterGetDetail();
-        }, (err) => {
-            this.data.error = err.error;
-            this.data.isError();
-        });
+    async uploadToOss(file) {
+        try {
+            const result = await this.client.multipartUpload(this.getFileName(this.data.getSuffixName(file.name), file.name), file);
+            this.fileList.push(result.name);
+            this.http.getThumbnail(result.name).subscribe(res => {
+                if (this.staticData.isPhoto.test(res['key'])) {
+                    this.imgList.push(res);
+                } else {
+                    this.docList.push(res);
+                }
+
+            });
+        } catch (e) {
+            console.error(e);
+        }
     }
 
-    afterGetDetail() {
+    initImgList() {
+        this.imgList = [];
+        this.fileList = [];
+        this.docList = [];
+        if (!this.data.isNull(this.tableData.fileList)) {
+            this.tableData.fileList.forEach(element => {
+                if (this.staticData.isPhoto.test(element.key)) {
+                    this.imgList.push(element);
+                } else {
+                    this.docList.push(element);
+                }
+                this.fileList.push(element.key);
+            });
+        }
     }
 
-    beforeSubmit() {
+    openImg(path) {
+        window.open(path);
+    }
+
+    downLoad(path) {
+        window.open(path);
+    }
+
+    del(data, index) {
+        this.imgList.splice(index, 1);
+        const i = this.fileList.indexOf(data.key);
+        this.fileList.splice(i, 1);
+    }
+
+    delete(data, index) {
+        this.docList.splice(index, 1);
+        const i = this.fileList.indexOf(data.key);
+        this.fileList.splice(i, 1);
     }
 
     verifyNum(num: string, name: string) {
@@ -101,5 +137,41 @@ export class Submit implements OnInit {
 
     keyup() {
         return this.data.keyup();
+    }
+
+    submit() {
+        this.beforeSubmit();
+        if (this.data.submitCycle === 1) {
+            this.tableData.month = this.data.getJD();
+        } else {
+            this.tableData.month = this.data.month();
+        }
+        this.tableData.projectId = this.data.projectId;
+        this.http.postTableDetail(this.tableData, this.TabNum).subscribe(() => {
+            this.getDetail();
+            this.data.ErrorMsg('提交成功！');
+        }, (err) => {
+            this.data.error = err.error;
+            this.data.isError();
+        });
+    }
+
+    getDetail() {
+        this.http.getTableDetail(this.data.projectId, this.TabNum).subscribe((res) => {
+            if (!this.data.isNull(res)) {
+                this.tableData = res;
+                this.tableData.id = res['id'] || '';
+            }
+            this.afterGetDetail();
+        }, (err) => {
+            this.data.error = err.error;
+            this.data.isError();
+        });
+    }
+
+    afterGetDetail() {
+    }
+
+    beforeSubmit() {
     }
 }

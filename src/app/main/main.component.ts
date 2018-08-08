@@ -69,7 +69,7 @@ export class MainComponent implements DoCheck, OnInit {
       'picProgramStatus': 0,
       'planClaimAmount': '',
       'planClaimDays': '',
-      'planCompleteDate': '',
+      'ctEndDate': '',
       'prePay': '',
       'progressDesc': '',
       'projectAddress': '',

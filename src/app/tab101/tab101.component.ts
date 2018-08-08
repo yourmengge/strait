@@ -46,58 +46,85 @@ export class Tab101Component extends Submit {
       this.days32 = '';
       this.days34 = '';
     }
-    this.pay51(this.tableData.pay31, this.tableData.pay32, this.tableData.pay41);
+    this.pay51();
+    this.pay91();
+    // this.pay51(this.tableData.pay31, this.tableData.pay32, this.tableData.pay41);
     this.pay101(this.tableData.pay72, this.tableData.pay71);
-    this.pay91(this.chu(this.tableData.pay72, this.tableData.measure22), this.tableData.pay41);
+    this.pay61(this.tableData.pay32, this.tableData.pay31);
+    // this.pay91(this.chu(this.tableData.pay72, this.tableData.measure22), this.tableData.pay41);
   }
 
-  pay51(a, b, c) {
-    if (!this.data.isAllNull(a, b, c)) {
-      const num = (parseFloat(this.chu(a, b)) - c);
-      if (num < 0) {
-        this.pay510 = -1;
-        this.pay511 = this.data.showFixed(Math.abs(num), 2);
-        this.pay512 = ' ';
-      } else if (num === 0) {
-        this.pay510 = 0;
-        this.pay511 = ' ';
-        this.pay512 = ' ';
-      } else {
-        this.pay510 = 1;
-        this.pay511 = ' ';
-        this.pay512 = this.data.showFixed(num, 2);
-      }
+  // pay51(a, b, c) {
+  //   if (!this.data.isAllNull(a, b, c)) {
+  //     const num = (parseFloat(this.chu(a, b)) - c);
+  //     if (num < 0) {
+  //       this.pay510 = -1;
+  //       this.pay511 = this.data.showFixed(Math.abs(num), 2);
+  //       this.pay512 = ' ';
+  //     } else if (num === 0) {
+  //       this.pay510 = 0;
+  //       this.pay511 = ' ';
+  //       this.pay512 = ' ';
+  //     } else {
+  //       this.pay510 = 1;
+  //       this.pay511 = ' ';
+  //       this.pay512 = this.data.showFixed(num, 2);
+  //     }
+  //   } else {
+  //     this.pay510 = -2;
+  //     this.pay511 = ' ';
+  //     this.pay512 = ' ';
+  //   }
+
+  // }
+
+  pay51() {
+    if (this.tableData.pay51 < 0) {
+      return '少' + Math.abs(this.tableData.pay51) + ' %';
+    } else if (this.tableData.pay51 === 0) {
+      return '正常';
+    } else if (this.tableData.pay51 > 0) {
+      return '超' + this.tableData.pay51 + ' %';
     } else {
-      this.pay510 = -2;
-      this.pay511 = ' ';
-      this.pay512 = ' ';
+      return '';
     }
-    this.pay61(b, a);
   }
 
-  pay91(a, b) {
-    if (!this.data.isAllNull(a, b)) {
-      const num = this.jian(a, b);
-      if (num < 0) {
-        this.pay910 = -1;
-        this.pay911 = this.data.showFixed(Math.abs(num), 2);
-        this.pay912 = ' ';
-      } else if (num === 0) {
-        this.pay910 = 0;
-        this.pay911 = ' ';
-        this.pay912 = ' ';
-      } else {
-        this.pay910 = 1;
-        this.pay911 = ' ';
-        this.pay912 = this.data.showFixed(num, 2);
-      }
+  pay91() {
+    if (this.tableData.pay91 < 0) {
+      return '少' + Math.abs(this.tableData.pay91) + ' %';
+    } else if (this.tableData.pay91 === 0) {
+      return '正常';
+    } else if (this.tableData.pay91 > 0) {
+      return '超' + this.tableData.pay91 + ' %';
     } else {
-      this.pay910 = -2;
-      this.pay911 = ' ';
-      this.pay912 = ' ';
+      return '';
     }
-    this.pay101(this.tableData.pay72, this.tableData.pay71);
   }
+
+  // pay91(a, b) {
+  //   if (!this.data.isAllNull(a, b)) {
+  //     const num = this.jian(a, b);
+  //     if (num < 0) {
+  //       this.pay910 = -1;
+  //       this.pay911 = this.data.showFixed(Math.abs(num), 2);
+  //       this.pay912 = ' ';
+  //     } else if (num === 0) {
+  //       this.pay910 = 0;
+  //       this.pay911 = ' ';
+  //       this.pay912 = ' ';
+  //     } else {
+  //       this.pay910 = 1;
+  //       this.pay911 = ' ';
+  //       this.pay912 = this.data.showFixed(num, 2);
+  //     }
+  //   } else {
+  //     this.pay910 = -2;
+  //     this.pay911 = ' ';
+  //     this.pay912 = ' ';
+  //   }
+  //   this.pay101(this.tableData.pay72, this.tableData.pay71);
+  // }
 
   pay61(a, b) {
     if (!this.data.isAllNull(a, b)) {
@@ -240,6 +267,7 @@ export class Tab101Component extends Submit {
       pay32: '',
       pay41: '',
       pay42: '',
+      pay51: '',
       pay71: '',
       pay72: '',
       pay82: '',

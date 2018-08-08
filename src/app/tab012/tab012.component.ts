@@ -82,4 +82,9 @@ export class TAB012Component extends Submit {
   afterGetDetail() {
     this.initImgList();
   }
+
+  needOSS() {
+    this.getOssToken();
+  }
+
 }

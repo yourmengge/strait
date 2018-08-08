@@ -19,7 +19,7 @@ export class Submit implements OnInit {
 
     ngOnInit() {
         this.getDetail();
-        this.getOssToken();
+        this.needOSS();
     }
 
     getFileName(type, name) {
@@ -31,6 +31,10 @@ export class Submit implements OnInit {
         }
         return this.TabNum + '/' + this.dateFormat.formatDate(new Date(), 'yyyyMMdd')
             + '/' + fileName + '.' + type;
+    }
+
+    needOSS() {
+
     }
 
     getOssToken() {

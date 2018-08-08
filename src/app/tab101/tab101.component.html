@@ -471,11 +471,13 @@
     <tr>
       <th>按合同本月应收工程款(万元)</th>
       <td>
-        <input type="number" placeholder="" [(ngModel)]='tableData.pay31' (keyup)='pay51(tableData.pay31,tableData.pay32,tableData.pay41)'>
+        <input type="number" placeholder="" [(ngModel)]='tableData.pay31' (keyup)='pay61(tableData.pay32,tableData.pay31)'>
+        <!-- <input type="number" placeholder="" [(ngModel)]='tableData.pay31' (keyup)='pay51(tableData.pay31,tableData.pay32,tableData.pay41)'> -->
       </td>
       <th>本月实际收取工程款(万元)</th>
       <td>
-        <input type="number" [(ngModel)]='tableData.pay32' (keyup)='pay51(tableData.pay31,tableData.pay32,tableData.pay41)'>
+        <input type="number" [(ngModel)]='tableData.pay32' (keyup)='pay61(tableData.pay32,tableData.pay31)'>
+        <!-- <input type="number" [(ngModel)]='tableData.pay32' (keyup)='pay51(tableData.pay31,tableData.pay32,tableData.pay41)'> -->
       </td>
     </tr>
     <tr>
@@ -491,9 +493,10 @@
     <tr>
       <th>本月工程款支付比例与合同约定比例(%)</th>
       <td colspan="3">
-        <input type="radio" name="pay51" disabled [checked]='pay510 == 1' id="">超{{pay512}} %
+        <input type="number" [(ngModel)]='tableData.pay51' style="border-bottom: solid 1px #ccc;"> {{pay51()}}
+        <!-- <input type="radio" name="pay51" disabled [checked]='pay510 == 1' id="">超{{pay512}} %
         <input type="radio" name="pay51" disabled [checked]='pay510 == 0' id="">正常
-        <input type="radio" name="pay51" disabled [checked]='pay510 == -1' id="">少{{pay511}} %
+        <input type="radio" name="pay51" disabled [checked]='pay510 == -1' id="">少{{pay511}} % -->
       </td>
     </tr>
     <tr>
@@ -511,7 +514,8 @@
       </td>
       <th>自开工累计收取工程款(万元)</th>
       <td>
-        <input type="number" placeholder="" [(ngModel)]='tableData.pay72' (keyup)='pay91(chu(tableData.pay72,tableData.measure22),tableData.pay41)'>
+        <input type="number" placeholder="" [(ngModel)]='tableData.pay72' (keyup)='pay101(tableData.pay72,tableData.pay71)'>
+        <!-- <input type="number" placeholder="" [(ngModel)]='tableData.pay72' (keyup)='pay91(chu(tableData.pay72,tableData.measure22),tableData.pay41)'> -->
       </td>
     </tr>
     <tr>
@@ -527,9 +531,10 @@
     <tr>
       <th>自开工累计收款比例与合同约定比例(%)</th>
       <td colspan="3">
-        <input type="radio" name="pay91" disabled [checked]='pay910 == 1' id="">超{{pay912}} %
+        <input type="number" [(ngModel)]='tableData.pay91' style="border-bottom: solid 1px #ccc;"> {{pay91()}}
+        <!-- <input type="radio" name="pay91" disabled [checked]='pay910 == 1' id="">超{{pay912}} %
         <input type="radio" name="pay91" disabled [checked]='pay910 == 0' id="">正常
-        <input type="radio" name="pay91" disabled [checked]='pay910 == -1' id="">少{{pay911}} %
+        <input type="radio" name="pay91" disabled [checked]='pay910 == -1' id="">少{{pay911}} % -->
       </td>
     </tr>
     <tr>

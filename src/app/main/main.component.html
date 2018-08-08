@@ -132,6 +132,46 @@
           </div>
         </div>
         <div class="content">
+          <div class="content-name">预计竣工日期</div>
+          <div class="content-input">
+            <input type="date" name="" id="" [(ngModel)]='tableData.expectComplteDate'>
+          </div>
+          <div class="content-name">预计总工期</div>
+          <div class="content-input">
+            <input type="number" name="" id="" [(ngModel)]='tableData.expectTotalDays'>
+          </div>
+        </div>
+        <div class="content">
+          <div class="content-name">实际竣工日期</div>
+          <div class="content-input">
+            <input type="date" [(ngModel)]='tableData.realCompleteDate'>
+          </div>
+          <div class="content-name">计划索赔工期（天）</div>
+          <div class="content-input">
+            <input type="number" name="" id="" [(ngModel)]='tableData.planClaimDays'>
+          </div>
+        </div>
+        <div class="content">
+          <div class="content-name">实际开工日期</div>
+          <div class="content-input">
+            <input type="date" name="" id="" [(ngModel)]='tableData.realStartDate'>
+          </div>
+          <div class="content-name">收到施工图日期</div>
+          <div class="content-input">
+            <input type="date" [(ngModel)]='tableData.receivePicDate'>
+          </div>
+        </div>
+        <div class="content">
+          <div class="content-name">合同竣工日期</div>
+          <div class="content-input">
+            <input type="date" name="" id="" [(ngModel)]='tableData.ctEndDate'>
+          </div>
+          <div class="content-name"></div>
+          <div class="content-input">
+
+          </div>
+        </div>
+        <div class="content">
           <div class="content-name">签订层级</div>
           <div class="content-input">
             <select name="" id="" [(ngModel)]='tableData.signLevel'>
@@ -146,16 +186,6 @@
               <option value="市场承接">市场承接</option>
               <option value="融投资">融投资</option>
             </select>
-          </div>
-        </div>
-        <div class="content">
-          <div class="content-name">预计竣工日期</div>
-          <div class="content-input">
-            <input type="date" name="" id="" [(ngModel)]='tableData.expectComplteDate'>
-          </div>
-          <div class="content-name">预计总工期</div>
-          <div class="content-input">
-            <input type="number" name="" id="" [(ngModel)]='tableData.expectTotalDays'>
           </div>
         </div>
         <div class="content">
@@ -248,45 +278,13 @@
           </div>
         </div>
         <div class="content">
-          <div class="content-name">计划索赔工期（天）</div>
+          <div class="content-name">支付比例(%)</div>
           <div class="content-input">
-            <input type="number" name="" id="" [(ngModel)]='tableData.planClaimDays'>
-          </div>
-          <div class="content-name">计划竣工日期</div>
-          <div class="content-input">
-            <input type="date" name="" id="" [(ngModel)]='tableData.planCompleteDate'>
-          </div>
-        </div>
-
-        <div class="content">
-          <div class="content-name">实际竣工日期</div>
-          <div class="content-input">
-            <input type="date" [(ngModel)]='tableData.realCompleteDate'>
+            <input type="text" name="" id="" [(ngModel)]='tableData.payRate'>
           </div>
           <div class="content-name">预付款比例(%)</div>
           <div class="content-input">
             <input type="number" name="" id="" [(ngModel)]='tableData.prePay' max="1" min="0">
-          </div>
-        </div>
-
-        <div class="content">
-          <div class="content-name">实际开工日期</div>
-          <div class="content-input">
-            <input type="date" name="" id="" [(ngModel)]='tableData.realStartDate'>
-          </div>
-          <div class="content-name">收到施工图日期</div>
-          <div class="content-input">
-            <input type="date" [(ngModel)]='tableData.receivePicDate'>
-          </div>
-        </div>
-        <div class="content">
-          <div class="content-name">支付比例(%)</div>
-          <div class="content-input">
-            <input type="number" name="" id="" [(ngModel)]='tableData.payRate'>
-          </div>
-          <div class="content-name"></div>
-          <div class="content-input">
-            
           </div>
         </div>
         <div class="content textarea">

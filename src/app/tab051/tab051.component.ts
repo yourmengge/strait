@@ -81,6 +81,10 @@ export class TAB051Component extends Submit {
     }
   }
 
+  needOSS() {
+    this.getOssToken();
+  }
+
   beforeSubmit() {
     this.tableData.fileList = this.fileList;
   }

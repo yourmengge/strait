@@ -141,7 +141,7 @@ export class Submit implements OnInit {
 
     submit() {
         this.beforeSubmit();
-        if (this.data.submitCycle === 1) {
+        if (this.data.submitCycle === 1 || this.data.submitCycle === '1') {
             this.tableData.month = this.data.getJD();
         } else {
             this.tableData.month = this.data.month();

@@ -15,6 +15,18 @@ export class Tab101Component extends Submit {
   days31: number;
   days32: any;
   days34: any;
+  pay510: number;
+  pay511: any;
+  pay512: any;
+  pay610: number;
+  pay611: any;
+  pay612: any;
+  pay910: number;
+  pay911: any;
+  pay912: any;
+  pay1010: number;
+  pay1011: any;
+  pay1012: any;
   constructor(public data: DataService, public http: ApiService, public staticData: StaticService) {
     super(data, http, staticData);
     this.dateFormat = new DateFormat();
@@ -34,32 +46,112 @@ export class Tab101Component extends Submit {
       this.days32 = '';
       this.days34 = '';
     }
+    this.pay51(this.tableData.pay31, this.tableData.pay32, this.tableData.pay41);
+    this.pay101(this.tableData.pay72, this.tableData.pay71);
+    this.pay91(this.chu(this.tableData.pay72, this.tableData.measure22), this.tableData.pay41);
   }
 
   pay51(a, b, c) {
     if (!this.data.isAllNull(a, b, c)) {
       const num = (parseFloat(this.chu(a, b)) - c);
       if (num < 0) {
-        return '少 ' + Math.abs(num) + '%';
+        this.pay510 = -1;
+        this.pay511 = this.data.showFixed(Math.abs(num), 2);
+        this.pay512 = ' ';
       } else if (num === 0) {
-        return '正常';
+        this.pay510 = 0;
+        this.pay511 = ' ';
+        this.pay512 = ' ';
       } else {
-        return '超 ' + num + '%';
+        this.pay510 = 1;
+        this.pay511 = ' ';
+        this.pay512 = this.data.showFixed(num, 2);
       }
+    } else {
+      this.pay510 = -2;
+      this.pay511 = ' ';
+      this.pay512 = ' ';
     }
+    this.pay61(b, a);
+  }
+
+  pay91(a, b) {
+    if (!this.data.isAllNull(a, b)) {
+      const num = this.jian(a, b);
+      if (num < 0) {
+        this.pay910 = -1;
+        this.pay911 = this.data.showFixed(Math.abs(num), 2);
+        this.pay912 = ' ';
+      } else if (num === 0) {
+        this.pay910 = 0;
+        this.pay911 = ' ';
+        this.pay912 = ' ';
+      } else {
+        this.pay910 = 1;
+        this.pay911 = ' ';
+        this.pay912 = this.data.showFixed(num, 2);
+      }
+    } else {
+      this.pay910 = -2;
+      this.pay911 = ' ';
+      this.pay912 = ' ';
+    }
+    this.pay101(this.tableData.pay72, this.tableData.pay71);
   }
 
   pay61(a, b) {
-    const num = this.jian(a, b);
-    if (num < 0) {
-      return '少 ' + Math.abs(num) + '万元';
-    } else if (num === 0) {
-      return '正常';
+    if (!this.data.isAllNull(a, b)) {
+      const num = this.jian(a, b);
+      if (num < 0) {
+        this.pay610 = -1;
+        this.pay611 = this.data.showFixed(Math.abs(num), 2);
+        this.pay612 = ' ';
+      } else if (num === 0) {
+        this.pay610 = 0;
+        this.pay611 = ' ';
+        this.pay612 = ' ';
+      } else {
+        this.pay610 = 1;
+        this.pay611 = ' ';
+        this.pay612 = this.data.showFixed(num, 2);
+      }
     } else {
-      return '超 ' + num + '万元';
+      this.pay610 = -2;
+      this.pay611 = ' ';
+      this.pay612 = ' ';
     }
   }
 
+  pay101(a, b) {
+    if (!this.data.isAllNull(a, b)) {
+      const num = this.jian(a, b);
+      if (num < 0) {
+        this.pay1010 = -1;
+        this.pay1011 = this.data.showFixed(Math.abs(num), 2);
+        this.pay1012 = ' ';
+      } else if (num === 0) {
+        this.pay1010 = 0;
+        this.pay1011 = ' ';
+        this.pay1012 = ' ';
+      } else {
+        this.pay1010 = 1;
+        this.pay1011 = ' ';
+        this.pay1012 = this.data.showFixed(num, 2);
+      }
+    } else {
+      this.pay1010 = -2;
+      this.pay1011 = ' ';
+      this.pay1012 = ' ';
+    }
+  }
+
+  pay81(a, b) {
+    if (!this.data.isAllNull(a, b)) {
+      const num = this.jian(a, b);
+      return num + '万元';
+    }
+
+  }
 
   /**
    * 调整后竣工日期
@@ -211,16 +303,22 @@ export class Tab101Component extends Submit {
   }
 
   pay21(a: Date, b: Date) {
-    const date1 = new Date(a).getTime();
-    const date2 = new Date(b).getTime();
-    const day = this.jian(date1, date2);
-    if (day < 0) {
-      return '提前 ' + Math.abs(day) / 86400000 + '天';
-    } else if (day === 0) {
-      return '正常';
+    if (!this.data.isNull(a) && !this.data.isNull(b)) {
+      const date1 = new Date(a).getTime();
+      const date2 = new Date(b).getTime();
+
+      const day = this.jian(date1, date2);
+      if (day < 0) {
+        return '提前 ' + Math.abs(day) / 86400000 + '天';
+      } else if (day === 0) {
+        return '正常';
+      } else {
+        return '滞后 ' + day / 86400000 + '天';
+      }
     } else {
-      return '滞后 ' + day / 86400000 + '天';
+      return '';
     }
+
   }
 
   submit() {

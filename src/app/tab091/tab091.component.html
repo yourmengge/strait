@@ -66,11 +66,11 @@
       </div>
       <div>
         <div class="content-name flex-2">
-          <p>原因</p>
+          <p>确认</p>
         </div>
         <div class="flex-4 content-input">
           <p>
-            <input type="text" name="" id="" placeholder="" [(ngModel)]='tableData.l'>
+            <input type="number" name="" id="" placeholder="" [(ngModel)]='tableData.l'>
           </p>
         </div>
       </div>
@@ -172,7 +172,7 @@
 </div>
 <div class="title1-content">
   <div class="content">
-    <div class="content-name" style="font-size: 12px;">合同约定进度款或节点付款比例</div>
+    <div class="content-name" style="font-size: 12px;">合同约定进度款或节点付款比例(%)</div>
     <div class="content-input">
       <input type="text" name="" (keydown)='keyup()' id="" [(ngModel)]='tableData.v' (blur)='verifyNum(tableData.v,"v")'>
     </div>

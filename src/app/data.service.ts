@@ -17,6 +17,7 @@ export class DataService {
   submitCycle: any;
   constructor(public staticData: StaticService, public router: Router) {
     this.alert = this.hide;
+    this.submitCycle = this.getSession('submitCycle');
     this.projectId = this.getSession('projectId');
     this.dateType = this.getSession('dateType');
     this.tableValue = this.getSession('tableId');
@@ -179,7 +180,14 @@ export class DataService {
  */
   isNull(string) {
     // tslint:disable-next-line:max-line-length
-    return (string === NaN || string === 'NaN' || string === 'undefined' || string === '' || string === null || string === 'null' || string === undefined || string === 'NaN') ? true : false;
+    return (string === NaN || string === 'NaN' || string === 'undefined' || string === '' || string === null || string === 'null' || string === undefined) ? true : false;
+  }
+
+  /**
+   * 展示几位小数
+   */
+  showFixed(num: number, type) {
+    return num.toFixed(type);
   }
 
   /**
@@ -203,7 +211,7 @@ export class DataService {
   /**
    * 判断两个参数是否都有值
    */
-  isAllNull(x: number, ...y: number[]) {
+  isAllNull(x, ...y) {
     let temp = false;
     if (this.isNull(x)) {
       temp = true;

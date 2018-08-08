@@ -68,13 +68,13 @@ export class Tab231Component extends Submit {
 
   tableAN(a, b) {
     if (!this.data.isAllNull(a, b)) {
-      return (a / b * 100).toFixed(2) + '%';
+      return (a / b * 100).toFixed(2);
     }
   }
 
   tableAP(a, b, c) {
     if (!this.data.isAllNull(a, b, c)) {
-      return a - b + c;
+      return this.data.showFixed(a - b + c, 2);
     }
   }
 

@@ -227,6 +227,7 @@ export class MainComponent implements DoCheck, OnInit {
     for (const i of this.showTableList) {
       if (this.tableValue === i.alias) {
         this.data.submitCycle = i.submitCycle;
+        this.data.setSession('submitCycle', this.data.submitCycle);
       }
     }
     this.data.goto('main/' + this.tableValue);

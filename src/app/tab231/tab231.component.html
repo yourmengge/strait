@@ -111,7 +111,7 @@
     </div>
     <div class="content-name">线路长度/构筑物数量(公里/座)</div>
     <div class="content-input">
-      <input type="text" name="" id="" [(ngModel)]='tableData.s'>
+      <input type="number" name="" id="" [(ngModel)]='tableData.s'>
     </div>
   </div>
   <div class="content">
@@ -179,7 +179,7 @@
     <div class="content-input">
       <input type="number" name="" id="" [(ngModel)]='tableData.am'>
     </div>
-    <div class="content-name">合同额完成比例</div>
+    <div class="content-name">合同额完成比例(%)</div>
     <div class="content-input">
       {{tableAN(tableData.am,tableData.t)}}
     </div>

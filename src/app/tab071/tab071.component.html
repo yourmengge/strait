@@ -84,6 +84,9 @@
   <table border="1">
     <tr>
       <td>
+        操作
+      </td>
+      <td>
         分类
       </td>
       <td>
@@ -124,6 +127,9 @@
       </td>
     </tr>
     <tr *ngFor='let a of list'>
+      <td (click)='edit(a)' class="edit">
+        编辑
+      </td>
       <td>{{a.edesc}}</td>
       <td>{{a.f}}</td>
       <td>{{a.g}}</td>

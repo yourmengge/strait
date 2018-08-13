@@ -15,7 +15,7 @@ import { StaticService } from '../static.service';
         opacity: 0
       })),
       state('active', style({
-        height: '829px',
+        height: '629px',
         opacity: 1
       })),
       transition('inactive => active', animate('100ms ease-in')),
@@ -48,8 +48,31 @@ export class Tab031Component extends GetList {
       o: '',
       p: '',
       q: '',
-      r: ''
+      r: '',
+      id: ''
     };
   }
-
+  edit(data) {
+    this.detail = {
+      projectId: this.data.projectId,
+      month: this.data.month(),
+      d: data.d,
+      e: data.e,
+      f: data.f,
+      g: data.g,
+      h: data.h,
+      i: data.i,
+      j: data.j,
+      k: data.k,
+      l: data.l,
+      m: data.m,
+      n: data.n,
+      o: data.o,
+      p: data.p,
+      q: data.q,
+      r: data.r,
+      id: data.id
+    };
+    this.state = 'active';
+  }
 }

@@ -33,14 +33,18 @@ export class TAB181Component extends Submit {
     };
   }
 
+  beforeGetDetail() {
+    this.initData();
+  }
+
   tableAT(ar, as1) {
-    if (!this.data.isAllNull(ar, as1)) {
+    if (!this.data.isAllNull(ar, as1) && ar !== 0) {
       return (((ar - as1) / ar) * 100).toFixed(2) + '%';
     }
   }
 
   tableAW(au, av) {
-    if (!this.data.isAllNull(au, av)) {
+    if (!this.data.isAllNull(au, av) && au !== 0) {
       return (((au - av) / au) * 100).toFixed(2) + '%';
     }
   }

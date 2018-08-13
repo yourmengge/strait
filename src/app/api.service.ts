@@ -40,9 +40,13 @@ export class ApiService {
   getOssToken() {
     return this.POST('third/oss/sts', {});
   }
-
+  /**
+   * 台账
+   * @param data
+   */
   tableDetail(data) {
-    return this.POST('third/project/' + data.projectId + '/' + data.alias + '?pageNo=' + data.pageNo + '&pageSize='
+    return this.POST('third/list/' + data.projectId + '/' + data.alias + '/' + this.data.selectMonth
+      + '?pageNo=' + data.pageNo + '&pageSize='
       + this.pageSize + (data.type === undefined ? '' : ('&type=' + data.type)), {});
   }
 
@@ -51,7 +55,11 @@ export class ApiService {
   }
 
   getTableDetail(projectId, tableId) {
-    return this.POST('third/project/' + projectId + '/' + tableId + '/month', {});
+    return this.POST('third/rpt/' + projectId + '/' + tableId + '/' + this.data.selectMonth, {});
+  }
+
+  getTableDetailProject(projectId, tableId) {
+    return this.POST('third/' + tableId + '/' + projectId, {});
   }
 
   getProjectDetail(projectId) {

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { StaticService } from './static.service';
 import { HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { Subject } from 'rxjs/Subject';
 
 @Injectable()
 export class DataService {
@@ -15,12 +16,20 @@ export class DataService {
   dateType: any;
   tableValue: any;
   submitCycle: any;
+  selectMonth: any;
+  private titleSource = new Subject();
+  // 获得一个Observable
+  titleObservable = this.titleSource.asObservable();
   constructor(public staticData: StaticService, public router: Router) {
     this.alert = this.hide;
     this.submitCycle = this.getSession('submitCycle');
     this.projectId = this.getSession('projectId');
     this.dateType = this.getSession('dateType');
     this.tableValue = this.getSession('tableId');
+  }
+
+  emitTitle(title: string) {
+    this.titleSource.next(title);
   }
 
   randomJPGName() {
@@ -47,6 +56,18 @@ export class DataService {
    */
   getFileName(name) {
     return name.split('/')[2];
+  }
+
+  chu(a, b) {
+    if (b !== 0) {
+      return a / b;
+    } else {
+      return 0;
+    }
+  }
+
+  returnPercent(num) {
+    return (num * 100).toFixed(2) + '%';
   }
 
   /**

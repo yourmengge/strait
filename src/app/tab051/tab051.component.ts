@@ -18,6 +18,7 @@ export class TAB051Component extends Submit {
   picVerifyStatus: any;
   picBudgetStatusDis = true;
   picVerifyStatusDis = true;
+  month: any;
   constructor(public staticData: StaticService, public data: DataService, public http: ApiService) {
     super(data, http, staticData);
     this.contractPriceType = this.staticData.contractPriceType;
@@ -26,6 +27,15 @@ export class TAB051Component extends Submit {
     this.picBudgetStatus = this.staticData.picBudgetStatus;
     this.picVerifyStatus = this.staticData.picVerifyStatus;
     this.TabNum = 'TAB051';
+    this.month = this.data.selectMonth;
+    this.initData();
+  }
+
+  beforeGetDetail() {
+    this.initData();
+  }
+
+  initData() {
     this.tableData = {
       projectId: this.data.projectId,
       month: this.data.month(),

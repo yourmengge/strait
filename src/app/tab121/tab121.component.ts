@@ -15,7 +15,9 @@ export class Tab121Component extends Submit {
     this.TabNum = 'TAB121';
     this.initData();
   }
-
+  beforeGetDetail() {
+    this.initData();
+  }
   initData() {
     this.tableData = {
       projectId: this.data.projectId,

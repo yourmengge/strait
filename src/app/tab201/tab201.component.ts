@@ -34,10 +34,10 @@ export class Tab201Component extends GetList {
     this.TabNum = 'TAB201';
     this.tableType = 0;
     this.tableTitle = '工程专业分包合同登记表';
-    this.initDetail();
+    this.initData();
   }
 
-  initDetail() {
+  initData() {
     this.detail = {
       projectId: this.data.projectId,
       month: this.data.getJD(),
@@ -96,7 +96,7 @@ export class Tab201Component extends GetList {
 
   tab1(num: number) {
     this.tableType = num;
-    this.initDetail();
+    this.initData();
     switch (num) {
       case 0:
         this.tableTitle = '工程专业分包合同登记表';
@@ -119,6 +119,31 @@ export class Tab201Component extends GetList {
 
   isTrue(string) {
     return string === '1' ? '是' : '否';
+  }
+
+  edit(data) {
+    this.detail = {
+      projectId: this.data.projectId,
+      month: this.data.month(),
+      d: data.d,
+      e: data.e,
+      f: data.f,
+      g: data.g,
+      h: data.h,
+      i: data.i,
+      j: data.j,
+      k: data.k,
+      l: data.l,
+      m: data.m,
+      n: data.n,
+      o: data.o,
+      p: data.p,
+      q: data.q,
+      r: data.r,
+      s: data.s,
+      id: data.id
+    };
+    this.state = 'active';
   }
 
 }

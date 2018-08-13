@@ -34,6 +34,10 @@ export class Tab101Component extends Submit {
     this.initData();
   }
 
+  beforeGetDetail() {
+    this.initData();
+  }
+
   afterGetDetail() {
     if (this.tableData.days31 < 0) {
       this.days31 = -1;
@@ -371,7 +375,7 @@ export class Tab101Component extends Submit {
   }
 
   chu(a, b) {
-    if (!this.data.isAllNull(a, b)) {
+    if (!this.data.isAllNull(a, b) && b !== 0) {
       return ((a / b) * 100).toFixed(2);
     }
   }

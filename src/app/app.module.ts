@@ -37,8 +37,10 @@ import { Tab231Component } from './tab231/tab231.component';
 import { Tab121Component } from './tab121/tab121.component';
 import { Tab101Component } from './tab101/tab101.component';
 import { GetFileNamePipe } from './get-file-name.pipe';
+import { Tab241Component } from './tab241/tab241.component';
 
 const appChildRoutes: Routes = [
+  { path: 'TAB241', component: Tab241Component }, // 24.考核月报
   { path: 'TAB231', component: Tab231Component }, // 23.工程统计报表
   { path: 'TAB061', component: Tab061Component }, // 6.2018年度四坚持一推进开展情况表
   { path: 'TAB211', component: Tab211Component }, // 21.在施项目A级分包企业使用情况月报告
@@ -61,7 +63,7 @@ const appChildRoutes: Routes = [
   { path: 'TAB011', component: Tab011Component }, // 1.商务索赔台账
   { path: 'TAB012', component: TAB012Component }, // 1.月商务索赔报表
   { path: 'TAB051', component: TAB051Component }, // 5.甲方中间计量台账
-  { path: '', redirectTo: 'TAB061', pathMatch: 'full' }
+  { path: '', redirectTo: '', pathMatch: 'full' }
 ];
 
 const router: Routes = [
@@ -85,6 +87,7 @@ const router: Routes = [
     AlertComponent,
     Tab231Component,
     GetFileNamePipe,
+    Tab241Component,
     Tab101Component,
     Tab121Component,
     Tab061Component,

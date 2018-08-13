@@ -48,4 +48,24 @@ export class TAB081Component extends GetList {
     };
   }
 
+  edit(data) {
+    this.detail = {
+      projectId: this.data.projectId,
+      month: this.data.month(),
+      a: data.a,
+      c: data.c,
+      d: data.d,
+      e: data.e,
+      f: data.f,
+      g: data.g,
+      h: data.h,
+      i: data.i,
+      j: data.j,
+      k: data.k,
+      l: data.l,
+      id: data.id
+    };
+    this.state = 'active';
+  }
+
 }

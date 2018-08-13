@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ApiService } from '../api.service';
 import { DataService } from '../data.service';
 import { Submit } from '../submit';
@@ -12,9 +12,13 @@ export class Tab231Component extends Submit {
   constructor(public http: ApiService, public data: DataService, public staticData: StaticService) {
     super(data, http, staticData);
     this.TabNum = 'TAB231';
-    this.initTableData();
+    this.initData();
   }
-  initTableData() {
+
+  beforeGetDetail() {
+    this.initData();
+  }
+  initData() {
     this.tableData = {
       projectId: this.data.projectId,
       month: this.data.month(),
@@ -48,7 +52,6 @@ export class Tab231Component extends Submit {
       ar: '',
       at: '',
       au: '',
-      av: '',
       aw: '',
       ax: '在建',
       ay: '提前',
@@ -67,7 +70,7 @@ export class Tab231Component extends Submit {
   }
 
   tableAN(a, b) {
-    if (!this.data.isAllNull(a, b)) {
+    if (!this.data.isAllNull(a, b) && b !== 0) {
       return (a / b * 100).toFixed(2);
     }
   }

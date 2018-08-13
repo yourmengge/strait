@@ -12,7 +12,7 @@ export class StaticService {
   // host = 'http://192.168.1.104:8082/zjhx/';
   // host = 'http://101.37.85.69:8081/zjhx/';
   host = 'http://218.85.23.217:8082/zjhx/';
-  // host = 'http://192.168.88.148:8080/zjhx/';
+  // host = 'http://192.168.88.166:8080/zjhx/';
   tableData = {
 
   };

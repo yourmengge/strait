@@ -12,6 +12,14 @@ export class TAB151Component extends Submit {
   constructor(public data: DataService, public http: ApiService, public staticData: StaticService) {
     super(data, http, staticData);
     this.TabNum = 'TAB151';
+    this.initData();
+  }
+
+  beforeGetDetail() {
+    this.initData();
+  }
+
+  initData() {
     this.tableData = {
       projectId: this.data.projectId,
       month: this.data.month(),

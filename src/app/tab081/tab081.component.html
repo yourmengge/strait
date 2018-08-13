@@ -7,7 +7,7 @@
     <div class="content">
       <div class="content-name">监控要素</div>
       <div class="content-input">
-        <input  type="text" name="" id="" [(ngModel)]='detail.a'>
+        <input type="text" name="" id="" [(ngModel)]='detail.a'>
       </div>
       <div class="content-name">分包/分供合同名称</div>
       <div class="content-input">
@@ -17,7 +17,7 @@
     <div class="content">
       <div class="content-name">分包/分供商名称</div>
       <div class="content-input">
-        <input  type="text" name="" id="" [(ngModel)]='detail.d'>
+        <input type="text" name="" id="" [(ngModel)]='detail.d'>
       </div>
       <div class="content-name">风险事件</div>
       <div class="content-input">
@@ -27,7 +27,7 @@
     <div class="content">
       <div class="content-name">造成该事件的原因</div>
       <div class="content-input">
-        <input  type="text" name="" id="" [(ngModel)]='detail.f'>
+        <input type="text" name="" id="" [(ngModel)]='detail.f'>
       </div>
       <div class="content-name">风险等级</div>
       <div class="content-input">
@@ -37,7 +37,7 @@
     <div class="content">
       <div class="content-name">风险事件持续时间</div>
       <div class="content-input">
-        <input  type="text" name="" id="" [(ngModel)]='detail.h'>
+        <input type="text" name="" id="" [(ngModel)]='detail.h'>
       </div>
       <div class="content-name">拟采取措施</div>
       <div class="content-input">
@@ -47,7 +47,7 @@
     <div class="content">
       <div class="content-name">责任部门</div>
       <div class="content-input">
-        <input  type="text" name="" id="" [(ngModel)]='detail.j'>
+        <input type="text" name="" id="" [(ngModel)]='detail.j'>
       </div>
       <div class="content-name">责任人</div>
       <div class="content-input">
@@ -68,6 +68,9 @@
 <div class="table-div">
   <table border="1">
     <tr>
+      <td>
+        操作
+      </td>
       <td>
         监控要素
       </td>
@@ -103,17 +106,20 @@
       </td>
     </tr>
     <tr *ngFor='let a of list'>
-        <td>{{a.a}}</td>
-        <td>{{a.c}}</td>
-        <td>{{a.d}}</td>
-        <td>{{a.e}}</td>
-        <td>{{a.f}}</td>
-        <td>{{a.g}}</td>
-        <td>{{a.h}}</td>
-        <td>{{a.i}}</td>
-        <td>{{a.j}}</td>
-        <td>{{a.k}}</td>
-        <td>{{a.l}}</td>
-      </tr>
+      <td (click)='edit(a)' class="edit">
+        编辑
+      </td>
+      <td>{{a.a}}</td>
+      <td>{{a.c}}</td>
+      <td>{{a.d}}</td>
+      <td>{{a.e}}</td>
+      <td>{{a.f}}</td>
+      <td>{{a.g}}</td>
+      <td>{{a.h}}</td>
+      <td>{{a.i}}</td>
+      <td>{{a.j}}</td>
+      <td>{{a.k}}</td>
+      <td>{{a.l}}</td>
+    </tr>
   </table>
 </div>

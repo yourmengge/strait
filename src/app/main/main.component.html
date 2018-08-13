@@ -23,6 +23,9 @@
   </div>
   <div class="main-content my-scroll">
     <button class="btn btn-primary" style="margin-bottom:20px;" (click)='add()'>项目基础信息</button>
+    <select class="selectMonth" name="" id="" [(ngModel)]='selectMonth' (change)='changeMonth()'>
+      <option *ngFor="let i of cycleList" [value]="i">{{i}}</option>
+    </select>
     <div [@heroState]="state">
       <div class="title1">
         项目基础信息
@@ -284,7 +287,7 @@
           </div>
           <div class="content-name">预付款比例(%)</div>
           <div class="content-input">
-            <input type="number" name="" id="" [(ngModel)]='tableData.prePay' max="1" min="0">
+            <input type="text" name="" id="" [(ngModel)]='tableData.prePay' max="1" min="0">
           </div>
         </div>
         <div class="content textarea">

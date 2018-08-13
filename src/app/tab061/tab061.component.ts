@@ -32,6 +32,10 @@ export class Tab061Component extends Submit {
 
   }
 
+  beforeGetDetail() {
+    this.initData();
+  }
+
   initData() {
     this.tableData = {
       projectId: this.data.projectId,
@@ -72,13 +76,13 @@ export class Tab061Component extends Submit {
     };
   }
   tableAJ(ah, ai) {
-    if (!this.data.isAllNull(ah, ai)) {
+    if (!this.data.isAllNull(ah, ai) && ai !== 0) {
       return (this.data.addNum(ah, ai, '-') / ai * 100).toFixed(2);
     }
   }
 
   tableAK(ag, ah) {
-    if (!this.data.isAllNull(ag, ah)) {
+    if (!this.data.isAllNull(ag, ah) && ag !== 0) {
       return (this.data.addNum(ag, ah, '-') / ag * 100).toFixed(2);
     }
   }
@@ -91,7 +95,7 @@ export class Tab061Component extends Submit {
   }
 
   tableN(l, k, j) {
-    if (!this.data.isAllNull(j, k, l)) {
+    if (!this.data.isAllNull(j, k, l) && j !== 0) {
       return ((k + l) / j).toFixed(4);
     }
   }

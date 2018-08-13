@@ -1,0 +1,186 @@
+<div class="title1">
+  目标责任书的签订情况
+  <span class="actionText" (click)='action()'>{{actionType?'展开':'关闭'}}</span>
+</div>
+<div class="title1-content" *ngIf='!actionType'>
+  <div class="content">
+    <div class="content-name">合同评审时利润率（%）</div>
+    <div class="content-input">
+      <input type="number" name="" id="" [(ngModel)]='tableData.i'>
+    </div>
+    <div class="content-name">项目策划书编制时间</div>
+    <div class="content-input">
+      <input type="date" name="" id="" [(ngModel)]='tableData.j'>
+    </div>
+  </div>
+  <div class="content">
+    <div class="content-name">应签订时间</div>
+    <div class="content-input">
+      <input type="date" name="" id="" [(ngModel)]='tableData.k'>
+    </div>
+    <div class="content-name">实际签订时间</div>
+    <div class="content-input">
+      <input type="date" name="" id="" [(ngModel)]='tableData.l'>
+    </div>
+  </div>
+  <div class="content">
+    <div class="content-name">预计总收入</div>
+    <div class="content-input">
+      <input type="number" name="" id="" [(ngModel)]='tableData.m'>
+    </div>
+    <div class="content-name">项目成本预算</div>
+    <div class="content-input">
+      <input type="number" name="" id="" [(ngModel)]='tableData.n'>
+    </div>
+  </div>
+  <div class="content">
+    <div class="content-name">责任成本</div>
+    <div class="content-input">
+      <input type="number" name="" id="" [(ngModel)]='tableData.o'>
+    </div>
+    <div class="content-name">考核节点</div>
+    <div class="content-input">
+      <input type="text" name="" id="" [(ngModel)]='tableData.p'>
+    </div>
+  </div>
+  <div class="content">
+    <div class="content-name">上交利润（%)</div>
+    <div class="content-input">
+      <input type="number" name="" id="" [(ngModel)]='tableData.q'>
+    </div>
+    <div class="content-name">项目商务策划编制时间</div>
+    <div class="content-input">
+      <input type="date" name="" id="" [(ngModel)]='tableData.r'>
+    </div>
+  </div>
+  <div class="content">
+    <div class="content-name">应缴金额</div>
+    <div class="content-input">
+      <input type="number" name="" id="" [(ngModel)]='tableData.s'>
+    </div>
+    <div class="content-name">实缴金额</div>
+    <div class="content-input">
+      <input type="number" name="" id="" [(ngModel)]='tableData.t'>
+    </div>
+  </div>
+  <div class="content">
+    <div class="content-name">缴纳比例(%)</div>
+    <div class="content-input">
+      {{tableU(tableData.s,tableData.t)}}
+    </div>
+    <div class="content-name">非现金缴纳登记凭证</div>
+    <div class="content-input">
+      <input type="text" name="" id="" [(ngModel)]='tableData.v'>
+    </div>
+  </div>
+  <div class="content">
+    <div class="content-name">现金缴纳凭证号</div>
+    <div class="content-input">
+      <input type="text" name="" id="" [(ngModel)]='tableData.w'>
+    </div>
+    <div class="content-name">返还金额</div>
+    <div class="content-input">
+      <input type="number" name="" id="" [(ngModel)]='tableData.x'>
+    </div>
+  </div>
+  <div class="content">
+    <div class="content-name">返还时间节点</div>
+    <div class="content-input">
+      <input type="text" name="" id="" [(ngModel)]='tableData.y'>
+    </div>
+    <div class="content-name">返还文件编号</div>
+    <div class="content-input">
+      <input type="text" name="" id="" [(ngModel)]='tableData.z'>
+    </div>
+  </div>
+  <div class="content">
+    <div class="content-name">财务凭证号</div>
+    <div class="content-input">
+      <input type="text" name="" id="" [(ngModel)]='tableData.aa'>
+    </div>
+    <div class="content-name">考核类型</div>
+    <div class="content-input">
+      <input type="text" name="" id="" [(ngModel)]='tableData.ab'>
+    </div>
+  </div>
+  <div class="content">
+    <div class="content-name">考核节点</div>
+    <div class="content-input">
+      <input type="text" name="" id="" [(ngModel)]='tableData.ac'>
+    </div>
+    <div class="content-name"></div>
+    <div class="content-input">
+    </div>
+  </div>
+</div>
+
+<div class="title1">
+  考核情况
+</div>
+<div class="title1-content">
+  <div class="content">
+    <div class="content-name">总收入</div>
+    <div class="content-input">
+      <input type="number" name="" id="" [(ngModel)]='tableData2.ad'>
+    </div>
+    <div class="content-name">总成本</div>
+    <div class="content-input">
+      <input type="number" name="" id="" [(ngModel)]='tableData2.ae'>
+    </div>
+  </div>
+  <div class="content">
+    <div class="content-name">考核利润率(%)</div>
+    <div class="content-input">
+      {{tableAF(tableData2.ad,tableData2.ae)}}
+    </div>
+    <div class="content-name">节点考核时整体利润率(%)</div>
+    <div class="content-input">
+      <input type="number" name="" id="" [(ngModel)]='tableData2.ag'>
+    </div>
+  </div>
+  <div class="content">
+    <div class="content-name">考核时间</div>
+    <div class="content-input">
+      <input type="date" name="" id="" [(ngModel)]='tableData2.ah'>
+    </div>
+    <div class="content-name">考核文件编号</div>
+    <div class="content-input">
+      <input type="text" name="" id="" [(ngModel)]='tableData2.ai'>
+    </div>
+  </div>
+</div>
+
+<div class="title1">
+  奖励兑现
+</div>
+<div class="title1-content">
+  <div class="content">
+    <div class="content-name">应兑现金额</div>
+    <div class="content-input">
+      <input type="number" name="" id="" [(ngModel)]='tableData2.aj'>
+    </div>
+    <div class="content-name">实际兑现金额</div>
+    <div class="content-input">
+      <input type="number" name="" id="" [(ngModel)]='tableData2.ak'>
+    </div>
+  </div>
+  <div class="content">
+    <div class="content-name">凭证号</div>
+    <div class="content-input">
+      <input type="text" name="" id="" [(ngModel)]='tableData2.al'>
+    </div>
+    <div class="content-name">兑现文件编号</div>
+    <div class="content-input">
+      <input type="text" name="" id="" [(ngModel)]='tableData2.am'>
+    </div>
+  </div>
+  <div class="content">
+      <div class="content-name">备注</div>
+      <div class="content-input">
+        <input type="text" name="" id="" [(ngModel)]='tableData2.an'>
+      </div>
+    </div>
+</div>
+<div class="button-div">
+  <button class="btn btn-primary btn-block" (click)='submit()'>提交</button>
+</div>

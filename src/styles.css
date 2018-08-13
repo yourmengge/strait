@@ -17,6 +17,24 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
     -webkit-appearance: none;
 }
 
+.edit {
+    padding: 0 10px !important;
+    color: #007bff;
+    cursor: pointer;
+    word-break: keep-all;
+}
+
+.edit:hover {
+    color: #0357b1;
+}
+
+.actionText {
+    float: right;
+    margin-right: 30px;
+    cursor: pointer;
+    user-select: none;
+}
+
 .title1 {
     height: 60px;
     line-height: 60px;
@@ -180,12 +198,18 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 }
 
 .table-div table {
-    width: 900px;
+    width: 100%;
     margin: auto;
     text-align: center;
     margin-top: 10px;
     font-size: 13px;
     margin-bottom: 40px;
+}
+
+.money {
+    float: left;
+    text-align: center;
+    width: 100%;
 }
 
 .table-div table input {
@@ -201,7 +225,8 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 }
 
 .table-div table tr td {
-    padding: 5px;
+    padding: 0px;
+    /* word-break: keep-all; */
 }
 
 .table-div table input[type='checkbox'] {
@@ -313,7 +338,7 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
     margin-left: 5px !important;
 }
 
-.delete-btn:hover{
+.delete-btn:hover {
     background: #990505;
 }
 
@@ -321,6 +346,6 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
     background: #00b59d;
 }
 
-.download-btn:hover{
+.download-btn:hover {
     background: #078171;
 }

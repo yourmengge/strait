@@ -7,7 +7,7 @@
     <div class="content">
       <div class="content-name">期号</div>
       <div class="content-input">
-        <input  type="text" name="" id="" [(ngModel)]='detail.b'>
+        <input type="text" name="" id="" [(ngModel)]='detail.b'>
       </div>
       <div class="content-name">完成工程款月份</div>
       <div class="content-input">
@@ -17,7 +17,7 @@
     <div class="content">
       <div class="content-name">申请及批准时间</div>
       <div class="content-input">
-        <input  type="date" name="" id="" [(ngModel)]='detail.e'>
+        <input type="date" name="" id="" [(ngModel)]='detail.e'>
       </div>
       <div class="content-name">申请单编号</div>
       <div class="content-input">
@@ -27,7 +27,7 @@
     <div class="content">
       <div class="content-name">施工单位申请金额</div>
       <div class="content-input">
-        <input  type="number" name="" id="" [(ngModel)]='detail.g'>
+        <input type="number" name="" id="" [(ngModel)]='detail.g'>
       </div>
     </div>
     <div class="title3 content">
@@ -51,7 +51,7 @@
           </div>
           <div class="flex-4 content-input">
             <p>
-              <input [(ngModel)]='detail.i' type="number" name="" id="" >
+              <input [(ngModel)]='detail.i' type="number" name="" id="">
             </p>
           </div>
         </div>
@@ -78,7 +78,7 @@
           </div>
           <div class="flex-4 content-input">
             <p>
-              <input [(ngModel)]='detail.k' type="number" name="" id="" >
+              <input [(ngModel)]='detail.k' type="number" name="" id="">
             </p>
           </div>
         </div>
@@ -105,7 +105,7 @@
           </div>
           <div class="flex-4 content-input">
             <p>
-              <input [(ngModel)]='detail.m' type="number" name="" id="" >
+              <input [(ngModel)]='detail.m' type="number" name="" id="">
             </p>
           </div>
         </div>
@@ -132,7 +132,7 @@
           </div>
           <div class="flex-4 content-input">
             <p>
-              <input [(ngModel)]='detail.p' type="number" name="" id="" >
+              <input [(ngModel)]='detail.p' type="number" name="" id="">
             </p>
           </div>
         </div>
@@ -152,6 +152,9 @@
 <div class="table-div">
   <table border="1">
     <tr>
+      <td rowspan="2">
+        操作
+      </td>
       <td rowspan="2">
         期号
       </td>
@@ -210,6 +213,9 @@
       </td>
     </tr>
     <tr *ngFor='let a of list'>
+      <td (click)='edit(a)' class="edit">
+        编辑
+      </td>
       <td>{{a.b}}</td>
       <td>{{a.c}}</td>
       <td>{{a.e}}</td>

@@ -30,12 +30,13 @@ export class MainComponent implements DoCheck, OnInit {
   showTableList: any;
   url: any;
   state = 'inactive';
+  selectMonth: any;
   hasProject = this.staticData.hide;
   dateList = [];
   refresh = true;
   tableData: any;
   submitCycle: any;
-
+  cycleList = [];
   constructor(public staticData: StaticService, public data: DataService, public http: ApiService) {
     this.dateType = this.data.dateType;
     this.tableData = {
@@ -201,12 +202,55 @@ export class MainComponent implements DoCheck, OnInit {
       }
     });
     if (this.refresh) {
-      this.tableValue = this.data.getUrl(2);
+      if (!this.data.isNull(this.data.getUrl(2))) {
+        this.tableValue = this.data.getUrl(2);
+        this.data.submitCycle = array[0].submitCycle;
+        this.getMonth(array[0]);
+      } else {
+        this.tableValue = array[0].alias;
+        this.data.submitCycle = array[0].submitCycle;
+        this.getMonth(array[0]);
+        this.data.goto('main/' + this.tableValue);
+      }
     } else {
       this.tableValue = array[0].alias;
+      this.data.submitCycle = array[0].submitCycle;
+      this.getMonth(array[0]);
       this.data.goto('main/' + this.tableValue);
     }
     return array;
+  }
+
+  /**
+   * 获取季度或月份列表
+   */
+  getMonth(array) {
+    this.cycleList = this.initMonth(array.cycleList.split(','));
+    this.selectMonth = this.cycleList[0];
+    this.data.selectMonth = this.selectMonth.replace(/[^0-9]/ig, '');
+  }
+
+  /**
+   * 初始化表格月份或季度
+   */
+  initMonth(array) {
+    const data = [];
+    if (this.data.submitCycle === 1) { // 表示季度
+      array.forEach(element => {
+        data.push(element.substring(0, 4) + '年第' + element.substr(4, 2) + '季度');
+      });
+      return data;
+    } else { // 表示月份
+      array.forEach(element => {
+        data.push(element.split('-')[0] + '年' + element.split('-')[1] + '月份');
+      });
+      return data;
+    }
+  }
+
+  changeMonth() {
+    this.data.selectMonth = this.selectMonth.replace(/[^0-9]/ig, '');
+    this.data.emitTitle('角色列表');
   }
 
   /**
@@ -228,6 +272,8 @@ export class MainComponent implements DoCheck, OnInit {
       if (this.tableValue === i.alias) {
         this.data.submitCycle = i.submitCycle;
         this.data.setSession('submitCycle', this.data.submitCycle);
+        this.data.submitCycle = i.submitCycle;
+        this.getMonth(i);
       }
     }
     this.data.goto('main/' + this.tableValue);

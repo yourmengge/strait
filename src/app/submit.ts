@@ -1,10 +1,11 @@
 import { DataService } from './data.service';
 import { ApiService } from './api.service';
 import { StaticService } from './static.service';
-import { OnInit } from '@angular/core';
+import { OnInit, OnDestroy } from '@angular/core';
 import { DateFormat } from './date-format';
+import { Subscription } from 'rxjs/Subscription';
 
-export class Submit implements OnInit {
+export class Submit implements OnInit, OnDestroy {
     isFreeNum = /^\-?\d{1,8}(\.\d{1,4})?$/;
     TabNum: any;
     tableData: any;
@@ -13,15 +14,34 @@ export class Submit implements OnInit {
     fileList = [];
     docList = [];
     imgList = [];
+    selectMonth = '';
+    cycleList = [];
+
+    title: string;
+    subscription: Subscription;
+
     constructor(public data: DataService, public http: ApiService, public staticData: StaticService) {
         this.dateFormat = new DateFormat();
+        this.subscription = this.data.titleObservable.subscribe(src => {
+            if (this.data.getUrl(2) === this.TabNum) {
+                this.getDetail();
+            }
+        });
     }
-
+    ngOnDestroy() {
+        this.subscription.unsubscribe();
+    }
     ngOnInit() {
-        this.getDetail();
+        if (!this.data.isNull(this.data.selectMonth)) {
+            this.getDetail();
+        } else {
+            setTimeout(() => {
+                this.ngOnInit();
+            }, 1000);
+        }
+
         this.needOSS();
     }
-
     getFileName(type, name) {
         let fileName = '';
         if (this.staticData.isPhoto.test(type)) {
@@ -160,7 +180,12 @@ export class Submit implements OnInit {
         });
     }
 
+    beforeGetDetail() {
+
+    }
+
     getDetail() {
+        this.beforeGetDetail();
         this.http.getTableDetail(this.data.projectId, this.TabNum).subscribe((res) => {
             if (!this.data.isNull(res)) {
                 this.tableData = res;

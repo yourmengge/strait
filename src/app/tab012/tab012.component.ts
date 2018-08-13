@@ -13,6 +13,14 @@ export class TAB012Component extends Submit {
   constructor(public http: ApiService, public data: DataService, public staticData: StaticService) {
     super(data, http, staticData);
     this.TabNum = 'TAB012';
+    this.initData();
+  }
+
+  beforeGetDetail() {
+    this.initData();
+  }
+
+  initData() {
     this.tableData = {
       projectId: this.data.projectId,
       month: this.data.month(),
@@ -52,12 +60,7 @@ export class TAB012Component extends Submit {
 
   tableK(i, j) {
     if (!this.data.isAllNull(i, j)) {
-      if (i === 0 || i === null) {
-        return '';
-      } else {
-        return ((j / i) * 100).toFixed(2) + '%';
-      }
-
+      return this.data.returnPercent(this.data.chu(j, i));
     } else {
       return '';
     }
@@ -65,11 +68,7 @@ export class TAB012Component extends Submit {
 
   tableN(l, m) {
     if (!this.data.isAllNull(l, m)) {
-      if (l === 0 || l === null || m === null) {
-        return '';
-      } else {
-        return (((l - m) / l) * 100).toFixed(2) + '%';
-      }
+      return this.data.returnPercent(this.data.chu((l - m), l));
     } else {
       return '';
     }

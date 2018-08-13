@@ -25,12 +25,19 @@
     margin-bottom: 20px;
 }
 
-.title select{
+select{
     margin-right: 20px;
     cursor: pointer;
     border: solid 1px #b9b9b9;
     border-radius: 5px;
     padding: 2px 15px;
+}
+
+.selectMonth{
+    height: 38px;
+    margin-left: 20px;
+    position: relative;
+    vertical-align: top;
 }
 
 .alert-div {

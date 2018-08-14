@@ -16,7 +16,7 @@ export class Submit implements OnInit, OnDestroy {
     imgList = [];
     selectMonth = '';
     cycleList = [];
-
+    exportBtn: boolean;
     title: string;
     subscription: Subscription;
 
@@ -165,11 +165,12 @@ export class Submit implements OnInit, OnDestroy {
 
     submit() {
         this.beforeSubmit();
-        if (this.data.submitCycle === 1 || this.data.submitCycle === '1') {
-            this.tableData.month = this.data.getJD();
-        } else {
-            this.tableData.month = this.data.month();
-        }
+        // if (this.data.submitCycle === 1 || this.data.submitCycle === '1') {
+        //     this.tableData.month = this.data.getJD();
+        // } else {
+        //     this.tableData.month = this.data.month();
+        // }
+        this.tableData.month = this.data.selectMonth;
         this.tableData.projectId = this.data.projectId;
         this.http.postTableDetail(this.tableData, this.TabNum).subscribe(() => {
             this.getDetail();
@@ -190,6 +191,11 @@ export class Submit implements OnInit, OnDestroy {
             if (!this.data.isNull(res)) {
                 this.tableData = res;
                 this.tableData.id = res['id'] || '';
+                if (!this.data.isNull(this.tableData.id)) {
+                    this.data.emitTitle2(true);
+                } else {
+                    this.data.emitTitle2(false);
+                }
             }
             this.afterGetDetail();
         }, (err) => {

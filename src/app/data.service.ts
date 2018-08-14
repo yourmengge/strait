@@ -20,6 +20,8 @@ export class DataService {
   private titleSource = new Subject();
   // 获得一个Observable
   titleObservable = this.titleSource.asObservable();
+  private titleSource2 = new Subject();
+  titleObservable2 = this.titleSource2.asObservable();
   constructor(public staticData: StaticService, public router: Router) {
     this.alert = this.hide;
     this.submitCycle = this.getSession('submitCycle');
@@ -30,6 +32,10 @@ export class DataService {
 
   emitTitle(title: string) {
     this.titleSource.next(title);
+  }
+
+  emitTitle2(title: boolean) {
+    this.titleSource2.next(title);
   }
 
   randomJPGName() {
@@ -226,6 +232,35 @@ export class DataService {
 
     } else {
       return { headers: new HttpHeaders({ 'Authorization': this.token }) };
+    }
+  }
+
+  downloadFile(res, text) {
+    const blob = new Blob([res], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+    const objectUrl = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    document.body.appendChild(a);
+    a.setAttribute('style', 'display: none');
+    a.setAttribute('href', objectUrl);
+    a.setAttribute('download', text + '.xls');
+    a.click();
+    URL.revokeObjectURL(objectUrl);
+  }
+
+  getExportHeader() {
+    if (this.isNull(this.token)) {
+      if (this.isNull(this.getSession('token'))) {
+        this.ErrorMsg('请重新登录');
+        this.goto('/login');
+        return;
+      } else {
+        this.token = this.getSession('token');
+        // tslint:disable-next-line:max-line-length
+        return new HttpHeaders({ 'Authorization': this.getSession('token'), 'Content-Type': 'application/x-www-form-urlencoded' });
+      }
+
+    } else {
+      return new HttpHeaders({ 'Authorization': this.token, 'Content-Type': 'application/x-www-form-urlencoded' });
     }
   }
 

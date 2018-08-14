@@ -26,6 +26,8 @@
     <select class="selectMonth" name="" id="" [(ngModel)]='selectMonth' (change)='changeMonth()'>
       <option *ngFor="let i of cycleList" [value]="i">{{i}}</option>
     </select>
+    <span *ngIf='!exportBtn' class="notSubmit">未提交</span>
+    <button class="btn btn-primary exportBtn" *ngIf='exportBtn' (click)='export()'>导出列表</button>
     <div [@heroState]="state">
       <div class="title1">
         项目基础信息

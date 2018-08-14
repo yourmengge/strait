@@ -24,14 +24,14 @@ export class ApiService {
   }
 
   TableList(id) {
-    return this.POST('third/projects/' + id + '/table', {});
+    return this.POST(`third/projects/${id}/table`, {});
   }
 
   /**
    * 获取预览图片
    */
   getThumbnail(name) {
-    return this.POST('third/oss/visit?key=' + name, {});
+    return this.POST(`third/oss/visit?key=${name}`, {});
   }
 
   /**
@@ -45,28 +45,35 @@ export class ApiService {
    * @param data
    */
   tableDetail(data) {
-    return this.POST('third/list/' + data.projectId + '/' + data.alias + '/' + this.data.selectMonth
-      + '?pageNo=' + data.pageNo + '&pageSize='
-      + this.pageSize + (data.type === undefined ? '' : ('&type=' + data.type)), {});
+    return this.POST(`third/list/${data.projectId}/${data.alias}/${this.data.selectMonth}
+    ?pageNo=${data.pageNo}&pageSize=${this.pageSize}${(data.type === undefined ? '' : ('&type=' + data.type))}`, {});
   }
 
   postTableDetail(data, tableId) {
-    return this.POST('third/' + tableId, data);
+    return this.POST(`third/${tableId}`, data);
   }
 
   getTableDetail(projectId, tableId) {
-    return this.POST('third/rpt/' + projectId + '/' + tableId + '/' + this.data.selectMonth, {});
+    return this.POST(`third/rpt/${projectId}/${tableId}/${this.data.selectMonth}`, {});
   }
 
   getTableDetailProject(projectId, tableId) {
-    return this.POST('third/' + tableId + '/' + projectId, {});
+    return this.POST(`third/${tableId}/${projectId}`, {});
   }
 
   getProjectDetail(projectId) {
-    return this.POST('third/project/' + projectId, {});
+    return this.POST(`third/project/${projectId}`, {});
   }
 
   postProjectDetail(data) {
     return this.POST('third/project', data);
+  }
+
+
+
+  export(projectId, tabId) {
+    this.data.getExportHeader();
+    return this.http.post(this.host + `third/export/${projectId}/${tabId}/${this.data.selectMonth}`, {}
+      , { headers: this.data.getExportHeader(), responseType: 'arraybuffer' });
   }
 }

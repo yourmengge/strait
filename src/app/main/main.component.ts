@@ -3,6 +3,7 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
 import { DataService } from '../data.service';
 import { StaticService } from '../static.service';
 import { ApiService } from '../api.service';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-main',
@@ -28,6 +29,7 @@ export class MainComponent implements DoCheck, OnInit {
   tableList: any;
   tableValue: any;
   showTableList: any;
+  tabName: any;
   url: any;
   state = 'inactive';
   selectMonth: any;
@@ -37,8 +39,31 @@ export class MainComponent implements DoCheck, OnInit {
   tableData: any;
   submitCycle: any;
   cycleList = [];
+  exportBtn: any;
+  subscription: Subscription;
   constructor(public staticData: StaticService, public data: DataService, public http: ApiService) {
     this.dateType = this.data.dateType;
+    this.initData();
+    this.data.setSession('dateType', this.dateType);
+    this.subscription = this.data.titleObservable2.subscribe(src => {
+      if (src) {
+        this.exportBtn = true;
+      } else {
+        this.exportBtn = false;
+      }
+    });
+  }
+
+  ngDoCheck() {
+
+  }
+
+  ngOnInit() {
+    this.getList();
+    this.url = this.data.getUrl(2);
+  }
+
+  initData() {
     this.tableData = {
       'id': '',
       'bizType': 1,
@@ -84,16 +109,6 @@ export class MainComponent implements DoCheck, OnInit {
       'signLevel': 1,
       'undertakeMode': 1
     };
-    this.data.setSession('dateType', this.dateType);
-  }
-
-  ngDoCheck() {
-
-  }
-
-  ngOnInit() {
-    this.getList();
-    this.url = this.data.getUrl(2);
   }
 
   postDetail() {
@@ -205,10 +220,12 @@ export class MainComponent implements DoCheck, OnInit {
       if (!this.data.isNull(this.data.getUrl(2))) {
         this.tableValue = this.data.getUrl(2);
         this.data.submitCycle = array[0].submitCycle;
+        this.tabName = array[0].tableName;
         this.getMonth(array[0]);
       } else {
         this.tableValue = array[0].alias;
         this.data.submitCycle = array[0].submitCycle;
+        this.tabName = array[0].tableName;
         this.getMonth(array[0]);
         this.data.goto('main/' + this.tableValue);
       }
@@ -273,6 +290,7 @@ export class MainComponent implements DoCheck, OnInit {
         this.data.submitCycle = i.submitCycle;
         this.data.setSession('submitCycle', this.data.submitCycle);
         this.data.submitCycle = i.submitCycle;
+        this.tabName = i.tableName;
         this.getMonth(i);
       }
     }
@@ -288,5 +306,14 @@ export class MainComponent implements DoCheck, OnInit {
     this.showTableList = this.typeOfTableList(this.dateType);
     this.data.setSession('dateType', this.dateType);
     this.change();
+  }
+
+  export() {
+    this.http.export(this.data.projectId, this.data.getUrl(2)).subscribe((res) => {
+      this.data.downloadFile(res, this.selectMonth + this.tabName);
+    }, (err) => {
+      this.data.error = err.error;
+      this.data.isError();
+    });
   }
 }

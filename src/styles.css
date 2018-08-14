@@ -349,3 +349,15 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 .download-btn:hover {
     background: #078171;
 }
+
+.exportBtn {
+    float: right;
+}
+
+.notSubmit{
+    float: right;
+    color: #e21818;
+    font-size: 19px;
+    margin-right: 10px;
+    margin-top: 10px;
+}

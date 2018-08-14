@@ -37,11 +37,8 @@ export class Tab241Component extends Submit {
 
   submit() {
     this.beforeSubmit();
-    if (this.data.submitCycle === 1 || this.data.submitCycle === '1') {
-      this.tableData2.month = this.data.getJD();
-    } else {
-      this.tableData2.month = this.data.month();
-    }
+    this.tableData.month = this.data.selectMonth;
+    this.tableData2.month = this.data.selectMonth;
     this.tableData.projectId = this.data.projectId;
     this.tableData2.projectId = this.data.projectId;
     this.http.postTableDetail(this.tableData, this.TabNum + 'Ext').subscribe(() => {

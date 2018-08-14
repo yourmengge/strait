@@ -46,7 +46,7 @@ export class GetList implements OnInit, OnDestroy {
 
     submit() {
         if (this.state === 'active') {
-            this.detail.month = this.data.month();
+            this.detail.month = this.data.selectMonth;
             this.detail.projectId = this.data.projectId;
             this.http.postTableDetail(this.detail, this.TabNum).subscribe((res) => {
                 this.getDetail();
@@ -67,6 +67,12 @@ export class GetList implements OnInit, OnDestroy {
         };
         this.http.tableDetail(data).subscribe((res) => {
             this.list = res['rows'];
+
+            if (res['rows'].length !== 0) {
+                this.data.emitTitle2(true);
+            } else {
+                this.data.emitTitle2(false);
+            }
         }, (err) => {
             this.data.error = err.error;
             this.data.isError();

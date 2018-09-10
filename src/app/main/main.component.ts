@@ -310,7 +310,13 @@ export class MainComponent implements DoCheck, OnInit {
 
   export() {
     this.http.export(this.data.projectId, this.data.getUrl(2)).subscribe((res) => {
-      this.data.downloadFile(res, this.selectMonth + this.tabName);
+      let type = '.xls';
+      if (this.data.getUrl(2) === 'TAB101' || this.data.getUrl(2) === 'TAB121') {
+        type = '.doc';
+      } else {
+        type = '.xls';
+      }
+      this.data.downloadFile(res, this.selectMonth + this.tabName, type);
     }, (err) => {
       this.data.error = err.error;
       this.data.isError();

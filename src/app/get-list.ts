@@ -40,6 +40,11 @@ export class GetList implements OnInit, OnDestroy {
         }
     }
 
+    edit(data) {
+        this.detail = Object.assign({}, data);
+        this.state = 'active';
+    }
+
     change() {
         console.log(this.list);
     }
@@ -51,6 +56,7 @@ export class GetList implements OnInit, OnDestroy {
             this.http.postTableDetail(this.detail, this.TabNum).subscribe((res) => {
                 this.getDetail();
                 this.data.ErrorMsg('提交成功！');
+                this.state = 'inactive';
                 this.initData();
             }, (err) => {
                 this.data.error = err.error;

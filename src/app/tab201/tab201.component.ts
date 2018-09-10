@@ -32,7 +32,7 @@ export class Tab201Component extends GetList {
   constructor(public http: ApiService, public data: DataService, public staticData: StaticService) {
     super(data, http, staticData);
     this.TabNum = 'TAB201';
-    this.tableType = 0;
+    this.tableType = 1;
     this.tableTitle = '工程专业分包合同登记表';
     this.initData();
   }
@@ -60,19 +60,19 @@ export class Tab201Component extends GetList {
       s: '',
       type: this.tableType
     };
-    if (this.tableType === 0 || this.tableType === 1) {
+    if (this.tableType === 2 || this.tableType === 1) {
       this.detail.j = '是';
       this.detail.q = '是';
     }
-    if (this.tableType === 2) {
+    if (this.tableType === 3) {
       this.detail.i = '是';
       this.detail.o = '是';
     }
-    if (this.tableType === 3) {
+    if (this.tableType === 4) {
       this.detail.k = '是';
       this.detail.q = '是';
     }
-    if (this.tableType === 4) {
+    if (this.tableType === 5) {
       this.detail.h = '是';
       this.detail.m = '是';
     }
@@ -98,19 +98,19 @@ export class Tab201Component extends GetList {
     this.tableType = num;
     this.initData();
     switch (num) {
-      case 0:
+      case 1:
         this.tableTitle = '工程专业分包合同登记表';
         break;
-      case 1:
+      case 2:
         this.tableTitle = '工程劳务分包合同登记表';
         break;
-      case 2:
+      case 3:
         this.tableTitle = '工程材料采购合同登记表';
         break;
-      case 3:
+      case 4:
         this.tableTitle = '工程设备租赁合同登记表';
         break;
-      case 4:
+      case 5:
         this.tableTitle = '工程其他合同登记表';
         break;
     }
@@ -119,31 +119,6 @@ export class Tab201Component extends GetList {
 
   isTrue(string) {
     return string === '1' ? '是' : '否';
-  }
-
-  edit(data) {
-    this.detail = {
-      projectId: this.data.projectId,
-      month: this.data.month(),
-      d: data.d,
-      e: data.e,
-      f: data.f,
-      g: data.g,
-      h: data.h,
-      i: data.i,
-      j: data.j,
-      k: data.k,
-      l: data.l,
-      m: data.m,
-      n: data.n,
-      o: data.o,
-      p: data.p,
-      q: data.q,
-      r: data.r,
-      s: data.s,
-      id: data.id
-    };
-    this.state = 'active';
   }
 
 }

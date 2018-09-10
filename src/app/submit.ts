@@ -86,7 +86,8 @@ export class Submit implements OnInit, OnDestroy {
                 } else {
                     this.docList.push(res);
                 }
-
+                const obj = document.getElementById('file');
+                obj.outerHTML = obj.outerHTML;
             });
         } catch (e) {
             console.error(e);

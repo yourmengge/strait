@@ -52,28 +52,4 @@ export class TAB052Component extends GetList {
       r: ''
     };
   }
-  edit(data) {
-    this.detail = {
-      projectId: this.data.projectId,
-      month: this.data.month(),
-      b: data.b,
-      d: data.d,
-      e: data.e,
-      f: data.f,
-      g: data.g,
-      h: data.h,
-      i: data.i,
-      j: data.j,
-      k: data.k,
-      l: data.l,
-      m: data.m,
-      n: data.n,
-      o: data.o,
-      p: data.p,
-      q: data.q,
-      r: data.r,
-      id: data.id
-    };
-    this.state = 'active';
-  }
 }

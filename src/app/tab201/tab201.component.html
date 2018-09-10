@@ -1,17 +1,17 @@
 <div class="navigation">
-  <button (click)='tab1(0)' class="button {{tableType===0?'button-active':''}}">
+  <button (click)='tab1(1)' class="button {{tableType===1?'button-active':''}}">
     工程专业分包合同登记表
   </button>
-  <button (click)='tab1(1)' class="button {{tableType===1?'button-active':''}}">
+  <button (click)='tab1(2)' class="button {{tableType===2?'button-active':''}}">
     工程劳务分包合同登记表
   </button>
-  <button (click)='tab1(2)' class="button {{tableType===2?'button-active':''}}">
+  <button (click)='tab1(3)' class="button {{tableType===3?'button-active':''}}">
     工程材料采购合同登记表
   </button>
-  <button (click)='tab1(3)' class="button {{tableType===3?'button-active':''}}">
+  <button (click)='tab1(4)' class="button {{tableType===4?'button-active':''}}">
     工程设备租赁合同登记表
   </button>
-  <button (click)='tab1(4)' class="button {{tableType===4?'button-active':''}}">
+  <button (click)='tab1(5)' class="button {{tableType===5?'button-active':''}}">
     工程其他合同登记表
   </button>
 </div>
@@ -20,7 +20,7 @@
   <div class="title1">
     {{tableTitle}}
   </div>
-  <div class="title1-content" *ngIf='tableType===0||tableType===1'>
+  <div class="title1-content" *ngIf='tableType===2||tableType===1'>
     <div class="content">
       <div class="content-name">分包工程内容</div>
       <div class="content-input">
@@ -108,7 +108,7 @@
       </div>
     </div>
   </div>
-  <div class="title1-content" *ngIf='tableType===2'>
+  <div class="title1-content" *ngIf='tableType===3'>
     <div class="content">
       <div class="content-name">材料名称</div>
       <div class="content-input">
@@ -186,7 +186,7 @@
       </div>
     </div>
   </div>
-  <div class="title1-content" *ngIf='tableType===3'>
+  <div class="title1-content" *ngIf='tableType===4'>
     <div class="content">
       <div class="content-name">设备名称</div>
       <div class="content-input">
@@ -274,7 +274,7 @@
       </div>
     </div>
   </div>
-  <div class="title1-content" *ngIf='tableType===4'>
+  <div class="title1-content" *ngIf='tableType===5'>
     <div class="content">
       <div class="content-name">合同名称</div>
       <div class="content-input">
@@ -346,41 +346,41 @@
     <button class="btn btn-primary btn-block" (click)='submit()'>提交</button>
   </div>
 </div>
-<div class="table-div" *ngIf='tableType===0||tableType===1||tableType===3'>
+<div class="table-div" *ngIf='tableType===2||tableType===1||tableType===4'>
   <table border="1">
     <tr>
       <td>
         操作
       </td>
       <td>
-        {{tableType!==3?'分包工程内容':'设备名称'}}
+        {{tableType!==4?'分包工程内容':'设备名称'}}
       </td>
       <td>
         签约对方
       </td>
       <td>
-        {{tableType!==3?'承包范围':'安拆/租赁'}}
+        {{tableType!==4?'承包范围':'安拆/租赁'}}
       </td>
       <td>
-        {{tableType!==3?'分包方式':'期限'}}
+        {{tableType!==4?'分包方式':'期限'}}
       </td>
       <td>
-        {{tableType!==3?'合同单价（元）':'数量'}}
+        {{tableType!==4?'合同单价（元）':'数量'}}
       </td>
       <td>
-        {{tableType!==3?'控制价':'合同单价（元）'}}
+        {{tableType!==4?'控制价':'合同单价（元）'}}
       </td>
       <td>
-        {{tableType!==3?'是否超出控制价':'控制价'}}
+        {{tableType!==4?'是否超出控制价':'控制价'}}
       </td>
       <td>
-        {{tableType!==3?' 合同总价（万元）':'是否超出控制价'}}
+        {{tableType!==4?' 合同总价（万元）':'是否超出控制价'}}
       </td>
       <td>
-        {{tableType!==3?'付款方式及比例(%)':'合同总价（万元）'}}
+        {{tableType!==4?'付款方式及比例(%)':'合同总价（万元）'}}
       </td>
       <td>
-        {{tableType!==3?'履约保证金':'付款方式及比例(%)'}}
+        {{tableType!==4?'履约保证金':'付款方式及比例(%)'}}
       </td>
       <td>
         签约时间
@@ -424,7 +424,7 @@
     </tr>
   </table>
 </div>
-<div class="table-div" *ngIf='tableType===2'>
+<div class="table-div" *ngIf='tableType===3'>
   <table border="1">
     <tr>
       <td>
@@ -494,7 +494,7 @@
     </tr>
   </table>
 </div>
-<div class="table-div" *ngIf='tableType===4'>
+<div class="table-div" *ngIf='tableType===5'>
   <table border="1">
     <tr>
       <td>

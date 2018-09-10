@@ -235,14 +235,14 @@ export class DataService {
     }
   }
 
-  downloadFile(res, text) {
+  downloadFile(res, text, type) {
     const blob = new Blob([res], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
     const objectUrl = URL.createObjectURL(blob);
     const a = document.createElement('a');
     document.body.appendChild(a);
     a.setAttribute('style', 'display: none');
     a.setAttribute('href', objectUrl);
-    a.setAttribute('download', text + '.xls');
+    a.setAttribute('download', text + type);
     a.click();
     URL.revokeObjectURL(objectUrl);
   }
